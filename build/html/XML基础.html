@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>XML基础 &mdash; CSL-chinese  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> CSL-chinese
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">XML基础</a><ul>
+<li><a class="reference internal" href="#id1">元素</a></li>
+<li><a class="reference internal" href="#id2">属性</a></li>
+<li><a class="reference internal" href="#id3">预定义实体表</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CSL-chinese</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>XML基础</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/XML基础.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>[TOC]</p>
+<p><code class="docutils literal notranslate"><span class="pre">CSL</span></code>基于<code class="docutils literal notranslate"><span class="pre">XML(eXtensible</span> <span class="pre">Markup</span> <span class="pre">Language)</span></code>。<code class="docutils literal notranslate"><span class="pre">XML</span></code>是一种标记语言，这里只介绍基本的术语，以理解<code class="docutils literal notranslate"><span class="pre">CSL</span></code>文件格式。</p>
+<div class="section" id="xml">
+<h1>XML基础<a class="headerlink" href="#xml" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot; ?&gt;</span>  # 文档声明
+
+<span class="c">&lt;!-- 这是一个注释 --&gt;</span>		# 注释
+
+<span class="nt">&lt;hello&gt;</span>	# 根元素，文档的第一个元素，有且仅有一个
+    # 子元素
+    # 属性
+    # 元素文本
+<span class="nt">&lt;/hello&gt;</span>
+</pre></div>
+</div>
+<p>上面的代码时一个简单的<code class="docutils literal notranslate"><span class="pre">XML</span></code>结构。为了方便说明使用了<code class="docutils literal notranslate"><span class="pre">#</span></code>符号作为注释符号，<code class="docutils literal notranslate"><span class="pre">#</span></code>并不是真正的注释符号，<code class="docutils literal notranslate"><span class="pre">XML</span></code>的注释格式为文档中的第二行所示的形式。</p>
+<p>第一行为声明，或者称为序言，总是在文档的最前面。包括了<code class="docutils literal notranslate"><span class="pre">XML</span></code>的版本、编码信息以及是否依赖外部文档等。这一行代码会告诉解析器或浏览器这个文件应该按照XML规则进行解析。</p>
+<p>第二行为<code class="docutils literal notranslate"><span class="pre">XML</span></code>文档的注释。格式为<code class="docutils literal notranslate"><span class="pre">&lt;!--注释--&gt;</span></code>。</p>
+<p>剩下的代码为 <code class="docutils literal notranslate"><span class="pre">XML</span></code> 文件的根元素，根元素也是元素，根元素是文档的第一个元素，有且仅有一个。</p>
+<div class="section" id="id1">
+<h2>元素<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>元素由开始标签，元素内容和结束标签构成。其中可以包含属性、元素和注释。根元素包含了其他所有元素。</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;title&gt;</span>内容<span class="nt">&lt;/title&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">title</span></code> 为元素名。</p>
+<p>元素有4种形式。</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>1. 空元素
+<span class="nt">&lt;RAM&gt;</span> <span class="nt">&lt;/RAM&gt;</span>  或者 <span class="nt">&lt;RAM/&gt;</span>
+
+2. 带有属性的空元素
+<span class="nt">&lt;RAM</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span><span class="nt">/&gt;</span>  或者 <span class="nt">&lt;RAM</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;RAM/&gt;</span>
+
+3. 带有内容的元素
+<span class="nt">&lt;Price&gt;</span>21000<span class="nt">&lt;/Price&gt;</span>
+    
+4. 带有内容和属性的元素
+<span class="nt">&lt;Price</span> <span class="na">MoneyKind=</span><span class="s">&quot;RMB&quot;</span><span class="nt">&gt;</span>21000<span class="nt">&lt;/Price&gt;</span>  # MoneyKind 为属性  21000为元素值
+或者是
+<span class="nt">&lt;NotebookComputer&gt;</span>
+Style =&quot; LX2000&quot;
+CPU =&quot; PIII600&quot;
+RAM =&quot;128M &quot;
+<span class="nt">&lt;/NotebookComputer&gt;</span>
+</pre></div>
+</div>
+<p>所有的元素都包含在根元素中，为根元素的子元素，子元素还还可以包含子元素。</p>
+</div>
+<div class="section" id="id2">
+<h2>属性<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>属性是对元素及其内容的描述，用<code class="docutils literal notranslate"><span class="pre">=</span></code>隔开。属性必须包含在一对单引号或者双引号之间。</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Movie</span> <span class="na">ID=</span><span class="s">&quot;09001&quot;</span><span class="nt">&gt;</span>   # 其中的 id 就是属性  后面的值就是属性值
+<span class="nt">&lt;title&gt;</span>非诚勿扰<span class="nt">&lt;/title&gt;</span>	 # 子元素
+<span class="nt">&lt;price&gt;</span>70<span class="nt">&lt;/price&gt;</span>
+<span class="nt">&lt;/Movie&gt;</span>
+
+# 空元素的属性
+<span class="nt">&lt;Rectangle</span> <span class="na">Width=</span><span class="s">&quot;100&quot;</span> <span class="na">Height=</span><span class="s">&quot;80&quot;</span><span class="nt">/&gt;</span>
+
+# 属性的另外一种形式
+<span class="nt">&lt;NotebookComputer&gt;</span>
+Style =&quot; LX2000&quot;
+CPU =&quot; PIII600&quot;
+RAM =&quot;128M &quot;
+<span class="nt">&lt;/NotebookComputer&gt;</span>
+</pre></div>
+</div>
+<p>每个元素中，一个属性最多出现一次，一个属性只能有一个值。</p>
+<p>如果属性有多个值，这需要采取<code class="docutils literal notranslate"><span class="pre">XML</span></code>协议以外的方式来表示，如采用逗号或分号间隔，对于<a class="reference external" href="https://zh.wikipedia.org/wiki/CSS">CSS</a>类或标识符的名字可用空格来分隔。</p>
+</div>
+<div class="section" id="id3">
+<h2>预定义实体表<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">xml</span></code> 文件中某些符号无法正常表达，比如<code class="docutils literal notranslate"><span class="pre">&lt;</span></code> 或者<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>，不处理的话会导致混乱。</p>
+<p>| 所定义的实体 | 所代表的字符 |
+| ———— | ———— |
+| <code class="docutils literal notranslate"><span class="pre">&amp;lt;</span></code>       | &lt;            |
+| <code class="docutils literal notranslate"><span class="pre">&amp;gt;</span></code>       | &gt;``          |
+| <code class="docutils literal notranslate"><span class="pre">&amp;quot;</span></code>     | “            |
+| <code class="docutils literal notranslate"><span class="pre">&amp;apos;</span></code>     | ‘            |
+| <code class="docutils literal notranslate"><span class="pre">&amp;amp;</span></code>      | &amp;            |</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Para1&gt;</span>John asked <span class="ni">&amp;quot;</span>What<span class="ni">&amp;apos;</span>s your name?<span class="ni">&amp;quot;</span><span class="nt">&lt;/Para1&gt;</span>
+
+中间的结果:
+John asked &quot;What&#39;s your name? &quot;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, mao zhou
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

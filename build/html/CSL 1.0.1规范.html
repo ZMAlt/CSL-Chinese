@@ -1,0 +1,1468 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CSL 1.0.1 Specification &mdash; CSL-chinese  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> CSL-chinese
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">CSL 1.0.1 Specification</a><ul>
+<li><a class="reference internal" href="#id1">介绍</a><ul>
+<li><a class="reference internal" href="#id2">术语</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">命名习惯</a></li>
+<li><a class="reference internal" href="#id4">文件类型</a><ul>
+<li><a class="reference internal" href="#id5">独立格式</a></li>
+<li><a class="reference internal" href="#id6">从属格式</a></li>
+<li><a class="reference internal" href="#locale-files">Locale Files</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xml">XML 声明</a></li>
+<li><a class="reference internal" href="#styles">引用格式结构(Styles)</a><ul>
+<li><a class="reference internal" href="#cs-style">根元素 <code class="docutils literal notranslate"><span class="pre">cs:style</span></code></a></li>
+<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"> <span class="pre">cs:style</span></code>的子元素</a><ul>
+<li><a class="reference internal" href="#info">Info</a></li>
+<li><a class="reference internal" href="#citation">Citation</a></li>
+<li><a class="reference internal" href="#bioliography">Bioliography</a></li>
+<li><a class="reference internal" href="#macro">Macro</a></li>
+<li><a class="reference internal" href="#locale">Locale</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">Locale Files</a><ul>
+<li><a class="reference internal" href="#id9">Info</a></li>
+<li><a class="reference internal" href="#terms">Terms(术语)</a><ul>
+<li><a class="reference internal" href="#id10">序数后缀</a></li>
+<li><a class="reference internal" href="#id11">特定序数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">本地化日期格式</a></li>
+<li><a class="reference internal" href="#id13">本地化选项</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">渲染元素</a><ul>
+<li><a class="reference internal" href="#layout">Layout</a></li>
+<li><a class="reference internal" href="#text">Text</a></li>
+<li><a class="reference internal" href="#date">Date</a><ul>
+<li><a class="reference internal" href="#date-part">Date-part</a></li>
+<li><a class="reference internal" href="#date-ranges">Date Ranges</a></li>
+<li><a class="reference internal" href="#ad-and-bc">AD and BC</a></li>
+<li><a class="reference internal" href="#seasons">Seasons</a></li>
+<li><a class="reference internal" href="#approximate-dates">Approximate Dates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#number">Number</a></li>
+<li><a class="reference internal" href="#names">Names</a><ul>
+<li><a class="reference internal" href="#name">Name</a></li>
+<li><a class="reference internal" href="#et-al">Et-al</a></li>
+<li><a class="reference internal" href="#substitute">Substitute</a></li>
+<li><a class="reference internal" href="#label-in-cs-names">Label in <code class="docutils literal notranslate"><span class="pre">cs:names</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#label">Label</a></li>
+<li><a class="reference internal" href="#group">Group</a></li>
+<li><a class="reference internal" href="#choose">Choose</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">样式行为</a><ul>
+<li><a class="reference internal" href="#id16">选项</a><ul>
+<li><a class="reference internal" href="#id17">引文选项</a></li>
+<li><a class="reference internal" href="#id18">参考文献目录选项</a></li>
+<li><a class="reference internal" href="#id19">全局选项</a></li>
+<li><a class="reference internal" href="#id20">可继承的名称选项</a></li>
+<li><a class="reference internal" href="#id21">局部选项</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id22">排序</a><ul>
+<li><a class="reference internal" href="#id23">排序变量</a></li>
+<li><a class="reference internal" href="#id24">排序宏</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id25">范围分隔符</a></li>
+<li><a class="reference internal" href="#id26">格式化</a></li>
+<li><a class="reference internal" href="#id27">词缀</a></li>
+<li><a class="reference internal" href="#id28">分隔符</a></li>
+<li><a class="reference internal" href="#id29">显示</a></li>
+<li><a class="reference internal" href="#id30">引用</a></li>
+<li><a class="reference internal" href="#strip-periods">Strip-periods</a></li>
+<li><a class="reference internal" href="#text-case">Text-case</a><ul>
+<li><a class="reference internal" href="#id31">大小写转换</a></li>
+<li><a class="reference internal" href="#id32">标题大小写转换</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#i">附录I 学科分类</a></li>
+<li><a class="reference internal" href="#ii">附录II 术语</a><ul>
+<li><a class="reference internal" href="#locators">Locators</a></li>
+<li><a class="reference internal" href="#months">Months</a></li>
+<li><a class="reference internal" href="#ordinals">Ordinals</a></li>
+<li><a class="reference internal" href="#quotation-marks">Quotation marks</a></li>
+<li><a class="reference internal" href="#roles">Roles</a></li>
+<li><a class="reference internal" href="#id33">Seasons</a></li>
+<li><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iii">附录III 文献类型</a></li>
+<li><a class="reference internal" href="#iv">附录IV 变量</a><ul>
+<li><a class="reference internal" href="#id34">标准变量</a></li>
+<li><a class="reference internal" href="#id35">数据变量</a></li>
+<li><a class="reference internal" href="#id36">日期变量</a></li>
+<li><a class="reference internal" href="#id37">名字变量</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#v">附录V 页码范围格式</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CSL-chinese</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>CSL 1.0.1 Specification</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/CSL 1.0.1规范.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>[TOC]</p>
+<div class="section" id="csl-1-0-1-specification">
+<h1>CSL 1.0.1 Specification<a class="headerlink" href="#csl-1-0-1-specification" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>介绍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>CSL 是一种基于 XML 的格式，用来描述引用的格式，注释和参考文献，提供了</p>
+<ul class="simple">
+<li><p>一种开放的(开源的)格式</p></li>
+<li><p>紧凑并且稳定的格式</p></li>
+<li><p>对格式要求的外部支持</p></li>
+<li><p>格式的发布和更新的基本支持</p></li>
+<li><p>数千种免费提供 的样式</p></li>
+</ul>
+<p>有关的其他文档，CSL 介绍，样式和 locale 详见 <a class="reference external" href="https://citationstyles.org/">CSL 项目主页</a></p>
+<div class="section" id="id2">
+<h3>术语<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>关键字 <code class="docutils literal notranslate"><span class="pre">MUST,MUST</span> <span class="pre">NOT,REQUIRED,SHALL,SHALL</span> <span class="pre">NOT,SHOULD,SHOULD</span> <span class="pre">NOT,RECOMMENDED,MAY</span> <span class="pre">和</span> <span class="pre">OPTIONAL</span></code> 将按<a class="reference external" href="http://tools.ietf.org/html/rfc2119">IETF RFC 2119</a>中的描述解释。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>命名习惯<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>在引用 CSL 元素时，将在前面使用<code class="docutils literal notranslate"><span class="pre">cs:</span></code>。</p>
+</div>
+<div class="section" id="id4">
+<h2>文件类型<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>这里有3种CSL文件类型：从属样式和独立样式 (都使用<code class="docutils literal notranslate"><span class="pre">.csl</span></code>作为扩展名)，以及 locale files (名字为<code class="docutils literal notranslate"><span class="pre">&quot;locales-xx-XX.xml&quot;</span></code>，其中 <code class="docutils literal notranslate"><span class="pre">&quot;xx-XX&quot;</span></code>表示语言以及其方言，e.g. <code class="docutils literal notranslate"><span class="pre">&quot;en-US&quot;</span></code> 表示美式英语)。</p>
+<div class="section" id="id5">
+<h3>独立格式<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>独立格式包含引文，笔记以及参考文献的格式指示。虽然它们大多数自包含的，但是依赖于 locale files。</p>
+</div>
+<div class="section" id="id6">
+<h3>从属格式<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>从属样式是独立样式的别名，其内容仅包含样式元数据，不包括任何格式说明。通过将具有相同引用风格的期刊（e.g., “Nature Biotechnology”, “Nature Nanotechnology”）的从属样式链接到独立样式（e.g., “Nature Journals”），从属样式就不再需要重复的格式说明。</p>
+</div>
+<div class="section" id="locale-files">
+<h3>Locale Files<a class="headerlink" href="#locale-files" title="Permalink to this headline">¶</a></h3>
+<p>每个 Locale file 包含一系列对某种语言/方言的本地化数据（词语翻译，本地化日期格式以及语法选项）</p>
+</div>
+</div>
+<div class="section" id="xml">
+<h2>XML 声明<a class="headerlink" href="#xml" title="Permalink to this headline">¶</a></h2>
+<p>每个样式或者 locale 应该以 XML 声明开头，给出具体的 XML 版本以及字符编码。大多数情况下，XML 声明是：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="styles">
+<h2>引用格式结构(Styles)<a class="headerlink" href="#styles" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cs-style">
+<h3>根元素 <code class="docutils literal notranslate"><span class="pre">cs:style</span></code><a class="headerlink" href="#cs-style" title="Permalink to this headline">¶</a></h3>
+<p>样式的根元素是<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>。在独立格式种，根元素携带以下几种属性：</p>
+<p><code class="docutils literal notranslate"><span class="pre">class</span></code></p>
+<p>​	决定样式的引文类型是 in-text (值是 <code class="docutils literal notranslate"><span class="pre">&quot;in-text&quot;</span></code>) 或者 note (值是<code class="docutils literal notranslate"><span class="pre">&quot;note&quot;</span></code>) 。</p>
+<p><code class="docutils literal notranslate"><span class="pre">default-locale</span></code> (可选的)</p>
+<p>​	为本地化设值默认的 locale。值必须是 <a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77191.html">locale code</a>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">version</span></code></p>
+<p>​	样式的 CSL 版本。对于 CSL 1.0 兼容样式，必须是 <code class="docutils literal notranslate"><span class="pre">&quot;1.0&quot;</span></code>。</p>
+<p>此外，<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>可能携带任意的 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#global-options">全局选项</a> 和 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#inheritable-name-options">可继承名称选项</a>。</p>
+<p>在这些属性种，在从属格式中，只有<code class="docutils literal notranslate"><span class="pre">version</span></code>是必须的，默认的 locale 属性可以设置为代替的 locale。其他的属性是可以忽略的。</p>
+<p>下面是一个独立样式的 <code class="docutils literal notranslate"><span class="pre">cs:style</span></code>示例，前面是 XML 声明：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;style</span> <span class="na">xmlns=</span><span class="s">&quot;http://purl.org/net/xbiblio/csl&quot;</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span> <span class="na">class=</span><span class="s">&quot;in-text&quot;</span> <span class="na">default-locale=</span><span class="s">&quot;fr-FR&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><code class="docutils literal notranslate"> <span class="pre">cs:style</span></code>的子元素<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>在独立格式中，<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>有以下子元素：</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:info</span></code></p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">info</span></code>元素必须是<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>的第一个子元素。其中包括了用来描述样式的元数据 (style name, ID, authors, etc.).</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:citation</span></code></p>
+<p>​	必要元素，用来描述 in-text 引文或者 notes 的格式。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code> (可选)</p>
+<p>​	可能会出现一次。描述参考文献的格式。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:macro</span></code> (可选)</p>
+<p>​	可能多次出现。宏通过格式化指示来重复使用，可以使样式更加的紧凑和易维护。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:locale</span></code> (可选)</p>
+<p>​	可能多次出现。用于指定或者覆盖本地化数据。</p>
+<p>在从属格式中，<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>只有一个子元素，<code class="docutils literal notranslate"><span class="pre">cs:info</span></code>。</p>
+<div class="section" id="info">
+<h4>Info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">cs:info</span></code>包含了样式的元数据。其结构基于<a class="reference external" href="http://tools.ietf.org/html/rfc4287">Atom Syndication Format</a>。在独立格式中，<code class="docutils literal notranslate"><span class="pre">cs:info</span></code>有下面的几个子元素：</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:author</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:contributor</span></code> （可选）</p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">cs:author</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:contributor</span></code>分别用来致谢样式的作者和贡献者，可能被使用多次。在这些元素中，子元素<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>必须出现一次，<code class="docutils literal notranslate"><span class="pre">cs:email</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:uri</span></code>则可能出现一次。这些子元素分别代表作者或者贡献者的名字，邮箱和URI。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:category</span></code> (可选)</p>
+<p>​	样式可能被分类到一个或者多个类别，<code class="docutils literal notranslate"><span class="pre">cs:category</span></code>可能被使用一次，用来描述 in-text 引文怎么渲染。使用<code class="docutils literal notranslate"><span class="pre">citation-format</span></code>属性设置其为以下几种情形：</p>
+<ul>
+<li><p>“author-date” - e.g. “… (Doe, 1999)”</p></li>
+<li><p>“author” - e.g. “… (Doe)”</p></li>
+<li><p>“numeric” - e.g. “… [1]”</p></li>
+<li><p>“label” - e.g. “… [doe99]”</p></li>
+<li><p>“note” - the citation appears as a footnote or endnote</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:categroy</span></code>也可能在携带<code class="docutils literal notranslate"><span class="pre">field</span></code>属性时多次使用，用来对学科进行分类（见附录I）。</p>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">cs:id</span></code></p>
+<p>​	必须出现一次。该元素应该包含一个URI以建立样式的<code class="docutils literal notranslate"><span class="pre">ID</span></code>，对于公开可用的样式，需要一个稳定、唯一的并可以引用的 URI。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:issn/cs:essn/cs:issnl</span></code>（可选）</p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">cs:issn</span></code>元素可以多次使用，用来表示该 CSL 对应的期刊的 ISSN 。 <code class="docutils literal notranslate"><span class="pre">cs:eissn</span></code> 和<code class="docutils literal notranslate"><span class="pre">cs:issnl</span></code> 可以分别用来表示 eISSN and <a class="reference external" href="http://www.issn.org/2-22637-What-is-an-ISSN-L.php">ISSN-L</a> 。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:link</span></code> (可选)</p>
+<p>​	可以使用多次。<code class="docutils literal notranslate"><span class="pre">cs:link</span></code>必须携带两个属性<code class="docutils literal notranslate"><span class="pre">href</span></code>和<code class="docutils literal notranslate"><span class="pre">rel</span></code>。<code class="docutils literal notranslate"><span class="pre">href</span></code>用来设置 URI （通常情况下为 URL），<code class="docutils literal notranslate"><span class="pre">rel</span></code>表明 URI 与当前样式的关系，它的值可能是：</p>
+<ul class="simple">
+<li><p>“self” - 样式的 URI</p></li>
+<li><p>“template” - 用来编写该样式的模板的 URI</p></li>
+<li><p>“documentation - 该样式的文档</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">cs:published</span></code> (可选)</p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">cs:published</span></code>必须是一个<a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77049.html">时间戳</a>，用来表明样式创建的时间或者可获得的时间。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:rights</span></code> (可选)</p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">cs:rights</span></code>表明了该 CSL 的 license，可能会携带<code class="docutils literal notranslate"><span class="pre">license</span></code>属性。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:summary</span></code> (可选)</p>
+<p>​	给出该 CSL 的简单描述。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:title</span></code></p>
+<p>​	其内容应该是该 CSL 展示给使用者的名字。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:title-short</span></code> (可选)</p>
+<p>​	是上述名字的缩写，比如<code class="docutils literal notranslate"><span class="pre">APA</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:updated</span></code></p>
+<p>​	内容是一个<a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77049.html">时间戳</a>，用来表示该 CSL 的最后更新时间。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:link</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:rights</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:summary</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:title</span></code> 和 <code class="docutils literal notranslate"><span class="pre">cs:title-short</span></code>元素可以携带<code class="docutils literal notranslate"><span class="pre">xml:lang</span></code>属性用来表示元素内容的语言（值必须是<a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77191.html">xsd:language locale code</a>）。对于<code class="docutils literal notranslate"><span class="pre">cs:link</span></code>，该属性可以用来表示链接目标的语言。</p>
+<p>在从属格式中，当<code class="docutils literal notranslate"><span class="pre">cs:link</span></code>中的 <code class="docutils literal notranslate"><span class="pre">href</span></code>为其父格式的 URI时，<code class="docutils literal notranslate"><span class="pre">rel</span></code>属性必须设置为<code class="docutils literal notranslate"><span class="pre">&quot;independent-parent&quot;</span></code>。此外，从属格式的<code class="docutils literal notranslate"><span class="pre">ref</span></code>不能设置为<code class="docutils literal notranslate"><span class="pre">&quot;template&quot;</span></code>，这在独立格式中才能使用。</p>
+<p>下面是一个独立样式<code class="docutils literal notranslate"><span class="pre">cs:info</span></code>的例子：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;info&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Style Title<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;id&gt;</span>http://www.zotero.org/styles/style-title<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;http://www.zotero.org/styles/style-title&quot;</span> <span class="na">rel=</span><span class="s">&quot;self&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;author&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Author Name<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;email&gt;</span>name@domain.com<span class="nt">&lt;/email&gt;</span>
+    <span class="nt">&lt;uri&gt;</span>http://www.domain.com/name<span class="nt">&lt;/uri&gt;</span>
+  <span class="nt">&lt;/author&gt;</span>
+  <span class="nt">&lt;category</span> <span class="na">citation-format=</span><span class="s">&quot;author-date&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;category</span> <span class="na">field=</span><span class="s">&quot;zoology&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;updated&gt;</span>2008-10-29T21:01:24+00:00<span class="nt">&lt;/updated&gt;</span>
+  <span class="nt">&lt;rights</span> <span class="na">license=</span><span class="s">&quot;http://creativecommons.org/licenses/by-sa/3.0/&quot;</span><span class="nt">&gt;</span>This work
+  is licensed under a Creative Commons Attribution-Share Alike 3.0 Unported
+  License<span class="nt">&lt;/rights&gt;</span>
+<span class="nt">&lt;/info&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="citation">
+<h4>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素描述了引文的格式，其中引文可以是一条或者多条。引文的格式可能是in-text citations (<code class="docutils literal notranslate"><span class="pre">author</span> <span class="pre">(e.g.</span> <span class="pre">“[Doe]”)</span></code>, <code class="docutils literal notranslate"><span class="pre">author-date</span> <span class="pre">(“[Doe</span> <span class="pre">1999]”)</span></code>, <code class="docutils literal notranslate"><span class="pre">label</span> <span class="pre">(“[doe99]”</span></code>) 或者 <code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">(“[1]”)</span></code> ) 或者 notes。这要求<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>子元素来描述什么样的数据，以及怎么被引用（见<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>）。在<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>之前可能会有<code class="docutils literal notranslate"><span class="pre">cs:sort</span></code>元素，用来描述引文的排序（见排序）。<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素可能携带一些属性。下面是一个<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>的例子：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;citation&gt;</span>
+  <span class="nt">&lt;sort&gt;</span>
+    <span class="nt">&lt;key</span> <span class="na">variable=</span><span class="s">&quot;citation-number&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/sort&gt;</span>
+  <span class="nt">&lt;layout&gt;</span>
+    <span class="nt">&lt;text</span> <span class="na">variable=</span><span class="s">&quot;citation-number&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/layout&gt;</span>
+<span class="nt">&lt;/citation&gt;</span>
+</pre></div>
+</div>
+<p><strong>A note to CSL processor developers</strong></p>
+</div>
+<div class="section" id="bioliography">
+<h4>Bioliography<a class="headerlink" href="#bioliography" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">cs:bioliography</span></code>元素描述了参考文献条目的格式。同<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>相同，其子元素<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>用来描述每个条目的格式，<code class="docutils literal notranslate"><span class="pre">cs:sort</span></code>元素用来描述条目的排序。下面是一个<code class="docutils literal notranslate"><span class="pre">cs:bioliography</span></code>的例子：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;bibliography&gt;</span>
+  <span class="nt">&lt;sort&gt;</span>
+    <span class="nt">&lt;key</span> <span class="na">macro=</span><span class="s">&quot;author&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/sort&gt;</span>
+  <span class="nt">&lt;layout&gt;</span>
+    <span class="nt">&lt;group</span> <span class="na">delimiter=</span><span class="s">&quot;. &quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;text</span> <span class="na">macro=</span><span class="s">&quot;author&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;text</span> <span class="na">variable=</span><span class="s">&quot;title&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+  <span class="nt">&lt;/layout&gt;</span>
+<span class="nt">&lt;/bibliography&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="macro">
+<h4>Macro<a class="headerlink" href="#macro" title="Permalink to this headline">¶</a></h4>
+<p>宏，使用<code class="docutils literal notranslate"><span class="pre">cs:macro</span></code>元素定义，包含了格式的指令。宏可以在其他宏，<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>元素(<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:bioliography</span></code>中)，<code class="docutils literal notranslate"><span class="pre">cs:key</span></code>元素(<code class="docutils literal notranslate"><span class="pre">cs:sort</span></code>)中通过<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>调用。宏在文件中位置的通常建议是：放在<code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素后以及<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素前。</p>
+<p>宏通过<code class="docutils literal notranslate"><span class="pre">cs:macro</span></code>元素的属性<code class="docutils literal notranslate"><span class="pre">name</span></code>的值来调用。<code class="docutils literal notranslate"><span class="pre">cs:macro</span></code>必须啊包含一个或者多个渲染元素。</p>
+<p>使用宏可以提高样式的可读性，紧凑性以及可维护性。建议用过宏调用来保持<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素和<code class="docutils literal notranslate"><span class="pre">cs:bioliography</span></code>元素的内容紧凑。为了再其他样式中方便的重复使用，宏名字建议使用通用的名字。</p>
+<p>下面是一个实例：引文中包括项目题目，并当条目为”book”时，设置字体为<code class="docutils literal notranslate"><span class="pre">italic</span></code>。</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;style&gt;</span>
+  <span class="nt">&lt;macro</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;choose&gt;</span>
+      <span class="nt">&lt;if</span> <span class="na">type=</span><span class="s">&quot;book&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;text</span> <span class="na">variable=</span><span class="s">&quot;title&quot;</span> <span class="na">font-style=</span><span class="s">&quot;italic&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/if&gt;</span>
+      <span class="nt">&lt;else&gt;</span>
+        <span class="nt">&lt;text</span> <span class="na">variable=</span><span class="s">&quot;title&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/else&gt;</span>
+    <span class="nt">&lt;/choose&gt;</span>
+  <span class="nt">&lt;/macro&gt;</span>
+  <span class="nt">&lt;citation&gt;</span>
+    <span class="nt">&lt;layout&gt;</span>
+      <span class="nt">&lt;text</span> <span class="na">macro=</span><span class="s">&quot;title&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/layout&gt;</span>
+  <span class="nt">&lt;/citation&gt;</span>
+<span class="nt">&lt;/style&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="locale">
+<h4>Locale<a class="headerlink" href="#locale" title="Permalink to this headline">¶</a></h4>
+<p>来自<code class="docutils literal notranslate"><span class="pre">&quot;locales-xx-XX.xml&quot;</span></code>locale file 的本地化数据可以通过<code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素来重定义或者补充定义。<code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素应该放在<code class="docutils literal notranslate"><span class="pre">cs:info</span></code>元素后。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素的<code class="docutils literal notranslate"><span class="pre">xml:lang</span></code>属性是可选的，必须设置为<a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77191.html">xsd:language locale code</a>中的一种，用来确定使用的语言环境（或方言，见 locale fallback）。</p>
+<p>See <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#terms">Terms</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#localized-date-formats">Localized Date Formats</a> and <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#localized-options">Localized Options</a> for further details on the use of <code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>.</p>
+<p>下面是一个<code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素的例子：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;style&gt;</span>
+  <span class="nt">&lt;locale</span> <span class="na">xml:lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;terms&gt;</span>
+      <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;editortranslator&quot;</span> <span class="na">form=</span><span class="s">&quot;short&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;single&gt;</span>ed. <span class="ni">&amp;amp;</span> trans.<span class="nt">&lt;/single&gt;</span>
+        <span class="nt">&lt;multiple&gt;</span>eds. <span class="ni">&amp;amp;</span> trans.<span class="nt">&lt;/multiple&gt;</span>
+      <span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;/terms&gt;</span>
+  <span class="nt">&lt;/locale&gt;</span>
+<span class="nt">&lt;/style&gt;</span>
+</pre></div>
+</div>
+<p><strong>Locale Fallback</strong></p>
+<p>Locale file 为语言方言提供了本地化数据；可选的<code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素的<code class="docutils literal notranslate"><span class="pre">xml:lang</span></code>属性设置为一种语言(e.g. “en” for English) 或者方言，<code class="docutils literal notranslate"><span class="pre">xml:lang</span></code>属性也可能缺失。Localr fallback 是一种在上述的属性设置中检索来确定本地化单元的机制。这些本地化单元包括日期格式，本地化选项或者术语的特定形式。</p>
+<p>对于同一种语言的方言，一种被称为初级方言，其他都是二级方言。下面展示了部分语言的初级方言和二级方言：</p>
+<p>| 初级方言 | 二级方言     |
+| ——– | ———— |
+| de-DE    | de-AT, de-CH |
+| en-US    | en-GB        |
+| pt-PT    | pt-BR        |
+| zh-CN    | zh-TW        |</p>
+<p>这里用一个例子来描述 Locale fallback。如果要选择 <code class="docutils literal notranslate"><span class="pre">&quot;de-AT&quot;</span></code>(Austrian German)，本地化单元可以来自下面的源（优先级逐渐降低）：# 这里有点问题</p>
+<p>A. <code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xml:lang</span></code>设置为方言 <code class="docutils literal notranslate"><span class="pre">&quot;de-AT&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xml:lang</span></code>设置为 <code class="docutils literal notranslate"><span class="pre">&quot;de&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xml:lang</span></code>不设置</p></li>
+</ul>
+<p>B. Locale files</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xml:lang</span></code>设置为方言  <code class="docutils literal notranslate"><span class="pre">&quot;de-AT&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xml:lang</span></code>设置为对应的初级方言 <code class="docutils literal notranslate"><span class="pre">&quot;de-DE&quot;</span></code> (standard german)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xml:lang</span></code>设置为<code class="docutils literal notranslate"><span class="pre">&quot;en-US&quot;</span></code></p></li>
+</ul>
+<p>也就是说，如果要使用<code class="docutils literal notranslate"><span class="pre">&quot;de-AT&quot;</span></code>语言，首先在 Locale files 中寻找<code class="docutils literal notranslate"><span class="pre">&quot;de&quot;</span></code>对应的 files，即<code class="docutils literal notranslate"><span class="pre">&quot;de-AT&quot;</span></code>和<code class="docutils literal notranslate"><span class="pre">&quot;de-DE&quot;</span></code>，由于使用的是方言<code class="docutils literal notranslate"><span class="pre">&quot;de-AT&quot;</span></code>，所以选择<code class="docutils literal notranslate"><span class="pre">de-AT</span></code>对应的 locale file。接下来，如果 csl 文件中包含 <code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素，将会覆盖 locale file 文件的设置。</p>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Locale Files<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>尽管本地化数据可以包括在 csl 文件中(见<a class="reference external" href="#Locale">Locale</a>)，但是 Locale file 可以方便的提供本地化数据的设置，包括术语，日期格式以及语法选项。</p>
+<p>每个 Locale file 包括了一种语言方言的本地化数据。locale file 中根元素为<code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>。在<code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>根元素中，属性<code class="docutils literal notranslate"><span class="pre">xml:lang</span></code>用来设置方言。同时这一设置选项也用来对 locale file w文件命名（<code class="docutils literal notranslate"><span class="pre">&quot;xx-XX&quot;</span></code>文件名为<code class="docutils literal notranslate"><span class="pre">locales-xx-XX.xml</span></code>）。此外，根元素必须携带<code class="docutils literal notranslate"><span class="pre">version</span></code>属性，表明 locale file 的 CSL 版本（对 CSL 1.0 兼容的 locale file 必须设置为<code class="docutils literal notranslate"><span class="pre">&quot;1.0&quot;</span></code>）。Locale file 有和样式同样的<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#namespacing">命名空间</a> 。<code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素可能包含<code class="docutils literal notranslate"><span class="pre">cs:info</span></code>作为第一个子元素，同时，必须含有<code class="docutils literal notranslate"><span class="pre">cs:terms</span></code>、<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>、<code class="docutils literal notranslate"><span class="pre">cs:style-options</span></code>子元素。下面是一个 locale file 的部分示例：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;locale</span> <span class="na">xml:lang=</span><span class="s">&quot;en-US&quot;</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://purl.org/net/xbiblio/csl&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;style-options</span> <span class="na">punctuation-in-quote=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;date</span> <span class="na">form=</span><span class="s">&quot;text&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;month&quot;</span> <span class="na">suffix=</span><span class="s">&quot; &quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;day&quot;</span> <span class="na">suffix=</span><span class="s">&quot;, &quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;year&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/date&gt;</span>
+  <span class="nt">&lt;date</span> <span class="na">form=</span><span class="s">&quot;numeric&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;year&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;month&quot;</span> <span class="na">form=</span><span class="s">&quot;numeric&quot;</span> <span class="na">prefix=</span><span class="s">&quot;-&quot;</span> <span class="na">range-delimiter=</span><span class="s">&quot;/&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;day&quot;</span> <span class="na">prefix=</span><span class="s">&quot;-&quot;</span> <span class="na">range-delimiter=</span><span class="s">&quot;/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/date&gt;</span>
+  <span class="nt">&lt;terms&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;no date&quot;</span><span class="nt">&gt;</span>n.d.<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;et-al&quot;</span><span class="nt">&gt;</span>et al.<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;page&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;single&gt;</span>page<span class="nt">&lt;/single&gt;</span>
+      <span class="nt">&lt;multiple&gt;</span>pages<span class="nt">&lt;/multiple&gt;</span>
+    <span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;page&quot;</span> <span class="na">form=</span><span class="s">&quot;short&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;single&gt;</span>p.<span class="nt">&lt;/single&gt;</span>
+      <span class="nt">&lt;multiple&gt;</span>pp.<span class="nt">&lt;/multiple&gt;</span>
+    <span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;/terms&gt;</span>
+<span class="nt">&lt;/locale&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="id9">
+<h3>Info<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">cs:info</span></code>元素用来给出 locale file 的元数据。它含有以下子元素：</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:translator</span></code>(可选)</p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">cs:translator</span></code>用来致谢翻译者，并且能使用多次。在这个元素中。子元素<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>必须出现一次，<code class="docutils literal notranslate"><span class="pre">cs:uri</span></code>则是可选的。这些子元素应该分别包括翻译者的名字，地址和 URI。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:rights</span></code>(可选)</p>
+<p>​	可能出现一次。<code class="docutils literal notranslate"><span class="pre">cs:rights</span></code>的内容用来指定 locale file 发布版本的 license。该元素可能会携带<code class="docutils literal notranslate"><span class="pre">license</span></code>属性来指定<code class="docutils literal notranslate"><span class="pre">license</span></code>的 URI，<code class="docutils literal notranslate"><span class="pre">xml:lang</span></code>属性则用来指定元素内容的语言（值必须是<a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77191.html">xsd:language locale code</a>）。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:updates</span></code>(可选)</p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">cs:updated</span></code>元素的内容必须是一个时间戳来指定 locale file 最后一次更新的时间。</p>
+</div>
+<div class="section" id="terms">
+<h3>Terms(术语)<a class="headerlink" href="#terms" title="Permalink to this headline">¶</a></h3>
+<p>术语是本地化的字符串（比如通过使用<code class="docutils literal notranslate"><span class="pre">&quot;and&quot;</span></code>术语，<code class="docutils literal notranslate"><span class="pre">&quot;Doe</span> <span class="pre">and</span> <span class="pre">Smith&quot;</span></code>在 locale 从英语到德语的转换中会自动变为<code class="docutils literal notranslate"><span class="pre">&quot;Doe</span> <span class="pre">und</span> <span class="pre">Smith&quot;</span></code>）。术语用<code class="docutils literal notranslate"><span class="pre">cs:term</span></code>元素定义，是<code class="docutils literal notranslate"><span class="pre">cs:terms</span></code>元素的子元素。每个<code class="docutils literal notranslate"><span class="pre">cs:term</span></code>元素必须携带一个<code class="docutils literal notranslate"><span class="pre">name</span></code>属性，设置为[附录II 术语](#附录II 术语)。</p>
+<p>术语可以直接在<code class="docutils literal notranslate"><span class="pre">cs:term</span></code>的内容中定义，或者，in cases where singular and plural variants are needed (e.g. “page” and “pages”), in the content of the child elements <code class="docutils literal notranslate"><span class="pre">cs:single</span></code> and <code class="docutils literal notranslate"><span class="pre">cs:multiple</span></code>, respectively。</p>
+<p>Terms may be defined for specific forms by using <code class="docutils literal notranslate"><span class="pre">cs:term</span></code> with the optional <code class="docutils literal notranslate"><span class="pre">form</span></code> attribute set to:</p>
+<ul class="simple">
+<li><p>“long” - (default), e.g. “editor” and “editors” for the “editor” term</p></li>
+<li><p>“short” - e.g. “ed.” and “eds.” for the term “editor”</p></li>
+<li><p>“verb” - e.g. “edited by” for the term “editor”</p></li>
+<li><p>“verb-short” - e.g. “ed.” for the term “editor”</p></li>
+<li><p>“symbol” - e.g. “§” and “§§” for the term “section”</p></li>
+</ul>
+<div class="section" id="id10">
+<h4>序数后缀<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id11">
+<h4>特定序数<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>本地化日期格式<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>元素中，本地化数据格式有两种格式：一种是<code class="docutils literal notranslate"><span class="pre">&quot;numeric&quot;</span></code>（例：<code class="docutils literal notranslate"><span class="pre">12-15-2005</span></code>），另外一种是 <code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code>（例：<code class="docutils literal notranslate"><span class="pre">December</span> <span class="pre">15,2005</span></code>）。格式在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>元素中，使用<code class="docutils literal notranslate"><span class="pre">form</span></code>属性来设置。</p>
+<p>日期格式使用<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>子元素来构建（见<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#date-part">Date-part</a>）。With a required <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute set to either <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code> or <code class="docutils literal notranslate"><span class="pre">year</span></code>, the order of these elements reflects the display order of respectively the day, month, and year. 日期可以使用<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素中的<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a> 和 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#text-case">text-case</a>属性设置。<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>元素中的<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>属性用来设置<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>中不同部分的间隔and <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#affixes">affixes</a> may be applied to the <code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code> elements.</p>
+<p><strong>Note</strong> Affixes are not allowed on <code class="docutils literal notranslate"><span class="pre">cs:date</span></code> when defining localized date formats. This restriction is in place to separate locale-specific affixes (set on the <code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code> elements) from any style-specific affixes (set on the calling <code class="docutils literal notranslate"><span class="pre">cs:date</span></code> element), such as parentheses. An example of a macro calling a localized date format:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;macro</span> <span class="na">name=</span><span class="s">&quot;issued&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;date</span> <span class="na">variable=</span><span class="s">&quot;issued&quot;</span> <span class="na">form=</span><span class="s">&quot;numeric&quot;</span> <span class="na">prefix=</span><span class="s">&quot;(&quot;</span> <span class="na">suffix=</span><span class="s">&quot;)&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/macro&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>本地化选项<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>本地化选项有两个，<code class="docutils literal notranslate"><span class="pre">limit-day-ordinals-to-day-1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">punctuation-in-quote</span></code> （见<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#locale-options">Locale Options</a>）。这些全局选项（同时影响引文和参考文献条目）在<code class="docutils literal notranslate"><span class="pre">cs:style-options</span></code>中被设置为可选属性。</p>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>渲染元素<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<p>渲染元素指定了在引文或参考文献条目中需要包含哪些条目元数据，以及以何种方式排序，并对其格式进行控制。</p>
+<div class="section" id="layout">
+<h3>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>渲染元素是<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素和<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>元素的的必要子元素。<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>必须包含一个或者多个渲染元素，并且可能携带<code class="docutils literal notranslate"><span class="pre">affixes</span></code>和格式化属性。在<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素中，<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>属性用来指定一个引文中的不同引用的间隔符。例如：一个<code class="docutils literal notranslate"><span class="pre">&quot;(1,2)&quot;</span></code>类型的引文可以使用下面的代码实现：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;citation&gt;</span>
+  <span class="nt">&lt;layout</span> <span class="na">prefix=</span><span class="s">&quot;(&quot;</span> <span class="na">suffix=</span><span class="s">&quot;)&quot;</span> <span class="na">delimiter=</span><span class="s">&quot;, &quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;text</span> <span class="na">variable=</span><span class="s">&quot;citation-number&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/layout&gt;</span>
+<span class="nt">&lt;/citation&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="text">
+<h3>Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">cs:text</span></code>渲染元素用来输出文字。其必须携带下面的属性来确定什么部分需要渲染：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">variable</span></code>- 渲染一个变量的文本内容。属性值必须是<a class="reference external" href="#%E6%A0%87%E5%87%86%E5%8F%98%E9%87%8F">标准变量</a>。可以与<code class="docutils literal notranslate"><span class="pre">form</span></code>属性一起选择变量的“long”（默认）或“short”形式（e.g. the full or short title）。如果选择了<code class="docutils literal notranslate"><span class="pre">&quot;short&quot;</span></code>形式，但是却没法获得，就使用<code class="docutils literal notranslate"><span class="pre">&quot;long&quot;</span></code>形式来渲染。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">macro</span></code> - 渲染宏的文字输出。属性值必须和<code class="docutils literal notranslate"><span class="pre">cs:macro</span></code>元素的<code class="docutils literal notranslate"><span class="pre">name</span></code>属性的值相匹配。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">term</span></code> - 渲染术语。属性必须是[Appendix II-Terms](Appendix II-Terms)中的术语列表中的一个。May be accompanied by the <code class="docutils literal notranslate"><span class="pre">plural</span></code> attribute to select the singular (“false”, default) or plural (“true”) variant of a term, and by the <code class="docutils literal notranslate"><span class="pre">form</span></code> attribute to select the “long” (default), “short”, “verb”, “verb-short” or “symbol” form variant (see also <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#terms">Terms</a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> - 渲染属性值自己。</p></li>
+</ul>
+<p>一个<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>的渲染<code class="docutils literal notranslate"><span class="pre">&quot;title&quot;</span></code>变量的例子：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;text</span> <span class="na">variable=</span><span class="s">&quot;title&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">cs:text</span></code> 可能会携带 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#affixes">affixes</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#display">display</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#quotes">quotes</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#strip-periods">strip-periods</a> 和 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#text-case">text-case</a> 属性。</p>
+</div>
+<div class="section" id="date">
+<h3>Date<a class="headerlink" href="#date" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">cs:date</span></code>渲染元素输出从<a class="reference external" href="#%E6%97%A5%E6%9C%9F%E5%8F%98%E9%87%8F">日期变量</a>列表中的选择的日期。日期可以以本地化或者非本地化格式呈现。</p>
+<p>本地化的日期格式通过可选的<code class="docutils literal notranslate"><span class="pre">form</span></code>属性来选择，其值必须设置为<code class="docutils literal notranslate"><span class="pre">&quot;numeric&quot;</span></code>(for fully numeric formats, e.g. “12-15-2005”)或者<code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code>(for formats with a non-numeric month, e.g. “December 15, 2005”)。本地化日期格式可以通过两种方式进行自定义。第一种：<code class="docutils literal notranslate"><span class="pre">date-parts</span></code>属性可以用来设置较少的日期部分。可能得值为：</p>
+<ul class="simple">
+<li><p>“year-month-day” - 默认值，渲染年，月，日</p></li>
+<li><p>“year-month” - 渲染年月</p></li>
+<li><p>“year” - 只渲染年</p></li>
+</ul>
+<p>第二种，<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>可以含有一个或者多个<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>子元素。在这些子元素种可以设置属性来覆盖之前的设置(e.g. to get abbreviated months for all locales, the <code class="docutils literal notranslate"><span class="pre">form</span></code> attribute on the month-<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code> element can be set to “short”)。这些子元素不影响各个日期部分渲染的顺序和以及其是否渲染。 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#affixes">Affixes</a>, which are very locale-specific, are not allowed on these <code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code> elements.</p>
+<p>没有属性<code class="docutils literal notranslate"><span class="pre">form</span></code>的情况下,<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>则描述了一个自带的非本地化的日期格式。其日期格式使用<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>子元素来构建。在使用<code class="docutils literal notranslate"><span class="pre">name</span></code>属性并设置为<code class="docutils literal notranslate"><span class="pre">day</span></code>,<code class="docutils literal notranslate"><span class="pre">month</span></code>或<code class="docutils literal notranslate"><span class="pre">year</span></code>时，这些元素的顺序反应了其显示顺序。日期可以在<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素种使用<code class="docutils literal notranslate"><span class="pre">formatting</span></code>属性以及多个<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>的属性来格式化。<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>种的<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>属性可以用来设置<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素不同日期部分的分隔符，and <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#affixes">affixes</a> may be applied to the <code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code> elements。</p>
+<p>本地化的日期或者是非本地化的日期，, <code class="docutils literal notranslate"><span class="pre">cs:date</span></code> 都可能携带 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#affixes">affixes</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#display">display</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a> 和<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#text-case">text-case</a> 属性。</p>
+<div class="section" id="date-part">
+<h4>Date-part<a class="headerlink" href="#date-part" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素用来控制日期的各个部分怎么渲染。除了其父元素<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>调用了本地化日期格式，这些子元素同样可以决定哪些部分出现以及各部分的渲染顺序。<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素描述了<code class="docutils literal notranslate"><span class="pre">name</span></code>属性选择的日期部分，其<code class="docutils literal notranslate"><span class="pre">name</span></code>值可以是：</p>
+<p><strong>“day”</strong></p>
+<p>​	对于<code class="docutils literal notranslate"><span class="pre">&quot;day&quot;</span></code>来说，<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>可能会携带<code class="docutils literal notranslate"><span class="pre">form</span></code>属性，值可以设置为：</p>
+<ul>
+<li><p>“numeric” - (default), e.g. “1”</p></li>
+<li><p>“numeric-leading-zeros” - e.g. “01”</p></li>
+<li><p>“ordinal” - e.g. “1st”</p>
+<p>有的语言种，比如法语，只在月份的第一天使用<code class="docutils literal notranslate"><span class="pre">&quot;oridinal&quot;</span></code>也就是序数形式(“1er janvier”, “2 janvier”, “3 janvier”, etc.)。这种输出可以通过<code class="docutils literal notranslate"><span class="pre">&quot;oridinal&quot;</span></code>以及<code class="docutils literal notranslate"><span class="pre">limit-day-oridinals-to-day</span></code>属性来设置 (see <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#locale-options">Locale Options</a>)。</p>
+</li>
+</ul>
+<p><strong>“month”</strong></p>
+<p>​	对于<code class="docutils literal notranslate"><span class="pre">&quot;month&quot;</span></code>来说，<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>可能会携带<code class="docutils literal notranslate"><span class="pre">strip-periods</span></code>和<code class="docutils literal notranslate"><span class="pre">form</span></code>属性。在locale files中，月份缩写应该后面要加点（e.g. “Jan.”, “Feb.”）。点可以设置<code class="docutils literal notranslate"><span class="pre">strip-periods</span></code>为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>去掉。<code class="docutils literal notranslate"><span class="pre">form</span></code>属性可以设置为：</p>
+<ul class="simple">
+<li><p>“long” - (default), e.g. “January”</p></li>
+<li><p>“short” - e.g. “Jan.”</p></li>
+<li><p>“numeric” - e.g. “1”</p></li>
+<li><p>“numeric-leading-zeros” - e.g. “01”</p></li>
+</ul>
+<p><strong>“year”</strong></p>
+<p>​	对<code class="docutils literal notranslate"><span class="pre">&quot;year&quot;</span></code>来说，<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>可能会携带<code class="docutils literal notranslate"><span class="pre">form</span></code>属性，值可以设置为：</p>
+<ul class="simple">
+<li><p>“long” - (default), e.g. “2005”</p></li>
+<li><p>“short” - e.g. “05”</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code> 也可能携带<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#text-case">text-case</a> 和 <code class="docutils literal notranslate"><span class="pre">range-delimiter</span></code> 属性。 Attributes for <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#affixes">affixes</a> are allowed, unless <code class="docutils literal notranslate"><span class="pre">cs:date</span></code> calls a localized date format.</p>
+</div>
+<div class="section" id="date-ranges">
+<h4>Date Ranges<a class="headerlink" href="#date-ranges" title="Permalink to this headline">¶</a></h4>
+<p>默认的日期范围中的分隔符是短线(en-dash)，比如：“May–July 2008”。可以在<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素中通过<code class="docutils literal notranslate"><span class="pre">range-delimiter</span></code>属性来设置常用的分隔符。当日期范围被渲染的时候，范围分隔符从<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素中提取，并且匹配两个日期差别中最大的部分(“year”, “month”, 或 “day”)。如下面的例子，将会渲染出类似<code class="docutils literal notranslate"><span class="pre">“1-4</span> <span class="pre">May</span> <span class="pre">2008”,</span> <span class="pre">“May–July</span> <span class="pre">2008”</span> <span class="pre">and</span> <span class="pre">“May</span> <span class="pre">2008/June</span> <span class="pre">2009”</span></code>的日期范围。</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;style&gt;</span>
+  <span class="nt">&lt;citation&gt;</span>
+    <span class="nt">&lt;layout&gt;</span>
+      <span class="nt">&lt;date</span> <span class="na">variable=</span><span class="s">&quot;issued&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;day&quot;</span> <span class="na">suffix=</span><span class="s">&quot; &quot;</span> <span class="na">range-delimiter=</span><span class="s">&quot;-&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;month&quot;</span> <span class="na">suffix=</span><span class="s">&quot; &quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;year&quot;</span> <span class="na">range-delimiter=</span><span class="s">&quot;/&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/date&gt;</span>
+    <span class="nt">&lt;/layout&gt;</span>
+  <span class="nt">&lt;/citation&gt;</span>
+<span class="nt">&lt;/style&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ad-and-bc">
+<h4>AD and BC<a class="headerlink" href="#ad-and-bc" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">“ad”</span></code>一词（Anno Domini）自动附加到小于四位数的正年份（例如，<code class="docutils literal notranslate"><span class="pre">“79”</span></code>变为<code class="docutils literal notranslate"><span class="pre">“79AD”</span></code>）。<code class="docutils literal notranslate"><span class="pre">“bc”</span></code>一词（Before Christ）自动附加到负年份（例如，<code class="docutils literal notranslate"><span class="pre">“-2500”</span></code>变为<code class="docutils literal notranslate"><span class="pre">“2500BC”</span></code>）。</p>
+</div>
+<div class="section" id="seasons">
+<h4>Seasons<a class="headerlink" href="#seasons" title="Permalink to this headline">¶</a></h4>
+<p>如果日期中包含了季节而不是月份，日期术语(<code class="docutils literal notranslate"><span class="pre">“season-01”</span> </code>到<code class="docutils literal notranslate"> <span class="pre">“season-04”</span></code>, 分别代表春夏秋冬)将取代月份术语。比如，下面将会被渲染为<code class="docutils literal notranslate"><span class="pre">“May</span> <span class="pre">2008”</span></code> 和<code class="docutils literal notranslate"> <span class="pre">“Winter</span> <span class="pre">2009”</span></code></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;style&gt;</span>
+  <span class="nt">&lt;citation&gt;</span>
+    <span class="nt">&lt;layout&gt;</span>
+      <span class="nt">&lt;date</span> <span class="na">variable=</span><span class="s">&quot;issued&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;month&quot;</span> <span class="na">suffix=</span><span class="s">&quot; &quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;year&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/date&gt;</span>
+    <span class="nt">&lt;/layout&gt;</span>
+  <span class="nt">&lt;/citation&gt;</span>
+<span class="nt">&lt;/style&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="approximate-dates">
+<h4>Approximate Dates<a class="headerlink" href="#approximate-dates" title="Permalink to this headline">¶</a></h4>
+<p>Approximate dates test “true” for the <code class="docutils literal notranslate"><span class="pre">is-uncertain-date</span></code> conditional (see <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#choose">Choose</a>). For example,would result in “2005” (normal date) and “ca. 2003” (approximate date).</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;style&gt;</span>
+  <span class="nt">&lt;citation&gt;</span>
+    <span class="nt">&lt;layout&gt;</span>
+      <span class="nt">&lt;choose&gt;</span>
+        <span class="nt">&lt;if</span> <span class="na">is-uncertain-date=</span><span class="s">&quot;issued&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;text</span> <span class="na">term=</span><span class="s">&quot;circa&quot;</span> <span class="na">form=</span><span class="s">&quot;short&quot;</span> <span class="na">suffix=</span><span class="s">&quot; &quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/if&gt;</span>
+      <span class="nt">&lt;/choose&gt;</span>
+      <span class="nt">&lt;date</span> <span class="na">variable=</span><span class="s">&quot;issued&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;year&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/date&gt;</span>
+    <span class="nt">&lt;/layout&gt;</span>
+  <span class="nt">&lt;/citation&gt;</span>
+<span class="nt">&lt;/style&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="number">
+<h3>Number<a class="headerlink" href="#number" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">cs:number</span></code>渲染元素输出<code class="docutils literal notranslate"><span class="pre">variable</span></code>属性选择的数字变量。数字变量是标准变量的子集（见附录 变量）。</p>
+<p>使用<code class="docutils literal notranslate"><span class="pre">cs:number</span></code>元素来渲染数字变量时，如果只包含数字内容(as determined by the rules for <code class="docutils literal notranslate"><span class="pre">is-numeric</span></code>, see <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#choose">Choose</a>)，数字就被提取出来。变量内容包含非数字内容时，变量内容将呈现为原样。</p>
+<p>在提取的过程中，用连字符分隔的数字将去掉中见的空格（“2 - 4” 变为 “2-4”）。用逗号分隔的数字在都好后会添加一个空格，并删掉其余的空格(“2,3” 和 “2 , 3” 变为 “2, 3”)。当数字使用<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>分隔时，在前后各添加一个空格(“2&amp;3” 变为 “2 &amp; 3”)。</p>
+<p>提取的数字可以通过<code class="docutils literal notranslate"><span class="pre">form</span></code>属性行进格式化，其值可以设置为：</p>
+<ul class="simple">
+<li><p>“numeric” - 默认, e.g. “1”, “2”, “3”</p></li>
+<li><p>“ordinal” -  序数数字 e.g. “1st”, “2nd”, “3rd”。序数后缀可以使用术语定义 (see <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#ordinal-suffixes">Ordinal Suffixes</a>).</p></li>
+<li><p>“long-ordinal” - 长序数 e.g. “first”, “second”, “third”。Long ordinals are defined with the <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#terms">terms</a> “long-ordinal-01” to “long-ordinal-10”, which are used for the numbers 1 through 10. For other numbers “long-ordinal” falls back to “ordinal”.</p></li>
+<li><p>“roman” - 罗马数字 e.g. “i”, “ii”, “iii”</p></li>
+</ul>
+<p>带有前缀或者后缀的数字不能使用罗马数字进行排序或者渲染(e.g. “2E” 仍然时 “2E”)。没有词缀的数字可以被分别转换(“2, 3” 可以转换为 “2nd, 3rd”, “second, third” 或者 “ii, iii”)。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:number</span></code>元素可能会携带<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#affixes">affixes</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#display">display</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a> 和 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#text-case">text-case</a> 属性。</p>
+</div>
+<div class="section" id="names">
+<h3>Names<a class="headerlink" href="#names" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">cs:names</span></code>y元素用来输出一个或多个名字变量的内容（通过必选属性<code class="docutils literal notranslate"><span class="pre">variable</span></code>来选择），。</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;names</span> <span class="na">variable=</span><span class="s">&quot;editor translator&quot;</span> <span class="na">delimiter=</span><span class="s">&quot;; &quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">prefix=</span><span class="s">&quot; (&quot;</span> <span class="na">suffix=</span><span class="s">&quot;)&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/names&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">cs:names</span></code>有四个子元素:<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>。 <code class="docutils literal notranslate"><span class="pre">cs:names</span></code> element 元素可能会携带 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#affixes">affixes</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#display">display</a> 和 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a> 属性。如果选择了多个变量，每个变量将按照顺序独立的渲染，只有当选择的出现”editor”和”translator”时，并且两个是相同时，只渲染一个内容。此外，如果<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>元素包含<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>元素，则使用“editortranslator”术语，替换默认的“editor”和“translator”术语。<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>元素中的<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>属性可以用来设置不同名字变量的名字。</p>
+<div class="section" id="name">
+<h4>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">cs:name</span></code>元素的一个可选的子元素<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>可以用来描述单个<code class="docutils literal notranslate"><span class="pre">names</span></code>的格式，以及名称变量中不同<code class="docutils literal notranslate"><span class="pre">names</span></code>的分隔。<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>可能携带下面的属性：</p>
+<p><code class="docutils literal notranslate"><span class="pre">and</span></code></p>
+<p>​	在名称变量中用来设置倒数第二个名字和倒数第一个名字的分隔符。可选的值为<code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code>(“Doe, Johnson and Smith”)或者<code class="docutils literal notranslate"><span class="pre">&quot;symbol&quot;</span></code>(eg: “Doe, Johnson &amp; Smith”)。</p>
+<p><code class="docutils literal notranslate"><span class="pre">delimiter</span></code></p>
+<p>​	在名称变量中设置字符串来分隔名称。默认的是<code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code>(e.g. “Doe, Smith”)。</p>
+<p><code class="docutils literal notranslate"><span class="pre">delimiter-precedes-et-al</span></code></p>
+<p>​	确定何时使用分隔符分隔名称变量中的倒数第一个作者和最后一个作者。（如果<code class="docutils literal notranslate"><span class="pre">and</span></code>没有被设置，则使用<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>，不管<code class="docutils literal notranslate"><span class="pre">delimiter-precedes-et-al</span></code>的值）。该属性可选的值有：</p>
+<ul class="simple">
+<li><p>“contextual” - 默认，在作者列表中有3个或者3个以上的人时使用。</p>
+<ul>
+<li><p>2 个名字: “J. Doe and T. Williams”</p></li>
+<li><p>3 个名字: “J. Doe, S. Smith, and T. Williams”</p></li>
+</ul>
+</li>
+<li><p>“after-inverted-name” -仅前面的名称因<code class="docutils literal notranslate"><span class="pre">name-as-sort-order</span></code> 属性颠倒时，才使用分隔符。E.g. <code class="docutils literal notranslate"><span class="pre">name-as-sort-order</span></code>设置为<code class="docutils literal notranslate"><span class="pre">&quot;first&quot;</span></code></p>
+<ul>
+<li><p>“Doe, J., and T. Williams”</p></li>
+<li><p>“Doe, J., S. Smith and T. Williams”</p></li>
+</ul>
+</li>
+<li><p>“always” - 分隔符一直使用。</p>
+<ul>
+<li><p>2 names: “J. Doe, and T. Williams”</p></li>
+<li><p>3 names: “J. Doe, S. Smith, and T. Williams”</p></li>
+</ul>
+</li>
+<li><p>“never” - 禁用分隔符</p>
+<ul>
+<li><p>2 names: “J. Doe and T. Williams”</p></li>
+<li><p>3 names: “J. Doe, S. Smith and T. Williams”</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="et-al">
+<h4>Et-al<a class="headerlink" href="#et-al" title="Permalink to this headline">¶</a></h4>
+<p>Et-al缩写通过<code class="docutils literal notranslate"><span class="pre">et-al-...</span></code>属性来控制，同时也可以使用可选的<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>元素设置，<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>元素必须放在<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>元素后。<code class="docutils literal notranslate"><span class="pre">term</span></code>属性可以被设置为<code class="docutils literal notranslate"><span class="pre">&quot;et-al&quot;</span></code>（默认）或者<code class="docutils literal notranslate"><span class="pre">&quot;and</span> <span class="pre">others&quot;</span></code>。下面是 <code class="docutils literal notranslate"><span class="pre">&quot;et-al&quot;</span></code>术语的一个例子：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;names</span> <span class="na">variable=</span><span class="s">&quot;author&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;et-al</span> <span class="na">term=</span><span class="s">&quot;and others&quot;</span> <span class="na">font-style=</span><span class="s">&quot;italic&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/names&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="substitute">
+<h4>Substitute<a class="headerlink" href="#substitute" title="Permalink to this headline">¶</a></h4>
+<p>可选的<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>元素，是<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>的子元素，且必须是最后一个子元素，在父元素<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>中指定的名称变量为空时添加替换。替换必须放在<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>元素种，并且必须包含一个或者多个渲染元素（除<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>）。<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>的简洁版本没有子元素，继承了<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>元素中在<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>子元素的属性值。如果<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>元素包含了多个子元素，第一个非空的元素用于替换。替换变量在输出的其余部分被抑制，以防止重复。下面的例子中：<code class="docutils literal notranslate"><span class="pre">&quot;author&quot;</span></code>名称变量为空时，就被<code class="docutils literal notranslate"><span class="pre">&quot;editor&quot;</span></code>名称变量替换，在没有 editor 时，则使用<code class="docutils literal notranslate"><span class="pre">&quot;title&quot;</span></code>宏替换。</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;macro</span> <span class="na">name=</span><span class="s">&quot;author&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;names</span> <span class="na">variable=</span><span class="s">&quot;author&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;substitute&gt;</span>
+      <span class="nt">&lt;names</span> <span class="na">variable=</span><span class="s">&quot;editor&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;text</span> <span class="na">macro=</span><span class="s">&quot;title&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/substitute&gt;</span>
+  <span class="nt">&lt;/names&gt;</span>
+<span class="nt">&lt;/macro&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="label-in-cs-names">
+<h4>Label in <code class="docutils literal notranslate"><span class="pre">cs:names</span></code><a class="headerlink" href="#label-in-cs-names" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">cs:label</span></code>元素时可选的，而且必须位于<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>元素后，在<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>元素前。当<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>作为<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>元素的子元素时，<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>不能携带<code class="docutils literal notranslate"><span class="pre">variable</span></code>属性，而是使用父元素<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>中的变量。A second difference is that the <code class="docutils literal notranslate"><span class="pre">form</span></code> attribute may also be set to “verb” or “verb-short”, so that the allowed values are:</p>
+<ul class="simple">
+<li><p>“long” - (default), e.g. “editor” and “editors” for the “editor” term</p></li>
+<li><p>“short” - e.g. “ed.” and “eds.” for the term “editor”</p></li>
+<li><p>“verb” - e.g. “edited by” for the term “editor”</p></li>
+<li><p>“verb-short” - e.g. “ed.” for the term “editor”</p></li>
+<li><p>“symbol” - e.g. “§” and “§§” for the term “section”</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="label">
+<h3>Label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">cs:label</span></code>渲染元素输出与所选变量匹配的术语，该属性必须设置为“locator”、“page”或数字变量之一。只有当选择的变量是非空的受，术语才会渲染。例如：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;group</span> <span class="na">delimiter=</span><span class="s">&quot; &quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">variable=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;text</span> <span class="na">variable=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/group&gt;</span>
+</pre></div>
+</div>
+<p>可以生成<code class="docutils literal notranslate"><span class="pre">&quot;page</span> <span class="pre">3&quot;</span></code>或者<code class="docutils literal notranslate"><span class="pre">&quot;pages</span> <span class="pre">5-7&quot;</span></code>。<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>可能会携带下面的属性:</p>
+<p><code class="docutils literal notranslate"><span class="pre">form</span></code></p>
+<p>​	选择术语的形式，可以使用下面的值：</p>
+<ul class="simple">
+<li><p>“long” - (default), e.g. “page”/”pages” for the “page” term</p></li>
+<li><p>“short” - e.g. “p.”/”pp.” for the “page” term</p></li>
+<li><p>“symbol” - e.g. “§”/”§§” for the “section” term</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">plural</span></code></p>
+<p>​	设置术语的复数形式，可以使用下面的值：</p>
+<ul class="simple">
+<li><p>“contextual” - (default), the term plurality matches that of the variable content. Content is considered plural when it contains multiple numbers (e.g. “page 1”, “pages 1-3”, “volume 2”, “volumes 2 &amp; 4”), or, in the case of the “number-of-pages” and “number-of-volumes” variables, when the number is higher than 1 (“1 volume” and “3 volumes”).</p></li>
+<li><p>“always” - always use the plural form, e.g. “pages 1” and “pages 1-3”</p></li>
+<li><p>“never” - always use the singular form, e.g. “page 1” and “page 1-3”</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">cs:label</span></code>也可能会携带<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#affixes">affixes</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#text-case">text-case</a> 和 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#strip-periods">strip-periods</a> 属性。</p>
+</div>
+<div class="section" id="group">
+<h3>Group<a class="headerlink" href="#group" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">cs:group</span></code>元素必须包含一个或者多个渲染元素（除了 <code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>）。<code class="docutils literal notranslate"><span class="pre">cs:group</span></code>可以携带<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>属性来分隔子元素以及<code class="docutils literal notranslate"><span class="pre">affixes</span></code>、<code class="docutils literal notranslate"><span class="pre">display</span></code>和<code class="docutils literal notranslate"><span class="pre">formatting</span></code>属性。<code class="docutils literal notranslate"><span class="pre">cs:group</span></code>隐含的条件，当以下情况出现时，<code class="docutils literal notranslate"><span class="pre">cs:group</span></code>和它的子元素将会被抑制：a)在<code class="docutils literal notranslate"><span class="pre">cs:group</span></code>中至少一个渲染元素调用了变量（直接地或者通过宏调用），b)所有被调用得变量都为空。</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;layout&gt;</span>
+  <span class="nt">&lt;group</span> <span class="na">delimiter=</span><span class="s">&quot; &quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;text</span> <span class="na">term=</span><span class="s">&quot;retrieved&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;text</span> <span class="na">term=</span><span class="s">&quot;from&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;text</span> <span class="na">variable=</span><span class="s">&quot;URL&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/group&gt;</span>
+<span class="nt">&lt;/layout&gt;</span>
+</pre></div>
+</div>
+<p>上述代码可以生成<code class="docutils literal notranslate"><span class="pre">“retrieved</span> <span class="pre">from</span> <span class="pre">http://dx.doi.org/10.1128/AEM.02591-07”</span></code>类似得结果，但是当URL为空的时候，不生成结果。</p>
+</div>
+<div class="section" id="choose">
+<h3>Choose<a class="headerlink" href="#choose" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">cs:choose</span></code>元素允许有条件的渲染元素。下面的例子的意思为：在<code class="docutils literal notranslate"><span class="pre">&quot;issud&quot;</span></code>日期变量存在的情况下，就实施渲染，如果不存在，就给出<code class="docutils literal notranslate"><span class="pre">&quot;no</span> <span class="pre">date&quot;</span></code>术语：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;choose&gt;</span>
+  <span class="nt">&lt;if</span> <span class="na">variable=</span><span class="s">&quot;issued&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;date</span> <span class="na">variable=</span><span class="s">&quot;issued&quot;</span> <span class="na">form=</span><span class="s">&quot;numeric&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/if&gt;</span>
+  <span class="nt">&lt;else&gt;</span>
+    <span class="nt">&lt;text</span> <span class="na">term=</span><span class="s">&quot;no date&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/else&gt;</span>
+<span class="nt">&lt;/choose&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">cs:choose</span></code>元素中必须还有<code class="docutils literal notranslate"><span class="pre">cs:if</span></code>子元素，后面还可以有一个或者多个<code class="docutils literal notranslate"><span class="pre">cs:else-if</span></code>子元素以及一个可选的用来结尾的<code class="docutils literal notranslate"><span class="pre">cs:else</span></code>元素。<code class="docutils literal notranslate"><span class="pre">cs:if</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:else-if</span></code>元素可能回包含任意个除<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>的渲染元素。由于空的<code class="docutils literal notranslate"><span class="pre">cs:else</span></code>元素是多余的，所以<code class="docutils literal notranslate"><span class="pre">cs:else</span></code>元素必须至少包含一个渲染元素。<code class="docutils literal notranslate"><span class="pre">cs:if</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:else-if</span></code>元素必须含有一个或多个判断条件，这些条件可以使用下买的属性设置：</p>
+<p><code class="docutils literal notranslate"><span class="pre">disambiguate</span></code></p>
+<p>​	当改属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>(并且是唯一允许的值)的时候，When set to “true” (the only allowed value), the element content is only rendered if it disambiguates two otherwise identical citations. This attempt at <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#disambiguation">disambiguation</a> is only made when all other disambiguation methods have failed to uniquely identify the target source.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">-</span><span class="n">numeric</span>
+</pre></div>
+</div>
+<p>Tests whether the given variables (<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#appendix-iv-variables">Appendix IV - Variables</a>) contain numeric content. Content is considered numeric if it solely consists of numbers. Numbers may have prefixes and suffixes (“D2”, “2b”, “L2d”), and may be separated by a comma, hyphen, or ampersand, with or without spaces (“2, 3”, “2-4”, “2 &amp; 4”). For example, “2nd” tests “true” whereas “second” and “2nd edition” test “false”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">-</span><span class="n">uncertain</span><span class="o">-</span><span class="n">date</span>
+</pre></div>
+</div>
+<p>Tests whether the given <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#date-variables">date variables</a> contain <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#approximate-dates">approximate dates</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">locator</span>
+</pre></div>
+</div>
+<p>Tests whether the locator matches the given locator types (see <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#locators">Locators</a>). Use “sub-verbo” to test for the “sub verbo” locator type.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">position</span>
+</pre></div>
+</div>
+<p>Tests whether the cite position matches the given positions (terminology: citations consist of one or more cites to individual items). When called within the scope of cs:bibliography, <code class="docutils literal notranslate"><span class="pre">position</span></code> tests “false”. The positions that can be tested are:</p>
+<ul>
+<li><p>“first”: position of cites that are the first to reference an item</p></li>
+<li><p>“ibid”/”ibid-with-locator”/”subsequent”: cites referencing previously cited items have the “subsequent” position. Such cites may also have the “ibid” or “ibid-with-locator” position when:</p>
+<ol class="simple">
+<li><p>the current cite immediately follows on another cite, within the same citation, that references the same item</p></li>
+</ol>
+<p>or</p>
+<ol class="simple">
+<li><p>the current cite is the first cite in the citation, and the previous citation consists of a single cite referencing the same item</p></li>
+</ol>
+<p>If either requirement is met, the presence of locators determines which position is assigned:</p>
+<ul class="simple">
+<li><p><strong>Preceding cite does not have a locator</strong>: if the current cite has a locator, the position of the current cite is “ibid-with-locator”. Otherwise the position is “ibid”.</p></li>
+<li><p><strong>Preceding cite does have a locator</strong>: if the current cite has the same locator, the position of the current cite is “ibid”. If the locator differs the position is “ibid-with-locator”. If the current cite lacks a locator its only position is “subsequent”.</p></li>
+</ul>
+</li>
+<li><p>“near-note”: position of a cite following another cite referencing the same item. Both cites have to be located in foot or endnotes, and the distance between both cites may not exceed the maximum distance (measured in number of foot or endnotes) set with the <code class="docutils literal notranslate"><span class="pre">near-note-distance</span></code> option (see <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#note-distance">Note Distance</a>).</p></li>
+</ul>
+<p>Whenever position=”ibid-with-locator” tests true, position=”ibid” also tests true. And whenever position=”ibid” or position=”near-note” test true, position=”subsequent” also tests true.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span>
+</pre></div>
+</div>
+<p>Tests whether the item matches the given types (<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types">Appendix III - Types</a>).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">variable</span>
+</pre></div>
+</div>
+<p>Tests whether the default (long) forms of the given variables (<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#appendix-iv-variables">Appendix IV - Variables</a>) contain non-empty values.</p>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>样式行为<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id16">
+<h3>选项<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h4>引文选项<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id18">
+<h4>参考文献目录选项<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id19">
+<h4>全局选项<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id20">
+<h4>可继承的名称选项<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id21">
+<h4>局部选项<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="id22">
+<h3>排序<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id23">
+<h4>排序变量<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id24">
+<h4>排序宏<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="id25">
+<h3>范围分隔符<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id26">
+<h3>格式化<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id27">
+<h3>词缀<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id28">
+<h3>分隔符<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id29">
+<h3>显示<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id30">
+<h3>引用<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="strip-periods">
+<h3>Strip-periods<a class="headerlink" href="#strip-periods" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="text-case">
+<h3>Text-case<a class="headerlink" href="#text-case" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id31">
+<h4>大小写转换<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id32">
+<h4>标题大小写转换<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="i">
+<h2>附录I 学科分类<a class="headerlink" href="#i" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>anthropology</p></li>
+<li><p>astronomy</p></li>
+<li><p>biology</p></li>
+<li><p>botany</p></li>
+<li><p>chemistry</p></li>
+<li><p>communications</p></li>
+<li><p>engineering</p></li>
+<li><p>generic-base - used for generic styles like Harvard and APA</p></li>
+<li><p>geography</p></li>
+<li><p>geology</p></li>
+<li><p>history</p></li>
+<li><p>humanities</p></li>
+<li><p>law</p></li>
+<li><p>linguistics</p></li>
+<li><p>literature</p></li>
+<li><p>math</p></li>
+<li><p>medicine</p></li>
+<li><p>philosophy</p></li>
+<li><p>physics</p></li>
+<li><p>political_science</p></li>
+<li><p>psychology</p></li>
+<li><p>science</p></li>
+<li><p>social_science</p></li>
+<li><p>sociology</p></li>
+<li><p>theology</p></li>
+<li><p>zoology</p></li>
+</ul>
+</div>
+<div class="section" id="ii">
+<h2>附录II 术语<a class="headerlink" href="#ii" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="locators">
+<h3><a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#id89">Locators</a><a class="headerlink" href="#locators" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>book</p></li>
+<li><p>chapter</p></li>
+<li><p>column</p></li>
+<li><p>figure</p></li>
+<li><p>folio</p></li>
+<li><p>issue</p></li>
+<li><p>line</p></li>
+<li><p>note</p></li>
+<li><p>opus</p></li>
+<li><p>page</p></li>
+<li><p>paragraph</p></li>
+<li><p>part</p></li>
+<li><p>section</p></li>
+<li><p>sub verbo</p></li>
+<li><p>verse</p></li>
+<li><p>volume</p></li>
+</ul>
+</div>
+<div class="section" id="months">
+<h3><a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#id90">Months</a><a class="headerlink" href="#months" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>month-01</p></li>
+<li><p>month-02</p></li>
+<li><p>month-03</p></li>
+<li><p>month-04</p></li>
+<li><p>month-05</p></li>
+<li><p>month-06</p></li>
+<li><p>month-07</p></li>
+<li><p>month-08</p></li>
+<li><p>month-09</p></li>
+<li><p>month-10</p></li>
+<li><p>month-11</p></li>
+<li><p>month-12</p></li>
+</ul>
+</div>
+<div class="section" id="ordinals">
+<h3><a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#id91">Ordinals</a><a class="headerlink" href="#ordinals" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>ordinal</p></li>
+<li><p>ordinal-00 through ordinal-99</p></li>
+<li><p>long-ordinal-01</p></li>
+<li><p>long-ordinal-02</p></li>
+<li><p>long-ordinal-03</p></li>
+<li><p>long-ordinal-04</p></li>
+<li><p>long-ordinal-05</p></li>
+<li><p>long-ordinal-06</p></li>
+<li><p>long-ordinal-07</p></li>
+<li><p>long-ordinal-08</p></li>
+<li><p>long-ordinal-09</p></li>
+<li><p>long-ordinal-10</p></li>
+</ul>
+</div>
+<div class="section" id="quotation-marks">
+<h3><a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#id92">Quotation marks</a><a class="headerlink" href="#quotation-marks" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>open-quote</p></li>
+<li><p>close-quote</p></li>
+<li><p>open-inner-quote</p></li>
+<li><p>close-inner-quote</p></li>
+</ul>
+</div>
+<div class="section" id="roles">
+<h3><a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#id93">Roles</a><a class="headerlink" href="#roles" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>author</p></li>
+<li><p>collection-editor</p></li>
+<li><p>composer</p></li>
+<li><p>container-author</p></li>
+<li><p>director</p></li>
+<li><p>editor</p></li>
+<li><p>editorial-director</p></li>
+<li><p>editortranslator</p></li>
+<li><p>illustrator</p></li>
+<li><p>interviewer</p></li>
+<li><p>original-author</p></li>
+<li><p>recipient</p></li>
+<li><p>reviewed-author</p></li>
+<li><p>translator</p></li>
+</ul>
+</div>
+<div class="section" id="id33">
+<h3><a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#id94">Seasons</a><a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>season-01</p></li>
+<li><p>season-02</p></li>
+<li><p>season-03</p></li>
+<li><p>season-04</p></li>
+</ul>
+</div>
+<div class="section" id="miscellaneous">
+<h3><a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#id95">Miscellaneous</a><a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>accessed</p></li>
+<li><p>ad</p></li>
+<li><p>and</p></li>
+<li><p>and others</p></li>
+<li><p>anonymous</p></li>
+<li><p>at</p></li>
+<li><p>available at</p></li>
+<li><p>bc</p></li>
+<li><p>by</p></li>
+<li><p>circa</p></li>
+<li><p>cited</p></li>
+<li><p>edition</p></li>
+<li><p>et-al</p></li>
+<li><p>forthcoming</p></li>
+<li><p>from</p></li>
+<li><p>ibid</p></li>
+<li><p>in</p></li>
+<li><p>in press</p></li>
+<li><p>internet</p></li>
+<li><p>interview</p></li>
+<li><p>letter</p></li>
+<li><p>no date</p></li>
+<li><p>online</p></li>
+<li><p>presented at</p></li>
+<li><p>reference</p></li>
+<li><p>retrieved</p></li>
+<li><p>scale</p></li>
+<li><p>version</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="iii">
+<h2>附录III 文献类型<a class="headerlink" href="#iii" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>article  文章</p></li>
+<li><p>article-magazine 杂志文章</p></li>
+<li><p>article-newspaper 新闻文章</p></li>
+<li><p>article-journal  期刊文章</p></li>
+<li><p>bill</p></li>
+<li><p>book 书</p></li>
+<li><p>broadcast</p></li>
+<li><p>chapter 章节</p></li>
+<li><p>dataset  数据集</p></li>
+<li><p>entry</p></li>
+<li><p>entry-dictionary</p></li>
+<li><p>entry-encyclopedia</p></li>
+<li><p>figure 图</p></li>
+<li><p>graphic</p></li>
+<li><p>interview 采访</p></li>
+<li><p>legislation</p></li>
+<li><p>legal_case</p></li>
+<li><p>manuscript</p></li>
+<li><p>map  地图</p></li>
+<li><p>motion_picture</p></li>
+<li><p>musical_score</p></li>
+<li><p>pamphlet</p></li>
+<li><p>paper-conference</p></li>
+<li><p>patent</p></li>
+<li><p>post</p></li>
+<li><p>post-weblog</p></li>
+<li><p>personal_communication</p></li>
+<li><p>report  报告</p></li>
+<li><p>review</p></li>
+<li><p>review-book</p></li>
+<li><p>song</p></li>
+<li><p>speech  演讲</p></li>
+<li><p>thesis  学位论文</p></li>
+<li><p>treaty</p></li>
+<li><p>webpage  网页</p></li>
+</ul>
+</div>
+<div class="section" id="iv">
+<h2>附录IV 变量<a class="headerlink" href="#iv" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id34">
+<h3>标准变量<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>abstract</p>
+<p>项目的摘要（例：期刊文章的摘要）</p>
+</li>
+<li><p>annote</p>
+<p>读者关于项目内容的笔记</p>
+</li>
+<li><p>archive</p>
+<p>保存项目的存档</p>
+</li>
+<li><p>archive_location</p>
+<p>存档的位置</p>
+</li>
+<li><p>archive-place</p>
+<p>存档的地理位置</p>
+</li>
+<li><p>authority</p>
+<p>权力</p>
+</li>
+<li><p>call-number</p>
+<p>call number (to locate the item in a library)</p>
+</li>
+<li><p>citation-label</p>
+<p>label identifying the item in in-text citations of label styles (e.g. “Ferr78”). May be assigned by the CSL processor based on item metadata.</p>
+</li>
+<li><p>citation-number</p>
+<p>index (starting at 1) of the cited reference in the bibliography (generated by the CSL processor)</p>
+</li>
+<li><p>collection-title</p>
+<p>title of the collection holding the item (e.g. the series title for a book)</p>
+</li>
+<li><p>container-title</p>
+<p>title of the container holding the item (e.g. the book title for a book chapter, the journal title for a journal article)</p>
+</li>
+<li><p>container-title-short</p>
+<p>short/abbreviated form of “container-title” (also accessible through the “short” form of the “container-title” variable)</p>
+</li>
+<li><p>dimensions</p>
+<p>physical (e.g. size) or temporal (e.g. running time) dimensions of the item</p>
+</li>
+<li><p>DOI</p>
+<p>Digital Object Identifier (e.g. “10.1128/AEM.02591-07”)</p>
+</li>
+<li><p>event</p>
+<p>name of the related event (e.g. the conference name when citing a conference paper)</p>
+</li>
+<li><p>event-place</p>
+<p>geographic location of the related event (e.g. “Amsterdam, the Netherlands”)</p>
+</li>
+<li><p>first-reference-note-number</p>
+<p>number of a preceding note containing the first reference to the item. Assigned by the CSL processor. The variable holds no value for non-note-based styles, or when the item hasn’t been cited in any preceding notes.</p>
+</li>
+<li><p>genre</p>
+<p>class, type or genre of the item (e.g. “adventure” for an adventure movie, “PhD dissertation” for a PhD thesis)</p>
+</li>
+<li><p>ISBN</p>
+<p>International Standard Book Number</p>
+</li>
+<li><p>ISSN</p>
+<p>International Standard Serial Number</p>
+</li>
+<li><p>jurisdiction</p>
+<p>geographic scope of relevance (e.g. “US” for a US patent)</p>
+</li>
+<li><p>keyword</p>
+<p>关键字</p>
+</li>
+<li><p>locator</p>
+<p>a cite-specific pinpointer within the item (e.g. a page number within a book, or a volume in a multi-volume work). Must be accompanied in the input data by a label indicating the locator type (see the <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#locators">Locators</a> term list), which determines which term is rendered by <code class="docutils literal notranslate"><span class="pre">cs:label</span></code> when the “locator” variable is selected.</p>
+</li>
+<li><p>medium</p>
+<p>medium description (e.g. “CD”, “DVD”, etc.)</p>
+</li>
+<li><p>note</p>
+<p>(short) inline note giving additional item details (e.g. a concise summary or commentary)</p>
+</li>
+<li><p>original-publisher</p>
+<p>original publisher, for items that have been republished by a different publisher</p>
+</li>
+<li><p>original-publisher-place</p>
+<p>geographic location of the original publisher (e.g. “London, UK”)</p>
+</li>
+<li><p>original-title</p>
+<p>最初版本的题目</p>
+</li>
+<li><p>page</p>
+<p>项目的页码范围</p>
+</li>
+<li><p>page-first</p>
+<p>页码范围的第一个页码</p>
+</li>
+<li><p>PMCID</p>
+<p>PubMed Central reference number</p>
+</li>
+<li><p>PMID</p>
+<p>PubMed reference number</p>
+</li>
+<li><p>publisher</p>
+<p>出版商/出版社</p>
+</li>
+<li><p>publisher-place</p>
+<p>出版社的地理位置</p>
+</li>
+<li><p>references</p>
+<p>resources related to the procedural history of a legal case</p>
+</li>
+<li><p>reviewed-title</p>
+<p>title of the item reviewed by the current item</p>
+</li>
+<li><p>scale</p>
+<p>scale of e.g. a map</p>
+</li>
+<li><p>section</p>
+<p>container section holding the item (e.g. “politics” for a newspaper article)</p>
+</li>
+<li><p>source</p>
+<p>from whence the item originates (e.g. a library catalog or database)</p>
+</li>
+<li><p>status</p>
+<p>(publication) status of the item (e.g. “forthcoming”)</p>
+</li>
+<li><p>title</p>
+<p>primary title of the item</p>
+</li>
+<li><p>title-short</p>
+<p>short/abbreviated form of “title” (also accessible through the “short” form of the “title” variable)</p>
+</li>
+<li><p>URL</p>
+<p>链接</p>
+</li>
+<li><p>version</p>
+<p>版本</p>
+</li>
+<li><p>year-suffix</p>
+<p>disambiguating year suffix in author-date styles (e.g. “a” in “Doe, 1999a”)</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id35">
+<h3>数据变量<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<p>Number variables are a subset of the <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#standard-variables">Standard Variables</a>.</p>
+<ul>
+<li><p>chapter-number</p>
+<p>章序号</p>
+</li>
+<li><p>collection-number</p>
+<p>number identifying the collection holding the item (e.g. the series number for a book)</p>
+</li>
+<li><p>edition</p>
+<p>版本序号（注意和version的区别）</p>
+</li>
+<li><p>issue</p>
+<p>(container) issue holding the item (e.g. “5” when citing a journal article from journal volume 2, issue 5)</p>
+</li>
+<li><p>number</p>
+<p>number identifying the item (e.g. a report number)</p>
+</li>
+<li><p>number-of-pages</p>
+<p>引用项目的总的页数</p>
+</li>
+<li><p>number-of-volumes</p>
+<p>total number of volumes, usable for citing multi-volume books and such</p>
+</li>
+<li><p>volume</p>
+<p>(container) volume holding the item (e.g. “2” when citing a chapter from book volume 2)</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id36">
+<h3>日期变量<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>accessed</p>
+<p>date the item has been accessed</p>
+</li>
+<li><p>container</p>
+<p>?</p>
+</li>
+<li><p>event-date</p>
+<p>date the related event took place</p>
+</li>
+<li><p>issued</p>
+<p>date the item was issued/published</p>
+</li>
+<li><p>original-date</p>
+<p>(issue) date of the original version</p>
+</li>
+<li><p>submitted</p>
+<p>date the item (e.g. a manuscript) has been submitted for publication</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id37">
+<h3>名字变量<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>author</p>
+<p>作者</p>
+</li>
+<li><p>collection-editor</p>
+<p>editor of the collection holding the item (e.g. the series editor for a book)</p>
+</li>
+<li><p>composer</p>
+<p>composer (e.g. of a musical score)</p>
+</li>
+<li><p>container-author</p>
+<p>author of the container holding the item (e.g. the book author for a book chapter)</p>
+</li>
+<li><p>director</p>
+<p>director (e.g. of a film)</p>
+</li>
+<li><p>editor</p>
+<p>编辑</p>
+</li>
+<li><p>editorial-director</p>
+<p>managing editor (“Directeur de la Publication” in French)</p>
+</li>
+<li><p>illustrator</p>
+<p>illustrator (e.g. of a children’s book)</p>
+</li>
+<li><p>interviewer</p>
+<p>interviewer (e.g. of an interview)</p>
+</li>
+<li><p>original-author</p>
+<p>?</p>
+</li>
+<li><p>recipient</p>
+<p>recipient (e.g. of a letter)</p>
+</li>
+<li><p>reviewed-author</p>
+<p>author of the item reviewed by the current item</p>
+</li>
+<li><p>translator</p>
+<p>翻译</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v">
+<h2>附录V 页码范围格式<a class="headerlink" href="#v" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cs:style</span></code>元素中的<code class="docutils literal notranslate"><span class="pre">page-range-format</span></code>表示了页码的缩写规则，其取值可能是：</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;chicago&quot;</span></code></p>
+<p>| 第一个数字                           | 第二个数字                                     | 例                                   |
+| ———————————— | ———————————————- | ———————————— |
+| 小于100                              | 使用所有的位数                                 | 3–10; 71–72                          |
+| 100或者100的整数                     | 使用所有的位数                                 | 100–104; 600–613; 1100–1123          |
+| 100到109 （包括对应100的倍数的范围） | 仅使用有变化的部分，忽略不需要的0              | 107–8; 505–17; 1002–6                |
+| 110到199 （包括对应100的倍数的范围） | 根据需要使用两位数或者更多                     | 321–25; 415–532; 11564–68; 13792–803 |
+| 4位数                                | 如果数字是4位并且其中有3位不同，使用所有的位数 | 1496–1504; 2787–2816                 |</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;expanded&quot;</span></code></p>
+<p>​	扩展模式，不适用缩写。eg. 42–45、321–328、2787–2816</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;minimal&quot;</span></code></p>
+<p>​	第二个数字中重复的所有数字都被省略：42–5，321–8，2787–816</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;minimal-two&quot;</span></code></p>
+<p>​	和<code class="docutils literal notranslate"><span class="pre">&quot;minimal&quot;</span></code>类似，但当第二个数字有两个或者两个以上的数字时，第二个数字至少保留两位。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, mao zhou
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
