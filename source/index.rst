@@ -15,7 +15,7 @@ Welcome to CSL-chinese's documentation!
    CSL介绍.md
    CSL 1.0.1规范.md
    Locale_File.md
-
+   contents.rst
 
 Indices and tables
 ==================

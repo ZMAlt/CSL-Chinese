@@ -35,7 +35,9 @@
 
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CSL 1.0.1 Specification" href="CSL 1.0.1规范.html" />
+    <link rel="prev" title="XML基础" href="XML基础.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,48 +82,52 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">CSL介绍</a><ul>
-<li><a class="reference internal" href="#id1">前言</a></li>
-<li><a class="reference internal" href="#id2">CSL 是什么</a></li>
-<li><a class="reference internal" href="#id3">引用格式</a><ul>
-<li><a class="reference internal" href="#in-text-styles">In-text Styles</a><ul>
-<li><a class="reference internal" href="#author-date-author">“author-date” 和 “author” 格式</a></li>
-<li><a class="reference internal" href="#numeric">“numeric”格式</a></li>
-<li><a class="reference internal" href="#id4">“numeric” 复合格式</a></li>
-<li><a class="reference internal" href="#id5">标签格式</a></li>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML基础.html">XML基础</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CSL介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">前言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">CSL 是什么</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">引用格式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#in-text-styles">In-text Styles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#author-date-author">“author-date” 和 “author” 格式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numeric">“numeric”格式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">“numeric” 复合格式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">标签格式</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#note-styles">Note Styles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#note-styles">Note Styles</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">CSL 生态</a><ul>
-<li><a class="reference internal" href="#id7">独立格式和从属格式</a></li>
-<li><a class="reference internal" href="#locale">Locale 文件</a></li>
-<li><a class="reference internal" href="#item-metadata">Item Metadata</a></li>
-<li><a class="reference internal" href="#id8">引用细节</a></li>
-<li><a class="reference internal" href="#id9">CSL 处理器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">CSL 生态</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">独立格式和从属格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#locale">Locale 文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#item-metadata">Item Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">引用细节</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">CSL 处理器</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id10">理解 CSL 格式</a><ul>
-<li><a class="reference internal" href="#id11">从属格式解析</a></li>
-<li><a class="reference internal" href="#id12">独立格式解析</a><ul>
-<li><a class="reference internal" href="#id13">结构</a></li>
-<li><a class="reference internal" href="#style">根元素/style元素</a></li>
-<li><a class="reference internal" href="#info">info元素</a></li>
-<li><a class="reference internal" href="#citationmacro">citation元素和macro元素</a></li>
-<li><a class="reference internal" href="#bibliography">bibliography元素</a></li>
-<li><a class="reference internal" href="#id14">locale 元素</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id15">更进一步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">理解 CSL 格式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">从属格式解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">独立格式解析</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#style">根元素/style元素</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#info">info元素</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#citationmacro">citation元素和macro元素</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bibliography">bibliography元素</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">locale 元素</a></li>
 </ul>
 </li>
 </ul>
-</div>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">更进一步</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CSL 1.0.1规范.html">CSL 1.0.1 Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Locale_File.html">Locale File</a></li>
+</ul>
+
             
           
         </div>
@@ -639,6 +645,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="CSL 1.0.1规范.html" class="btn btn-neutral float-right" title="CSL 1.0.1 Specification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="XML基础.html" class="btn btn-neutral float-left" title="XML基础" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

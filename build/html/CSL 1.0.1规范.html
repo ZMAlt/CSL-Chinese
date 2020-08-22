@@ -35,7 +35,9 @@
 
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Locale File" href="Locale_File.html" />
+    <link rel="prev" title="CSL介绍" href="CSL介绍.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,120 +82,124 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">CSL 1.0.1 Specification</a><ul>
-<li><a class="reference internal" href="#id1">介绍</a><ul>
-<li><a class="reference internal" href="#id2">术语</a></li>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML基础.html">XML基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CSL介绍.html">CSL介绍</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CSL 1.0.1 Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">介绍</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">术语</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id3">命名习惯</a></li>
-<li><a class="reference internal" href="#id4">文件类型</a><ul>
-<li><a class="reference internal" href="#id5">独立格式</a></li>
-<li><a class="reference internal" href="#id6">从属格式</a></li>
-<li><a class="reference internal" href="#locale-files">Locale Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">命名习惯</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">文件类型</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">独立格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">从属格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#locale-files">Locale Files</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#xml">XML 声明</a></li>
-<li><a class="reference internal" href="#styles">引用格式结构(Styles)</a><ul>
-<li><a class="reference internal" href="#cs-style">根元素 <code class="docutils literal notranslate"><span class="pre">cs:style</span></code></a></li>
-<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"> <span class="pre">cs:style</span></code>的子元素</a><ul>
-<li><a class="reference internal" href="#info">Info</a></li>
-<li><a class="reference internal" href="#citation">Citation</a></li>
-<li><a class="reference internal" href="#bioliography">Bioliography</a></li>
-<li><a class="reference internal" href="#macro">Macro</a></li>
-<li><a class="reference internal" href="#locale">Locale</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id8">Locale Files</a><ul>
-<li><a class="reference internal" href="#id9">Info</a></li>
-<li><a class="reference internal" href="#terms">Terms(术语)</a><ul>
-<li><a class="reference internal" href="#id10">序数后缀</a></li>
-<li><a class="reference internal" href="#id11">特定序数</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id12">本地化日期格式</a></li>
-<li><a class="reference internal" href="#id13">本地化选项</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id14">渲染元素</a><ul>
-<li><a class="reference internal" href="#layout">Layout</a></li>
-<li><a class="reference internal" href="#text">Text</a></li>
-<li><a class="reference internal" href="#date">Date</a><ul>
-<li><a class="reference internal" href="#date-part">Date-part</a></li>
-<li><a class="reference internal" href="#date-ranges">Date Ranges</a></li>
-<li><a class="reference internal" href="#ad-and-bc">AD and BC</a></li>
-<li><a class="reference internal" href="#seasons">Seasons</a></li>
-<li><a class="reference internal" href="#approximate-dates">Approximate Dates</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#number">Number</a></li>
-<li><a class="reference internal" href="#names">Names</a><ul>
-<li><a class="reference internal" href="#name">Name</a></li>
-<li><a class="reference internal" href="#et-al">Et-al</a></li>
-<li><a class="reference internal" href="#substitute">Substitute</a></li>
-<li><a class="reference internal" href="#label-in-cs-names">Label in <code class="docutils literal notranslate"><span class="pre">cs:names</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#label">Label</a></li>
-<li><a class="reference internal" href="#group">Group</a></li>
-<li><a class="reference internal" href="#choose">Choose</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id15">样式行为</a><ul>
-<li><a class="reference internal" href="#id16">选项</a><ul>
-<li><a class="reference internal" href="#id17">引文选项</a></li>
-<li><a class="reference internal" href="#id18">参考文献目录选项</a></li>
-<li><a class="reference internal" href="#id19">全局选项</a></li>
-<li><a class="reference internal" href="#id20">可继承的名称选项</a></li>
-<li><a class="reference internal" href="#id21">局部选项</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id22">排序</a><ul>
-<li><a class="reference internal" href="#id23">排序变量</a></li>
-<li><a class="reference internal" href="#id24">排序宏</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id25">范围分隔符</a></li>
-<li><a class="reference internal" href="#id26">格式化</a></li>
-<li><a class="reference internal" href="#id27">词缀</a></li>
-<li><a class="reference internal" href="#id28">分隔符</a></li>
-<li><a class="reference internal" href="#id29">显示</a></li>
-<li><a class="reference internal" href="#id30">引用</a></li>
-<li><a class="reference internal" href="#strip-periods">Strip-periods</a></li>
-<li><a class="reference internal" href="#text-case">Text-case</a><ul>
-<li><a class="reference internal" href="#id31">大小写转换</a></li>
-<li><a class="reference internal" href="#id32">标题大小写转换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xml">XML 声明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#styles">引用格式结构(Styles)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cs-style">根元素 <code class="docutils literal notranslate"><span class="pre">cs:style</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7"><code class="docutils literal notranslate"> <span class="pre">cs:style</span></code>的子元素</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#info">Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#citation">Citation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bioliography">Bioliography</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#macro">Macro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#locale">Locale</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#i">附录I 学科分类</a></li>
-<li><a class="reference internal" href="#ii">附录II 术语</a><ul>
-<li><a class="reference internal" href="#locators">Locators</a></li>
-<li><a class="reference internal" href="#months">Months</a></li>
-<li><a class="reference internal" href="#ordinals">Ordinals</a></li>
-<li><a class="reference internal" href="#quotation-marks">Quotation marks</a></li>
-<li><a class="reference internal" href="#roles">Roles</a></li>
-<li><a class="reference internal" href="#id33">Seasons</a></li>
-<li><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Locale Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#terms">Terms(术语)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">序数后缀</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">特定序数</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#iii">附录III 文献类型</a></li>
-<li><a class="reference internal" href="#iv">附录IV 变量</a><ul>
-<li><a class="reference internal" href="#id34">标准变量</a></li>
-<li><a class="reference internal" href="#id35">数据变量</a></li>
-<li><a class="reference internal" href="#id36">日期变量</a></li>
-<li><a class="reference internal" href="#id37">名字变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">本地化日期格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">本地化选项</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#v">附录V 页码范围格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">渲染元素</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#layout">Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text">Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#date">Date</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#date-part">Date-part</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#date-ranges">Date Ranges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ad-and-bc">AD and BC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#seasons">Seasons</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#approximate-dates">Approximate Dates</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#number">Number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#names">Names</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#name">Name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#et-al">Et-al</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#substitute">Substitute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-in-cs-names">Label in <code class="docutils literal notranslate"><span class="pre">cs:names</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#label">Label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group">Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choose">Choose</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">样式行为</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">选项</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">引文选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">参考文献目录选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">全局选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">可继承的名称选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">局部选项</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">排序</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id23">排序变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">排序宏</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">范围分隔符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">格式化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">词缀</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">分隔符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">显示</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">引用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strip-periods">Strip-periods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-case">Text-case</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id31">大小写转换</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id32">标题大小写转换</a></li>
 </ul>
 </li>
 </ul>
-</div>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#i">附录I 学科分类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ii">附录II 术语</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#locators">Locators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#months">Months</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ordinals">Ordinals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quotation-marks">Quotation marks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#roles">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">Seasons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#iii">附录III 文献类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iv">附录IV 变量</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id34">标准变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">数据变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">日期变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">名字变量</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v">附录V 页码范围格式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Locale_File.html">Locale File</a></li>
+</ul>
+
             
           
         </div>
@@ -1423,6 +1429,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Locale_File.html" class="btn btn-neutral float-right" title="Locale File" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="CSL介绍.html" class="btn btn-neutral float-left" title="CSL介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
