@@ -779,11 +779,33 @@ Tests whether the default (long) forms of the given variables ([Appendix IV - Va
 
 ### 选项
 
+样式可以使用不同的元素来进行特定的配置。在`cs:citation`元素中设置元素可以配置特定的引文选项；在`cs:bibliography`元素和全局选项（同时影响引文和参考文献条目）中，可以配置特定的参考文献条目。继承的名字选项可以在`cs:style`,`cs:style`和`cs:bibliography`中设置。最后，本地化选项可以在`cs:locale`元素中设置。
+
 #### 引文选项
+
+**消除歧义**
+
+**引用分组**
+
+**引用奔溃**
+
+**标注距离**
 
 #### 参考文献目录选项
 
+**空白**
+
+**参考文献分组**
+
+
+
 #### 全局选项
+
+**初始名称的连字符**
+
+**页码范围**
+
+**名字辅助？**
 
 #### 可继承的名称选项
 
@@ -811,38 +833,47 @@ Tests whether the default (long) forms of the given variables ([Appendix IV - Va
 
 ### Text-case
 
+`Text-case` 属性可以在`cs:date`,`cs:date-part`,`cs:label`,`cs:name-part`,`cs:number`和`cs:text`中设置，可设置的值为：
+
+- “lowercase”: renders text in lowercase
+- “uppercase”: renders text in uppercase
+- “capitalize-first”: capitalizes the first character of the first word, if the word is lowercase
+- “capitalize-all”: capitalizes the first character of every lowercase word
+- “sentence”: renders text in sentence case
+- “title”: renders text in title case
+
 #### 大小写转换
 
 #### 标题大小写转换
 
 ## 附录I 学科分类
 
-- anthropology
-- astronomy
-- biology
-- botany
-- chemistry
-- communications
-- engineering
-- generic-base - used for generic styles like Harvard and APA
-- geography
-- geology
-- history
-- humanities
-- law
-- linguistics
-- literature
-- math
-- medicine
-- philosophy
-- physics
-- political_science
-- psychology
-- science
-- social_science
-- sociology
-- theology
-- zoology
+- anthropology  人类学
+- astronomy  天文学
+- biology 生物学
+- botany 植物学
+- chemistry 化学
+- communications  通讯
+- engineering 工程学
+- generic-base - used for generic styles like Harvard and APA  通用基础-用于通用样式，像哈弗和`APA`
+- geography 地理学
+- geology 地质学
+- history 历史
+- humanities 人文学科
+- law 法学
+- linguistics 语言学
+- literature 文学
+- math 数学
+- medicine 药物学
+- philosophy 哲学
+- physics 物理学
+- political_science 政治科学
+- psychology 心理学
+- science  科学
+- social_science  社会科学
+- sociology 社会学
+- theology 神学
+- zoology 动物学
 
 ## 附录II 术语
 
@@ -965,7 +996,7 @@ Tests whether the default (long) forms of the given variables ([Appendix IV - Va
 - article-journal  期刊文章
 - bill
 - book 书
-- broadcast
+- broadcast 
 - chapter 章节
 - dataset  数据集
 - entry
@@ -983,13 +1014,13 @@ Tests whether the default (long) forms of the given variables ([Appendix IV - Va
 - pamphlet
 - paper-conference
 - patent
-- post  
-- post-weblog
-- personal_communication
+- post  海报
+- post-weblog  
+- personal_communication  私人交流
 - report  报告
 - review
 - review-book
-- song
+- song  歌曲
 - speech  演讲
 - thesis  学位论文
 - treaty

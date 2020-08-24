@@ -198,6 +198,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Locale_File.html">Locale File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents.html">cesjo</a></li>
 </ul>
 
             
@@ -909,14 +910,24 @@
 <h2>样式行为<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id16">
 <h3>选项<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>样式可以使用不同的元素来进行特定的配置。在<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素中设置元素可以配置特定的引文选项；在<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>元素和全局选项（同时影响引文和参考文献条目）中，可以配置特定的参考文献条目。继承的名字选项可以在<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>中设置。最后，本地化选项可以在<code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素中设置。</p>
 <div class="section" id="id17">
 <h4>引文选项<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+<p><strong>消除歧义</strong></p>
+<p><strong>引用分组</strong></p>
+<p><strong>引用奔溃</strong></p>
+<p><strong>标注距离</strong></p>
 </div>
 <div class="section" id="id18">
 <h4>参考文献目录选项<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<p><strong>空白</strong></p>
+<p><strong>参考文献分组</strong></p>
 </div>
 <div class="section" id="id19">
 <h4>全局选项<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<p><strong>初始名称的连字符</strong></p>
+<p><strong>页码范围</strong></p>
+<p><strong>名字辅助？</strong></p>
 </div>
 <div class="section" id="id20">
 <h4>可继承的名称选项<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
@@ -957,6 +968,15 @@
 </div>
 <div class="section" id="text-case">
 <h3>Text-case<a class="headerlink" href="#text-case" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Text-case</span></code> 属性可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:number</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置，可设置的值为：</p>
+<ul class="simple">
+<li><p>“lowercase”: renders text in lowercase</p></li>
+<li><p>“uppercase”: renders text in uppercase</p></li>
+<li><p>“capitalize-first”: capitalizes the first character of the first word, if the word is lowercase</p></li>
+<li><p>“capitalize-all”: capitalizes the first character of every lowercase word</p></li>
+<li><p>“sentence”: renders text in sentence case</p></li>
+<li><p>“title”: renders text in title case</p></li>
+</ul>
 <div class="section" id="id31">
 <h4>大小写转换<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
 </div>
@@ -968,32 +988,32 @@
 <div class="section" id="i">
 <h2>附录I 学科分类<a class="headerlink" href="#i" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>anthropology</p></li>
-<li><p>astronomy</p></li>
-<li><p>biology</p></li>
-<li><p>botany</p></li>
-<li><p>chemistry</p></li>
-<li><p>communications</p></li>
-<li><p>engineering</p></li>
-<li><p>generic-base - used for generic styles like Harvard and APA</p></li>
-<li><p>geography</p></li>
-<li><p>geology</p></li>
-<li><p>history</p></li>
-<li><p>humanities</p></li>
-<li><p>law</p></li>
-<li><p>linguistics</p></li>
-<li><p>literature</p></li>
-<li><p>math</p></li>
-<li><p>medicine</p></li>
-<li><p>philosophy</p></li>
-<li><p>physics</p></li>
-<li><p>political_science</p></li>
-<li><p>psychology</p></li>
-<li><p>science</p></li>
-<li><p>social_science</p></li>
-<li><p>sociology</p></li>
-<li><p>theology</p></li>
-<li><p>zoology</p></li>
+<li><p>anthropology  人类学</p></li>
+<li><p>astronomy  天文学</p></li>
+<li><p>biology 生物学</p></li>
+<li><p>botany 植物学</p></li>
+<li><p>chemistry 化学</p></li>
+<li><p>communications  通讯</p></li>
+<li><p>engineering 工程学</p></li>
+<li><p>generic-base - used for generic styles like Harvard and APA  通用基础-用于通用样式，像哈弗和<code class="docutils literal notranslate"><span class="pre">APA</span></code></p></li>
+<li><p>geography 地理学</p></li>
+<li><p>geology 地质学</p></li>
+<li><p>history 历史</p></li>
+<li><p>humanities 人文学科</p></li>
+<li><p>law 法学</p></li>
+<li><p>linguistics 语言学</p></li>
+<li><p>literature 文学</p></li>
+<li><p>math 数学</p></li>
+<li><p>medicine 药物学</p></li>
+<li><p>philosophy 哲学</p></li>
+<li><p>physics 物理学</p></li>
+<li><p>political_science 政治科学</p></li>
+<li><p>psychology 心理学</p></li>
+<li><p>science  科学</p></li>
+<li><p>social_science  社会科学</p></li>
+<li><p>sociology 社会学</p></li>
+<li><p>theology 神学</p></li>
+<li><p>zoology 动物学</p></li>
 </ul>
 </div>
 <div class="section" id="ii">
@@ -1151,13 +1171,13 @@
 <li><p>pamphlet</p></li>
 <li><p>paper-conference</p></li>
 <li><p>patent</p></li>
-<li><p>post</p></li>
+<li><p>post  海报</p></li>
 <li><p>post-weblog</p></li>
-<li><p>personal_communication</p></li>
+<li><p>personal_communication  私人交流</p></li>
 <li><p>report  报告</p></li>
 <li><p>review</p></li>
 <li><p>review-book</p></li>
-<li><p>song</p></li>
+<li><p>song  歌曲</p></li>
 <li><p>speech  演讲</p></li>
 <li><p>thesis  学位论文</p></li>
 <li><p>treaty</p></li>
