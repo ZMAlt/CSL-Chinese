@@ -168,9 +168,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#id29">显示</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id30">引用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#strip-periods">Strip-periods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#text-case">Text-case</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id31">大小写转换</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id32">标题大小写转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">文字大小写</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id32">句子大小写转换</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id33">标题大小写转换</a></li>
 </ul>
 </li>
 </ul>
@@ -182,16 +182,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#ordinals">Ordinals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#quotation-marks">Quotation marks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#roles">Roles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id33">Seasons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">Seasons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#iii">附录III 文献类型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#iv">附录IV 变量</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id34">标准变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id35">数据变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id36">日期变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id37">名字变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">标准变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">数据变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">日期变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">名字变量</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v">附录V 页码范围格式</a></li>
@@ -966,22 +966,32 @@
 <div class="section" id="strip-periods">
 <h3>Strip-periods<a class="headerlink" href="#strip-periods" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="text-case">
-<h3>Text-case<a class="headerlink" href="#text-case" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id31">
+<h3>文字大小写<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Text-case</span></code> 属性可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:number</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置，可设置的值为：</p>
 <ul class="simple">
-<li><p>“lowercase”: renders text in lowercase</p></li>
-<li><p>“uppercase”: renders text in uppercase</p></li>
-<li><p>“capitalize-first”: capitalizes the first character of the first word, if the word is lowercase</p></li>
-<li><p>“capitalize-all”: capitalizes the first character of every lowercase word</p></li>
-<li><p>“sentence”: renders text in sentence case</p></li>
-<li><p>“title”: renders text in title case</p></li>
+<li><p>“lowercase”: 使用小写字母渲染文本</p></li>
+<li><p>“uppercase”: 使用大写字母渲染文本</p></li>
+<li><p>“capitalize-first”: 如果第一个词是小写的，将首字母设置为大写</p></li>
+<li><p>“capitalize-all”: 将每个小写词的首字母设置为大写</p></li>
+<li><p>“sentence”: renders text in sentence case(以句子的格式设置？)</p></li>
+<li><p>“title”: renders text in title case(以标题的格式来设置？)</p></li>
 </ul>
-<div class="section" id="id31">
-<h4>大小写转换<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
-</div>
 <div class="section" id="id32">
-<h4>标题大小写转换<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
+<h4>句子大小写转换<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
+<p>句子大小写转换(在”Text-case”中设置为”sentence”),</p>
+<ol class="simple">
+<li><p>对于大写字符串，字符串的第一个字符保持为大写。其它字母表示为小写</p></li>
+<li><p>对于大小写混合的字符串，如果单词是小写，第一个单词的首字符大写，其它所有单词的大小写保持不变。</p></li>
+</ol>
+<p>CSL 处理器不能识别专有名词。因此，可以将句子大小写的字符转缺的转换为标题大小写，反之亦然。因此，通常最好在句子大小写的情况下存储注入标题之类的字符串，并且仅在样式需要其它大小写的情况下菜使用文本大小写。</p>
+</div>
+<div class="section" id="id33">
+<h4>标题大小写转换<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
+<p><strong>非英语项目</strong></p>
+<p>由于许多语言不使用标题大小写，标题大小写转换(在”Text-case”中设置为”sentence”)仅影响英语项目：</p>
+<p>如果<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>中的<code class="docutils literal notranslate"><span class="pre">default-locale</span></code>属性没有设置，或者设置为<code class="docutils literal notranslate"><span class="pre">en</span></code>开头的单词，则假定为英语环境。如果某项的元数据包含一个语言字段，而且该字段不是以<code class="docutils literal notranslate"><span class="pre">&quot;en&quot;</span></code>开头的，才被视为是非英语环境。</p>
+<p>同样的，<code class="docutils literal notranslate"><span class="pre">default-locale</span></code>被这是为除<code class="docutils literal notranslate"><span class="pre">en</span></code>开头的字段，就假定为非英语。如果项目是以<code class="docutils literal notranslate"><span class="pre">en</span></code>开头的字段，就被视为是英语。</p>
 </div>
 </div>
 </div>
@@ -1101,8 +1111,8 @@
 <li><p>translator</p></li>
 </ul>
 </div>
-<div class="section" id="id33">
-<h3><a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#id94">Seasons</a><a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id34">
+<h3><a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#id94">Seasons</a><a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>season-01</p></li>
 <li><p>season-02</p></li>
@@ -1186,8 +1196,8 @@
 </div>
 <div class="section" id="iv">
 <h2>附录IV 变量<a class="headerlink" href="#iv" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id34">
-<h3>标准变量<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id35">
+<h3>标准变量<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>abstract</p>
 <p>项目的摘要（例：期刊文章的摘要）</p>
@@ -1326,8 +1336,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id35">
-<h3>数据变量<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id36">
+<h3>数据变量<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <p>Number variables are a subset of the <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#standard-variables">Standard Variables</a>.</p>
 <ul>
 <li><p>chapter-number</p>
@@ -1356,8 +1366,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id36">
-<h3>日期变量<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id37">
+<h3>日期变量<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>accessed</p>
 <p>date the item has been accessed</p>
@@ -1379,8 +1389,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id37">
-<h3>名字变量<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h3>名字变量<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>author</p>
 <p>作者</p>

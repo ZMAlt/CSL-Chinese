@@ -831,20 +831,35 @@ Tests whether the default (long) forms of the given variables ([Appendix IV - Va
 
 ### Strip-periods
 
-### Text-case
+### 文字大小写
 
 `Text-case` 属性可以在`cs:date`,`cs:date-part`,`cs:label`,`cs:name-part`,`cs:number`和`cs:text`中设置，可设置的值为：
 
-- “lowercase”: renders text in lowercase
-- “uppercase”: renders text in uppercase
-- “capitalize-first”: capitalizes the first character of the first word, if the word is lowercase
-- “capitalize-all”: capitalizes the first character of every lowercase word
-- “sentence”: renders text in sentence case
-- “title”: renders text in title case
+- “lowercase”: 使用小写字母渲染文本
+- “uppercase”: 使用大写字母渲染文本
+- “capitalize-first”: 如果第一个词是小写的，将首字母设置为大写
+- “capitalize-all”: 将每个小写词的首字母设置为大写
+- “sentence”: renders text in sentence case(以句子的格式设置？)
+- “title”: renders text in title case(以标题的格式来设置？)
 
-#### 大小写转换
+#### 句子大小写转换
+
+句子大小写转换(在"Text-case"中设置为"sentence"),
+
+1. 对于大写字符串，字符串的第一个字符保持为大写。其它字母表示为小写
+2. 对于大小写混合的字符串，如果单词是小写，第一个单词的首字符大写，其它所有单词的大小写保持不变。
+
+CSL 处理器不能识别专有名词。因此，可以将句子大小写的字符转缺的转换为标题大小写，反之亦然。因此，通常最好在句子大小写的情况下存储注入标题之类的字符串，并且仅在样式需要其它大小写的情况下菜使用文本大小写。
 
 #### 标题大小写转换
+
+**非英语项目**
+
+由于许多语言不使用标题大小写，标题大小写转换(在"Text-case"中设置为"sentence")仅影响英语项目：
+
+如果`cs:style`中的`default-locale`属性没有设置，或者设置为`en`开头的单词，则假定为英语环境。如果某项的元数据包含一个语言字段，而且该字段不是以`"en"`开头的，才被视为是非英语环境。
+
+同样的，`default-locale`被这是为除`en`开头的字段，就假定为非英语。如果项目是以`en`开头的字段，就被视为是英语。
 
 ## 附录I 学科分类
 
