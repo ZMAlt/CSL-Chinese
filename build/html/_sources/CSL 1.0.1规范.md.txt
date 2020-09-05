@@ -821,15 +821,72 @@ Tests whether the default (long) forms of the given variables ([Appendix IV - Va
 
 ### 格式化
 
+下面的属性可以在`cs:date`, `cs:date-part`, `cs:et-al`, `cs:group`, `cs:label`, `cs:layout`, `cs:name`, `cs:name-part`, `cs:names`, `cs:number` 和 `cs:text`中设置：
+
+`font-style`
+
+用来设置字体，可能的值为：
+
+- “normal”  默认
+- “italic”  设置文字的斜体
+- “oblique”  设置没有斜体的问题倾斜
+
+`font-variant`
+
+Allows for the use of small capitals, with values:
+
+- “normal” (default)
+- “small-caps”
+
+`font-weight`
+
+设置字宽，值可以为：
+
+- “normal” (default)
+- “bold”
+- “light”
+
+`text-decoration`
+
+设置时候有下划线，值可以为：
+
+- “none” (default)
+- “underline”
+
+`vertical-align`
+
+设置垂直对齐，值可以为：
+
+- “baseline” (default)
+- “sup” 上标
+- “sub” 下标
+
 ### 词缀
 
-### 分隔符
+前缀属性`prefix`和后缀属性`suffix`可以在`cs:date`,`cs:date-part`,`cs:group`,`cs:label`,`cs:layout`,`cs:name`,`cs:names`,`cs:number`以及`cs:text`中设置。属性值用来在输出的前面或者后面添加东西。With the exception of affixes set on `cs:layout`, affixes are outside the scope of [formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting), [quotes](https://docs.citationstyles.org/en/stable/specification.html#quotes), [strip-periods](https://docs.citationstyles.org/en/stable/specification.html#strip-periods) and [text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) attributes set on the same element (as a workaround, these attributes take effect on affixes when set on a parent `cs:group` element).
 
-### 显示
+### 分隔符\delimiter
 
-### 引用
+`delimiter`属性可以在`cs:date`,`cs:name`,`cs:group`以及`cs;layout`中设置分隔符。
+
+### 显示\display
+
+`display`属性可用于将各个条目构成一个或者多个文本块。如果使用该属性，所有的渲染原属都在该属性的控制下。（译注：是用来设置对齐效果的）属性可能的值为：
+
+- “block” - 文字居中？
+- “left-margin” - 左对齐
+- “right-inline” - 右对齐
+- “indent” - 缩进
+
+### 引用\quotes
+
+`quotes`属性可以在`cs:text`中设置。当设置为`"true"`时（默认为`"false"`），渲染文本将会被包含在引用中。本地化的`punctuation-in-quote`选项控制用来连接的逗号或者句号是出现在引号的内部还是外部（默认外部）。
+
+
 
 ### Strip-periods
+
+`strip-periods`属性可以在`cs:label`或者`cd:text`中设置，此外，当`name`被设置为`"month"`时，也可以在`cs:date-part`中设置。当该属性被设置为`true`的时候（默认的是`"false"`），所有文本中的句号将会被删除。
 
 ### 文字大小写
 
@@ -853,9 +910,16 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 #### 标题大小写转换
 
+标题大小写转换(在"Text-case"中设置为"title")对英语来说：
+
+1. 对大写的字符串，每个单词的第一个字母保持大写，其它的字母保持小写。
+2. 对于小写或者是混合的字符串，每个小写字符串的首字母大写。大写的字符串或者是混合的字符串保持原样。
+
+两种情况下，`stop words`必须是小写的，除非他们是第一个或者对后一个单词，或者跟在冒号后面。`stop words`包括：` “a”, “an”, “and”, “as”, “at”, “but”, “by”, “down”, “for”, “from”, “in”, “into”, “nor”, “of”, “on”, “onto”, “or”, “over”, “so”, “the”, “till”, “to”, “up”, “via”, “with”,  “yet”`.
+
 **非英语项目**
 
-由于许多语言不使用标题大小写，标题大小写转换(在"Text-case"中设置为"sentence")仅影响英语项目：
+由于许多语言不使用标题大小写，标题大小写转换(在"Text-case"中设置为"title")仅影响英语项目：
 
 如果`cs:style`中的`default-locale`属性没有设置，或者设置为`en`开头的单词，则假定为英语环境。如果某项的元数据包含一个语言字段，而且该字段不是以`"en"`开头的，才被视为是非英语环境。
 
