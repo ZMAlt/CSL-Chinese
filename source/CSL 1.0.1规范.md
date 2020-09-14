@@ -813,11 +813,45 @@ Tests whether the default (long) forms of the given variables ([Appendix IV - Va
 
 ### 排序
 
+`cs:citation`和`cs:bibliography`元素可以在`cs:layout`元素之前携带一个`cs:sort`子元素，来实现对引文或者参考文献条目的排序。在缺失`cs:sort`元素时，引文和文献条目将会使用他们在文章中出现的顺序来排序。
+
+`cs:sort`元素必须包含一个或者多个`cs:key`子元素，可以在该元素中设置变量或者宏名来实现排序。对于每个`cs:key`元素，排序的顺序可以通过设置`sort`属性来设置为升序（`"ascending"`，默认）或者降序（`"descending"`）。属性`names-min,names-use-first,names-use-last`可以用来覆盖`et-al-min`/`et-al-subsequent-min`, `et-al-use-first`/`et-al-subsequent-use-first` 和 `et-al-use-last` 属性的值，并且可以通过`cs:key`影响所有的名字.
+
+排序的键值是按顺序求值的，也就是说：首先，使用第一个排序键值对所有的项目进行排序。然后使用第二个键值对第一个键值排序后的结果进行排序，直到所有的键值都完成排序为止。如果键值为空，就放到最后。
+
+这里给出一个例子：其中首先引用`"author"`宏进行排序，并且使用`et al.`来对较长的作者序列进行代替。然后，使用`"issued"`变量来进行第二次排序，使用降序：
+
+```xml
+<citation>
+  <sort>
+    <key macro="author" names-min="3" names-use-first="3"/>
+    <key variable="issued" sort="descending"/>
+  </sort>
+  <layout>
+    <!-- rendering elements -->
+  </layout>
+</citation>
+```
+
+变量或者宏的排序键值可以与`"normal"`渲染的输出不同，具体要依赖下面的细节：
+
 #### 排序变量
 
 #### 排序宏
 
+变量排序的键值是由字符串值组成，没有富文本标记。通过变量的属性中的兼职来调用。但名称，日期和数字变量除外：
+
+**names**：
+
+**dates**:
+
+**numbers**:
+
 ### 范围分隔符
+
+“引文数量”和“年后缀”变量的折叠范围以短划线分隔（例如“（1-3，5）”和“（Doe 2000a-c，e）”）。
+
+The “locator” variable is always rendered with an en-dash replacing any hyphens. For the “page” variable, this replacement is only performed if the page-range-format attribute is set on cs:style (see Page Ranges).
 
 ### 格式化
 
