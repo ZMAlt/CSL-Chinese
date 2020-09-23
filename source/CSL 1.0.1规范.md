@@ -14,13 +14,13 @@ CSL 是一种基于 XML 的格式，用来描述引用的格式，注释和参�
 
 - 对格式要求的外部支持
 
-- 格式的发布和更新的基本支持
+- 对格式的发布和更新的基本支持
 
 - 数千种免费提供 的样式
 
   
 
-有关的其他文档，CSL 介绍，样式和 locale 详见 [CSL 项目主页](https://citationstyles.org/)
+有关的其他文档，CSL 介绍，样式和本地化文件详见 [CSL 项目主页](https://citationstyles.org/)
 
 ### 术语
 
@@ -30,41 +30,49 @@ CSL 是一种基于 XML 的格式，用来描述引用的格式，注释和参�
 
 在引用 CSL 元素时，将在前面使用`cs:`。
 
+## 翻译习惯
+
+这里将列出一些常用的术语的翻译，但只是本人自己的理解，并不能保证翻译的准确性。后文的描述中可能会使用英文或者中文翻译。
+
+locale files/locale  本地化文件
+
+styles  样式/格式
+
 ## 文件类型
 
-这里有3种CSL文件类型：从属样式和独立样式 (都使用`.csl`作为扩展名)，以及 locale files (名字为`"locales-xx-XX.xml"`，其中 `"xx-XX"`表示语言以及其方言，e.g. `"en-US"` 表示美式英语)。
+这里有 3 种 CSL 文件类型：从属样式和独立样式 (都使用`.csl`作为扩展名)，以及 本地化文件 (名字为`"locales-xx-XX.xml"`，其中 `"xx-XX"`表示语言以及其方言，e.g. `"en-US"` 表示美式英语)。
 
-### 独立格式
+### 独立样式
 
-独立格式包含引文，笔记以及参考文献的格式指示。虽然它们大多数自包含的，但是依赖于 locale files。
+独立样式包含用来描述引文，笔记以及参考文献的格式的元数据。虽然它们大多数自包含的（即不依赖其他样式），但是依赖于本地化文件。
 
-### 从属格式
+### 从属样式
 
-从属样式是独立样式的别名，其内容仅包含样式元数据，不包括任何格式说明。通过将具有相同引用风格的期刊（e.g., “Nature Biotechnology”, “Nature Nanotechnology”）的从属样式链接到独立样式（e.g., “Nature Journals”），从属样式就不再需要重复的格式说明。
+从属样式的内容仅包含样式元数据，不包括任何格式说明。通过将具有相同引用风格的期刊（e.g., “Nature Biotechnology”, “Nature Nanotechnology”）的从属样式链接到独立样式（e.g., “Nature Journals”），从属样式就不再需要重复的格式说明。（也就是说从属样式是依赖其他样式的，被依赖的样式成为称为**父样式**）
 
-### Locale Files
+### 本地化文件
 
-每个 Locale file 包含一系列对某种语言/方言的本地化数据（词语翻译，本地化日期格式以及语法选项）
+每个本地化文件包含一系列对某种语言/方言的本地化数据（词语翻译，本地化日期格式以及语法选项）。（本地化文件主要用于在不同的语言环境中使用样式，比如在中文环境中使用，中文对应的本地化文件可以将英文中的`"et al."`替换为`等.`）
 
 ## XML 声明
 
-每个样式或者 locale 应该以 XML 声明开头，给出具体的 XML 版本以及字符编码。大多数情况下，XML 声明是：
+每个样式或者本地化文件应该以 XML 声明开头，给出具体的 XML 版本以及字符编码。大多数情况下，XML 声明是：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 ```
 
-## 引用格式结构(Styles)
+## 样式结构
 
 ### 根元素 `cs:style`
 
-样式的根元素是`cs:style`。在独立格式种，根元素携带以下几种属性：
+样式的根元素是`cs:style`。在独立格式中，根元素携带以下几种属性：
 
 `class`
 
-​	决定样式的引文类型是 in-text (值是 `"in-text"`) 或者 note (值是`"note"`) 。
+​	决定样式的引文类型是 in-text (值是 `"in-text"`) 或者 note (值是`"note"`) 。in-text表示引文在文字中，note 表示引文不在文字中，可能是脚注等等。
 
-`default-locale` (可选的)
+`default-locale` (可选)
 
 ​	为本地化设值默认的 locale。值必须是 [locale code](http://books.xmlschemata.org/relaxng/ch19-77191.html)。
 
@@ -72,11 +80,11 @@ CSL 是一种基于 XML 的格式，用来描述引用的格式，注释和参�
 
 ​	样式的 CSL 版本。对于 CSL 1.0 兼容样式，必须是 `"1.0"`。
 
-此外，`cs:style`可能携带任意的 [全局选项](https://docs.citationstyles.org/en/stable/specification.html#global-options) 和 [可继承名称选项](https://docs.citationstyles.org/en/stable/specification.html#inheritable-name-options)。
+此外，`cs:style`可能携带任意的[全局选项](#全局选项)和 [可继承名称选项](#可继承的名称选项)。
 
-在这些属性种，在从属格式中，只有`version`是必须的，默认的 locale 属性可以设置为代替的 locale。其他的属性是可以忽略的。
+在这些属性中，从属格式中，只有`version`是必须的， `default-locale` 属性可以设置用来代替的默认的本地化文件 。其他的属性是可以忽略的。
 
-下面是一个独立样式的 `cs:style`示例，前面是 XML 声明：
+下面是一个独立样式的 `cs:style`示例，最前面是 XML 声明：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -801,11 +809,76 @@ Tests whether the default (long) forms of the given variables ([Appendix IV - Va
 
 #### 全局选项
 
-**初始名称的连字符**
+**人名中的连字符**
+
+`initialize-with-hyphen`
+
+​	该属性用来制定合成名字中间是不是使用连字符。例如，`"Jean-Luc"`是一个合成名字，如果改属性设置为`"true"`（默认），渲染结果为`"J.-L."`，如果设置为`"false"`，渲染结果为`"J.L."`。
 
 **页码范围**
 
-**名字辅助？**
+`page-range-format`
+
+​	用来设置页码范围的格式，是不是使用简写来压缩。其可选的值有：`"chicago"` ("321–28")， `"expanded"` ( "321–328")， `"minimal"` ("321–8")， 或者`" minimal-two"` ("321–28")。每一组值前面表示可选的属性值，后面是渲染结果的例子。也可见[附录V 页码范围格式](#附录V 页码范围格式)。使用`page-range-delimiter`属性可以用来设置页面范围分割的符号，该属性在 CSL 1.0.1 中引入，默认是一个破折号。如果改属性没有设置，就默认使用破折号。
+
+**Name Particles**
+
+​	西方人的名字中经常包括一个或者多个小部分，例如,`"de"`在荷兰人的名字中`"W. de Koning"`。在仅显示姓氏时，这些小部分可以分为必须保留保留和可删除两种类型：这两种类型分别称为`non-dropping`部分和`dropping`部分。一个单个的名字可以同时包括这两种类型（不能删除的类型始终位于可删除类型的后面）。例如，`"W. de Koning"`和法国名字`"Jean de la Fontaine"`可以被解构为：
+
+```json
+{
+    "author": [
+        {
+            "given": "W.",
+            "non-dropping-particle": "de",
+            "family": "Koning"
+        },
+        {
+            "given": "Jean",
+            "dropping-particle": "de",
+            "non-dropping-particle": "La",
+            "family": "Fontaine"
+        }
+    ]
+}
+```
+
+在仅显示姓氏的时候，只保留不能删除的部分，`"De koning"`和`"La Fontaine"`。
+
+在名字倒写的情况下，即姓氏在名字之前，在姓氏后面始终添加`dropping particle`，但是可以`non-dropping`部分可以前置（例如，`"de Koning, W."`）或者后置（`Koning, W. de`）。For inverted names where the non-dropping-particle is prepended, names can either be sorted by keeping the non-dropping-particle together with the family name as part of the primary sort key (sort order A), or by separating the non-dropping-particle from the family name and have it become (part of) a secondary sort key, joining the dropping-particle, if available (sort order B):
+
+**Sort order A: non-dropping-particle not demoted**
+
+- primary sort key: “La Fontaine”
+- secondary sort key: “de”
+- tertiary sort key: “Jean”
+
+**Sort order B: non-dropping-particle demoted**
+
+- primary sort key: “Fontaine”
+- secondary sort key: “de La”
+- tertiary sort key: “Jean”
+
+The handling of the non-dropping-particle can be customized with the `demote-non-dropping-particle` option:
+
+- `demote-non-dropping-particle`
+
+  Sets the display and sorting behavior of the non-dropping-particle in inverted names (e.g. “Koning, W. de”). Allowed values:“never”: the non-dropping-particle is treated as part of the family name, whereas the dropping-particle is appended (e.g. “de Koning, W.”, “La Fontaine, Jean de”). The non-dropping-particle is part of the primary sort key (sort order A, e.g. “de Koning, W.” appears under “D”).“sort-only”: same display behavior as “never”, but the non-dropping-particle is demoted to a secondary sort key (sort order B, e.g. “de Koning, W.” appears under “K”).“display-and-sort” (default): the dropping and non-dropping-particle are appended (e.g. “Koning, W. de” and “Fontaine, Jean de La”). For name sorting, all particles are part of the secondary sort key (sort order B, e.g. “Koning, W. de” appears under “K”).
+
+Some names include a particle that should never be demoted. For these cases the particle should just be included in the family name field, for example for the French general Charles de Gaulle:
+
+```json
+{
+    "author": [
+        {
+            "family": "de Gaulle",
+            "given": "Charles"
+        }
+    ]
+}
+```
+
+
 
 #### 可继承的名称选项
 
@@ -836,6 +909,14 @@ Tests whether the default (long) forms of the given variables ([Appendix IV - Va
 变量或者宏的排序键值可以与`"normal"`渲染的输出不同，具体要依赖下面的细节：
 
 #### 排序变量
+
+`cs:key`元素通过变量属性调用变量的排序键值。名称变量、日期变量和数字变量除外：
+
+**名称**: 名字变量通过变量属性被调用，例如 `<key variable="author"/>`，返回的
+
+**日期**
+
+**数字**
 
 #### 排序宏
 
