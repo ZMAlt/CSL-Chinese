@@ -420,15 +420,38 @@ B. Locale files/本地化文件
 
 序数术语在 CSL 1.0.1 和 CSL 1.0 中表现时不同的。当样式和本地化文件中都没有定义`"ordinal"`术语，但是定义了`"ordinal-00"` 到 `"ordinal-04"`，原始的 CSL 1.0 的方案被使用，`"ordinal-01"`用于以1结尾的数字（以11结尾的数字除外），`" ordinal-02"`用于以2结尾的数字（以12结尾的数字除外），`"ordinal -03"`表示以3结尾（那些以13结尾的除外），`"ordinal-04"`表示所有其他数字。
 
-#### 特定序数
+#### 性别特定序数
+
+一些语言使用特定的有别于性别的序数。例如，如果目标名词是男性，英语中的 "1st" 和 "first" 在法语中就翻译为 "1er" 和 "premier"，如果目标名词是女性，就翻译为 "1re" 和 "première"。
+
+女性和男性在术语使用上的不同可以使用性别格式`gender-form`的属性来设置（分别设置为`feminine`和`masculine`），详情见[Ordinals序数](#Ordinals/序数)（没有性别的术语表示中性）。这里涉及到两类目标名词：a) [数字变量](#数字变量)附带的术语，b)月份术语（见[Months/月](#Months/月)）。在术语设置为`"long"`（默认），并且在`gender`属性被设置时（设置为`"feminine"`和`"masculine"`），这些名词即使用相应的性别变体。当数字变量以序数`"ordinal"`或者`long-ordinal`形式时，将使用相同性别的序数词，如果没定义女性或男性变体，则使用中性变体。当`"day"`日期部分以序数`"ordinal"`形式呈现时，序数性别和月的术语匹配。
+
+下面给出`1re éd.`（`"1st ed."`）、`"1er janvier"`（`"January 1st"`）和`"3e édition"`（`"3rd edition"`）的示例：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<locale xml:lang="fr-FR">
+  <terms>
+    <term name="edition" gender="feminine">
+      <single>édition</single>
+      <multiple>éditions</multiple>
+    </term>
+    <term name="edition" form="short">éd.</term>
+    <term name="month-01" gender="masculine">janvier</term>
+    <term name="ordinal">e</term>
+    <term name="ordinal-01" gender-form="feminine" match="whole-number">re</term>
+    <term name="ordinal-01" gender-form="masculine" match="whole-number">er</term>
+  </terms>
+</locale>
+```
 
 ### 本地化日期格式
 
 在`cs:date`元素中，本地化数据格式有两种格式：一种是`"numeric"`（例：`12-15-2005`），另外一种是 `"text"`（例：`December 15,2005`）。格式在`cs:date`元素中，使用`form`属性来设置。
 
-日期格式使用`cs:date-part`子元素来构建（见[Date-part](https://docs.citationstyles.org/en/stable/specification.html#date-part)）。With a required `name` attribute set to either `day`, `month` or `year`, the order of these elements reflects the display order of respectively the day, month, and year. 日期可以使用`cs:date`和`cs:date-part`元素中的[formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting) 和 [text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case)属性设置。`cs:date`元素中的`delimiter`属性用来设置`cs:date-part`中不同部分的间隔and [affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes) may be applied to the `cs:date-part` elements.
+日期格式使用`cs:date-part`子元素来构建（见[Date-part](https://docs.citationstyles.org/en/stable/specification.html#date-part)）。当`cs:date-part`的`name`属性设置为`"day"`、`"month"`、或`"year"`时，反应了日期显示的顺序为日、月河年。日期可以使用`cs:date`和`cs:date-part`元素中的[formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting) 和 [text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case)属性设置。`cs:date`元素中的`delimiter`属性用来设置`cs:date-part`中不同部分的间隔，并且词缀也可以应用于`cs:date-part`元素。（译注：这里的词缀指的是前后的括号等等。）
 
-**Note** Affixes are not allowed on `cs:date` when defining localized date formats. This restriction is in place to separate locale-specific affixes (set on the `cs:date-part` elements) from any style-specific affixes (set on the calling `cs:date` element), such as parentheses. An example of a macro calling a localized date format:
+**注**：定义本地化日期格式时，不允许在`cs:date`上使用词缀。此限制适用于将特定于语言环境的词缀（在cs：date-part元素上设置）与任何特定于样式的词缀（在调用cs：date元素上设置）分开，例如括号：
 
 ```xml
 <macro name="issued">
@@ -446,7 +469,7 @@ B. Locale files/本地化文件
 
 ### Layout
 
-`cs:layout`渲染元素是`cs:citation`元素和`cs:bibliography`元素的的必要子元素。`cs:layout`必须包含一个或者多个渲染元素，并且可能携带`affixes`和格式化属性。在`cs:citation`元素中，`delimiter`属性用来指定一个引文中的不同引用的间隔符。例如：一个`"(1,2)"`类型的引文可以使用下面的代码实现：
+`cs:layout`渲染元素是`cs:citation`元素和`cs:bibliography`元素的的必要子元素。`cs:layout`必须包含一个或者多个渲染元素，并且可能携带[`affixes`](#词缀)和[`formattig`](#格式化)属性。在`cs:citation`元素中，[`delimiter`](#分隔符\delimiter)属性用来指定一个引文中的不同引用的间隔符。例如：一个`"(1,2)"`类型的引文可以使用下面的代码实现：
 
 ```xml
 <citation>
@@ -1248,29 +1271,17 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 ### 标准变量
 
-- abstract
+- abstract    项目的摘要（例：期刊文章的摘要）
 
-  项目的摘要（例：期刊文章的摘要）
+- annote    读者关于项目内容的笔记
 
-- annote
+- archive    保存项目的存档
 
-  读者关于项目内容的笔记
+- archive_location    存档的位置
 
-- archive
+- archive-place    存档的地理位置
 
-  保存项目的存档
-
-- archive_location
-
-  存档的位置
-
-- archive-place
-
-  存档的地理位置
-
-- authority
-
-  权力
+- authority 
 
 - call-number
 
@@ -1332,9 +1343,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
   geographic scope of relevance (e.g. “US” for a US patent)
 
-- keyword
-
-  关键字
+- keyword    关键字
 
 - locator
 
@@ -1356,17 +1365,11 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
   geographic location of the original publisher (e.g. “London, UK”)
 
-- original-title
+- original-title    最初版本的题目
 
-  最初版本的题目
+- page    项目的页码范围
 
-- page
-
-  项目的页码范围
-
-- page-first
-
-  页码范围的第一个页码
+- page-first    页码范围的第一个页码
 
 - PMCID
 
@@ -1376,13 +1379,9 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
   PubMed reference number
 
-- publisher
+- publisher     出版商/出版社
 
-  出版商/出版社
-
-- publisher-place
-
-  出版社的地理位置
+- publisher-place    出版社的地理位置
 
 - references
 
@@ -1416,13 +1415,9 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
   short/abbreviated form of “title” (also accessible through the “short” form of the “title” variable)
 
-- URL
+- URL   链接
 
-  链接
-
-- version
-
-  版本
+- version    版本
 
 - year-suffix
 
@@ -1494,8 +1489,6 @@ Number variables are a subset of the [Standard Variables](https://docs.citations
 
 - author
 
-  作者
-
 - collection-editor
 
   editor of the collection holding the item (e.g. the series editor for a book)
@@ -1514,8 +1507,6 @@ Number variables are a subset of the [Standard Variables](https://docs.citations
 
 - editor
 
-  编辑
-
 - editorial-director
 
   managing editor (“Directeur de la Publication” in French)
@@ -1530,8 +1521,6 @@ Number variables are a subset of the [Standard Variables](https://docs.citations
 
 - original-author
 
-  ?
-
 - recipient
 
   recipient (e.g. of a letter)
@@ -1542,7 +1531,6 @@ Number variables are a subset of the [Standard Variables](https://docs.citations
 
 - translator
 
-  翻译
 
 ## 附录V 页码范围格式
 

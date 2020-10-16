@@ -117,7 +117,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id11">Info</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#terms">Terms(术语)</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id12">序数后缀</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id13">特定序数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">性别特定序数</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id14">本地化日期格式</a></li>
@@ -585,14 +585,33 @@
 <p>序数术语在 CSL 1.0.1 和 CSL 1.0 中表现时不同的。当样式和本地化文件中都没有定义<code class="docutils literal notranslate"><span class="pre">&quot;ordinal&quot;</span></code>术语，但是定义了<code class="docutils literal notranslate"><span class="pre">&quot;ordinal-00&quot;</span></code> 到 <code class="docutils literal notranslate"><span class="pre">&quot;ordinal-04&quot;</span></code>，原始的 CSL 1.0 的方案被使用，<code class="docutils literal notranslate"><span class="pre">&quot;ordinal-01&quot;</span></code>用于以1结尾的数字（以11结尾的数字除外），<code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">ordinal-02&quot;</span></code>用于以2结尾的数字（以12结尾的数字除外），<code class="docutils literal notranslate"><span class="pre">&quot;ordinal</span> <span class="pre">-03&quot;</span></code>表示以3结尾（那些以13结尾的除外），<code class="docutils literal notranslate"><span class="pre">&quot;ordinal-04&quot;</span></code>表示所有其他数字。</p>
 </div>
 <div class="section" id="id13">
-<h4>特定序数<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<h4>性别特定序数<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<p>一些语言使用特定的有别于性别的序数。例如，如果目标名词是男性，英语中的 “1st” 和 “first” 在法语中就翻译为 “1er” 和 “premier”，如果目标名词是女性，就翻译为 “1re” 和 “première”。</p>
+<p>女性和男性在术语使用上的不同可以使用性别格式<code class="docutils literal notranslate"><span class="pre">gender-form</span></code>的属性来设置（分别设置为<code class="docutils literal notranslate"><span class="pre">feminine</span></code>和<code class="docutils literal notranslate"><span class="pre">masculine</span></code>），详情见<a class="reference external" href="#Ordinals/%E5%BA%8F%E6%95%B0">Ordinals序数</a>（没有性别的术语表示中性）。这里涉及到两类目标名词：a) <a class="reference external" href="#%E6%95%B0%E5%AD%97%E5%8F%98%E9%87%8F">数字变量</a>附带的术语，b)月份术语（见<a class="reference external" href="#Months/%E6%9C%88">Months/月</a>）。在术语设置为<code class="docutils literal notranslate"><span class="pre">&quot;long&quot;</span></code>（默认），并且在<code class="docutils literal notranslate"><span class="pre">gender</span></code>属性被设置时（设置为<code class="docutils literal notranslate"><span class="pre">&quot;feminine&quot;</span></code>和<code class="docutils literal notranslate"><span class="pre">&quot;masculine&quot;</span></code>），这些名词即使用相应的性别变体。当数字变量以序数<code class="docutils literal notranslate"><span class="pre">&quot;ordinal&quot;</span></code>或者<code class="docutils literal notranslate"><span class="pre">long-ordinal</span></code>形式时，将使用相同性别的序数词，如果没定义女性或男性变体，则使用中性变体。当<code class="docutils literal notranslate"><span class="pre">&quot;day&quot;</span></code>日期部分以序数<code class="docutils literal notranslate"><span class="pre">&quot;ordinal&quot;</span></code>形式呈现时，序数性别和月的术语匹配。</p>
+<p>下面给出<code class="docutils literal notranslate"><span class="pre">1re</span> <span class="pre">éd.</span></code>（<code class="docutils literal notranslate"><span class="pre">&quot;1st</span> <span class="pre">ed.&quot;</span></code>）、<code class="docutils literal notranslate"><span class="pre">&quot;1er</span> <span class="pre">janvier&quot;</span></code>（<code class="docutils literal notranslate"><span class="pre">&quot;January</span> <span class="pre">1st&quot;</span></code>）和<code class="docutils literal notranslate"><span class="pre">&quot;3e</span> <span class="pre">édition&quot;</span></code>（<code class="docutils literal notranslate"><span class="pre">&quot;3rd</span> <span class="pre">edition&quot;</span></code>）的示例：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;locale</span> <span class="na">xml:lang=</span><span class="s">&quot;fr-FR&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;terms&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;edition&quot;</span> <span class="na">gender=</span><span class="s">&quot;feminine&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;single&gt;</span>édition<span class="nt">&lt;/single&gt;</span>
+      <span class="nt">&lt;multiple&gt;</span>éditions<span class="nt">&lt;/multiple&gt;</span>
+    <span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;edition&quot;</span> <span class="na">form=</span><span class="s">&quot;short&quot;</span><span class="nt">&gt;</span>éd.<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;month-01&quot;</span> <span class="na">gender=</span><span class="s">&quot;masculine&quot;</span><span class="nt">&gt;</span>janvier<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal&quot;</span><span class="nt">&gt;</span>e<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal-01&quot;</span> <span class="na">gender-form=</span><span class="s">&quot;feminine&quot;</span> <span class="na">match=</span><span class="s">&quot;whole-number&quot;</span><span class="nt">&gt;</span>re<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal-01&quot;</span> <span class="na">gender-form=</span><span class="s">&quot;masculine&quot;</span> <span class="na">match=</span><span class="s">&quot;whole-number&quot;</span><span class="nt">&gt;</span>er<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;/terms&gt;</span>
+<span class="nt">&lt;/locale&gt;</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="id14">
 <h3>本地化日期格式<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <p>在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>元素中，本地化数据格式有两种格式：一种是<code class="docutils literal notranslate"><span class="pre">&quot;numeric&quot;</span></code>（例：<code class="docutils literal notranslate"><span class="pre">12-15-2005</span></code>），另外一种是 <code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code>（例：<code class="docutils literal notranslate"><span class="pre">December</span> <span class="pre">15,2005</span></code>）。格式在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>元素中，使用<code class="docutils literal notranslate"><span class="pre">form</span></code>属性来设置。</p>
-<p>日期格式使用<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>子元素来构建（见<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#date-part">Date-part</a>）。With a required <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute set to either <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code> or <code class="docutils literal notranslate"><span class="pre">year</span></code>, the order of these elements reflects the display order of respectively the day, month, and year. 日期可以使用<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素中的<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a> 和 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#text-case">text-case</a>属性设置。<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>元素中的<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>属性用来设置<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>中不同部分的间隔and <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#affixes">affixes</a> may be applied to the <code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code> elements.</p>
-<p><strong>Note</strong> Affixes are not allowed on <code class="docutils literal notranslate"><span class="pre">cs:date</span></code> when defining localized date formats. This restriction is in place to separate locale-specific affixes (set on the <code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code> elements) from any style-specific affixes (set on the calling <code class="docutils literal notranslate"><span class="pre">cs:date</span></code> element), such as parentheses. An example of a macro calling a localized date format:</p>
+<p>日期格式使用<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>子元素来构建（见<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#date-part">Date-part</a>）。当<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>的<code class="docutils literal notranslate"><span class="pre">name</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;day&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;month&quot;</span></code>、或<code class="docutils literal notranslate"><span class="pre">&quot;year&quot;</span></code>时，反应了日期显示的顺序为日、月河年。日期可以使用<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素中的<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a> 和 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#text-case">text-case</a>属性设置。<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>元素中的<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>属性用来设置<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>中不同部分的间隔，并且词缀也可以应用于<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素。（译注：这里的词缀指的是前后的括号等等。）</p>
+<p><strong>注</strong>：定义本地化日期格式时，不允许在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>上使用词缀。此限制适用于将特定于语言环境的词缀（在cs：date-part元素上设置）与任何特定于样式的词缀（在调用cs：date元素上设置）分开，例如括号：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;macro</span> <span class="na">name=</span><span class="s">&quot;issued&quot;</span><span class="nt">&gt;</span>
  <span class="nt">&lt;date</span> <span class="na">variable=</span><span class="s">&quot;issued&quot;</span> <span class="na">form=</span><span class="s">&quot;numeric&quot;</span> <span class="na">prefix=</span><span class="s">&quot;(&quot;</span> <span class="na">suffix=</span><span class="s">&quot;)&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/macro&gt;</span>
@@ -609,7 +628,7 @@
 <p>渲染元素指定了在引文或参考文献条目中需要包含哪些条目元数据，以及以何种方式排序，并对其格式进行控制。</p>
 <div class="section" id="layout">
 <h3>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>渲染元素是<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素和<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>元素的的必要子元素。<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>必须包含一个或者多个渲染元素，并且可能携带<code class="docutils literal notranslate"><span class="pre">affixes</span></code>和格式化属性。在<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素中，<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>属性用来指定一个引文中的不同引用的间隔符。例如：一个<code class="docutils literal notranslate"><span class="pre">&quot;(1,2)&quot;</span></code>类型的引文可以使用下面的代码实现：</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>渲染元素是<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素和<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>元素的的必要子元素。<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>必须包含一个或者多个渲染元素，并且可能携带<a class="reference external" href="#%E8%AF%8D%E7%BC%80"><code class="docutils literal notranslate"><span class="pre">affixes</span></code></a>和<a class="reference external" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96"><code class="docutils literal notranslate"><span class="pre">formattig</span></code></a>属性。在<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素中，<a class="reference external" href="#%E5%88%86%E9%9A%94%E7%AC%A6%5Cdelimiter"><code class="docutils literal notranslate"><span class="pre">delimiter</span></code></a>属性用来指定一个引文中的不同引用的间隔符。例如：一个<code class="docutils literal notranslate"><span class="pre">&quot;(1,2)&quot;</span></code>类型的引文可以使用下面的代码实现：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;citation&gt;</span>
   <span class="nt">&lt;layout</span> <span class="na">prefix=</span><span class="s">&quot;(&quot;</span> <span class="na">suffix=</span><span class="s">&quot;)&quot;</span> <span class="na">delimiter=</span><span class="s">&quot;, &quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;text</span> <span class="na">variable=</span><span class="s">&quot;citation-number&quot;</span><span class="nt">/&gt;</span>
@@ -1351,24 +1370,12 @@
 <div class="section" id="id34">
 <h3>标准变量<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p>abstract</p>
-<p>项目的摘要（例：期刊文章的摘要）</p>
-</li>
-<li><p>annote</p>
-<p>读者关于项目内容的笔记</p>
-</li>
-<li><p>archive</p>
-<p>保存项目的存档</p>
-</li>
-<li><p>archive_location</p>
-<p>存档的位置</p>
-</li>
-<li><p>archive-place</p>
-<p>存档的地理位置</p>
-</li>
-<li><p>authority</p>
-<p>权力</p>
-</li>
+<li><p>abstract    项目的摘要（例：期刊文章的摘要）</p></li>
+<li><p>annote    读者关于项目内容的笔记</p></li>
+<li><p>archive    保存项目的存档</p></li>
+<li><p>archive_location    存档的位置</p></li>
+<li><p>archive-place    存档的地理位置</p></li>
+<li><p>authority</p></li>
 <li><p>call-number</p>
 <p>call number (to locate the item in a library)</p>
 </li>
@@ -1414,9 +1421,7 @@
 <li><p>jurisdiction</p>
 <p>geographic scope of relevance (e.g. “US” for a US patent)</p>
 </li>
-<li><p>keyword</p>
-<p>关键字</p>
-</li>
+<li><p>keyword    关键字</p></li>
 <li><p>locator</p>
 <p>a cite-specific pinpointer within the item (e.g. a page number within a book, or a volume in a multi-volume work). Must be accompanied in the input data by a label indicating the locator type (see the <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#locators">Locators</a> term list), which determines which term is rendered by <code class="docutils literal notranslate"><span class="pre">cs:label</span></code> when the “locator” variable is selected.</p>
 </li>
@@ -1432,27 +1437,17 @@
 <li><p>original-publisher-place</p>
 <p>geographic location of the original publisher (e.g. “London, UK”)</p>
 </li>
-<li><p>original-title</p>
-<p>最初版本的题目</p>
-</li>
-<li><p>page</p>
-<p>项目的页码范围</p>
-</li>
-<li><p>page-first</p>
-<p>页码范围的第一个页码</p>
-</li>
+<li><p>original-title    最初版本的题目</p></li>
+<li><p>page    项目的页码范围</p></li>
+<li><p>page-first    页码范围的第一个页码</p></li>
 <li><p>PMCID</p>
 <p>PubMed Central reference number</p>
 </li>
 <li><p>PMID</p>
 <p>PubMed reference number</p>
 </li>
-<li><p>publisher</p>
-<p>出版商/出版社</p>
-</li>
-<li><p>publisher-place</p>
-<p>出版社的地理位置</p>
-</li>
+<li><p>publisher     出版商/出版社</p></li>
+<li><p>publisher-place    出版社的地理位置</p></li>
 <li><p>references</p>
 <p>resources related to the procedural history of a legal case</p>
 </li>
@@ -1477,12 +1472,8 @@
 <li><p>title-short</p>
 <p>short/abbreviated form of “title” (also accessible through the “short” form of the “title” variable)</p>
 </li>
-<li><p>URL</p>
-<p>链接</p>
-</li>
-<li><p>version</p>
-<p>版本</p>
-</li>
+<li><p>URL   链接</p></li>
+<li><p>version    版本</p></li>
 <li><p>year-suffix</p>
 <p>disambiguating year suffix in author-date styles (e.g. “a” in “Doe, 1999a”)</p>
 </li>
@@ -1544,9 +1535,7 @@
 <div class="section" id="id37">
 <h3>名字变量<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p>author</p>
-<p>作者</p>
-</li>
+<li><p>author</p></li>
 <li><p>collection-editor</p>
 <p>editor of the collection holding the item (e.g. the series editor for a book)</p>
 </li>
@@ -1559,9 +1548,7 @@
 <li><p>director</p>
 <p>director (e.g. of a film)</p>
 </li>
-<li><p>editor</p>
-<p>编辑</p>
-</li>
+<li><p>editor</p></li>
 <li><p>editorial-director</p>
 <p>managing editor (“Directeur de la Publication” in French)</p>
 </li>
@@ -1571,18 +1558,14 @@
 <li><p>interviewer</p>
 <p>interviewer (e.g. of an interview)</p>
 </li>
-<li><p>original-author</p>
-<p>?</p>
-</li>
+<li><p>original-author</p></li>
 <li><p>recipient</p>
 <p>recipient (e.g. of a letter)</p>
 </li>
 <li><p>reviewed-author</p>
 <p>author of the item reviewed by the current item</p>
 </li>
-<li><p>translator</p>
-<p>翻译</p>
-</li>
+<li><p>translator</p></li>
 </ul>
 </div>
 </div>
