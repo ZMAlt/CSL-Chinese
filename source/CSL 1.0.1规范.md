@@ -38,6 +38,10 @@ locale files/locale  本地化文件
 
 styles  样式/格式
 
+citation  引文
+
+macro 宏
+
 ## 文件类型
 
 这里有 3 种 CSL 文件类型：从属样式和独立样式 (都使用`.csl`作为扩展名)，以及 本地化文件 (名字为`"locales-xx-XX.xml"`，其中 `"xx-XX"`表示语言以及其方言，e.g. `"en-US"` 表示美式英语)。
@@ -97,15 +101,15 @@ styles  样式/格式
 
 `cs:info`
 
-​	`info`元素必须是`cs:style`的第一个子元素。其中包括了用来描述样式的元数据 (style name, ID, authors, etc.).
+​	`info`元素必须是`cs:style`的第一个子元素。其中包括了用来描述样式的元数据 (style name, ID, authors，也就是样式名称、样式ID以及样式的作者)。
 
 `cs:citation`
 
-​	必要元素，用来描述 in-text 引文或者 notes 的格式。
+​	必要元素，用来描述 in-text 引文或者 notes 引文的具体格式。
 
 `cs:bibliography` (可选)
 
-​	可能会出现一次。描述参考文献的格式。
+​	可能会出现一次。描述参考文献列表的格式。
 
 `cs:macro` (可选)
 
@@ -113,53 +117,51 @@ styles  样式/格式
 
 `cs:locale` (可选)
 
-​	可能多次出现。用于指定或者覆盖本地化数据。
+​	可能多次出现。用于指定或者覆盖当前的本地化数据。
 
 
 
-在从属格式中，`cs:style`只有一个子元素，`cs:info`。
+在[从属格式](#从属格式)中，`cs:style`只有一个子元素，`cs:info`。
 
 #### Info
 
 `cs:info`包含了样式的元数据。其结构基于[Atom Syndication Format](http://tools.ietf.org/html/rfc4287)。在独立格式中，`cs:info`有下面的几个子元素：
 
-
-
 `cs:author`和`cs:contributor` （可选）
 
-​	`cs:author`和`cs:contributor`分别用来致谢样式的作者和贡献者，可能被使用多次。在这些元素中，子元素`cs:name`必须出现一次，`cs:email`和`cs:uri`则可能出现一次。这些子元素分别代表作者或者贡献者的名字，邮箱和URI。
+​	`cs:author`和`cs:contributor`分别用来致谢样式的作者和贡献者，可能被使用多次。在这些元素中，必须包含子元素`cs:name`，`cs:email`和`cs:uri`则可能有，也可能没有，这些子元素分别代表作者或者贡献者的名字，邮箱和URI。（即，作者和贡献者的名字是必须的，邮箱和 URI 则是可选的）
 
 `cs:category` (可选)
 
 ​	样式可能被分类到一个或者多个类别，`cs:category`可能被使用一次，用来描述 in-text 引文怎么渲染。使用`citation-format`属性设置其为以下几种情形：
 
-- “author-date” - e.g. “… (Doe, 1999)”
+- "author-date" - 例如 "… (Doe, 1999)”
 
-- “author” - e.g. “… (Doe)”
+- "author" - 例如 "… (Doe)"
 
-- “numeric” - e.g. “… [1]”
+- "numeric" - 例如 "… [1]"
 
-- “label” - e.g. “… [doe99]”
+- "label" - 例如 "… [doe99]"
 
-- “note” - the citation appears as a footnote or endnote
+- "note" -  因为在边注或者脚注出现。
 
-  `cs:categroy`也可能在携带`field`属性时多次使用，用来对学科进行分类（见附录I）。
+  `cs:categroy`也可能在携带`field`属性时多次使用，用来对学科进行分类（见[附录I 学科分类](附录I 学科分类)）。
 
 `cs:id`
 
-​	必须出现一次。该元素应该包含一个URI以建立样式的`ID`，对于公开可用的样式，需要一个稳定、唯一的并可以引用的 URI。
+​	必须出现一次。该元素应该包含一个 URI 以建立样式的`ID`，对于公开可用的样式，需要一个稳定、唯一的并可以引用的 URI。
 
 `cs:issn/cs:essn/cs:issnl`（可选）
 
-​	`cs:issn`元素可以多次使用，用来表示该 CSL 对应的期刊的 ISSN 。 `cs:eissn` 和`cs:issnl` 可以分别用来表示 eISSN and [ISSN-L](http://www.issn.org/2-22637-What-is-an-ISSN-L.php) 。
+​	`cs:issn`元素可以多次使用，用来表示该 CSL 对应的期刊的 ISSN 。 `cs:eissn` 和`cs:issnl` 可以分别用来表示 eISSN 和 [ISSN-L](http://www.issn.org/2-22637-What-is-an-ISSN-L.php) 。
 
 `cs:link` (可选)
 
 ​	可以使用多次。`cs:link`必须携带两个属性`href`和`rel`。`href`用来设置 URI （通常情况下为 URL），`rel`表明 URI 与当前样式的关系，它的值可能是：
 
-- “self” - 样式的 URI
-- “template” - 用来编写该样式的模板的 URI
-- “documentation - 该样式的文档
+- "self" - 该 URI 值为样式的 URI
+- "template" - 该 URI 是用来编写该样式的模板的 URI
+- "documentation" - 该 URI 是该样式的文档
 
 `cs:published` (可选)
 
@@ -187,9 +189,9 @@ styles  样式/格式
 
 
 
-`cs:link`, `cs:rights`, `cs:summary`, `cs:title` 和 `cs:title-short`元素可以携带`xml:lang`属性用来表示元素内容的语言（值必须是[xsd:language locale code](http://books.xmlschemata.org/relaxng/ch19-77191.html)）。对于`cs:link`，该属性可以用来表示链接目标的语言。
+`cs:link`, `cs:rights`, `cs:summary`, `cs:title` 和 `cs:title-short`元素可以携带`xml:lang`属性用来表示元素内容的语言（值必须是[xsd:language locale code](http://books.xmlschemata.org/relaxng/ch19-77191.html)中的一个）。对于`cs:link`，该属性可以用来表示链接目标的语言。
 
-在从属格式中，当`cs:link`中的 `href`为其父格式的 URI时，`rel`属性必须设置为`"independent-parent"`。此外，从属格式的`ref`不能设置为`"template"`，这在独立格式中才能使用。
+在从属格式中，当`cs:link`中的 `href`为其父格式的 URI 时，`rel`属性必须设置为`"independent-parent"`。此外，从属格式的`ref`不能设置为`"template"`，这在独立格式中才能使用。
 
 
 
@@ -216,7 +218,7 @@ styles  样式/格式
 
 #### Citation
 
-`cs:citation`元素描述了引文的格式，其中引文可以是一条或者多条。引文的格式可能是in-text citations (`author (e.g. “[Doe]”)`, `author-date (“[Doe 1999]”)`, `label (“[doe99]”`) 或者 `number (“[1]”)` ) 或者 notes。这要求`cs:layout`子元素来描述什么样的数据，以及怎么被引用（见`cs:layout`）。在`cs:layout`之前可能会有`cs:sort`元素，用来描述引文的排序（见排序）。`cs:citation`元素可能携带一些属性。下面是一个`cs:citation`的例子：
+`cs:citation`元素描述了引文的格式，其中引文可以是一条或者多条。引文的格式可能是 in-text citations（即文字中的引文）和 notes（注记）。in-text citations 包括 (`"author"，例: [Doe]`，`"author-date"，例: [Doe 1999]`，`"label"，例: [doe99]`，`"author"，例: [Doe]` 或者 `"number"，例:[1]` ) 。这要求`cs:layout`子元素来描述什么样的数据，以及怎么被引用（见[Layout](Layout)）。在`cs:layout`之前可能会有`cs:sort`元素，用来描述引文的排序（见[排序](排序)）。此外，`cs:style`可能携带任意的[引文选项](#引文选项)和 [可继承名称选项](#可继承的名称选项)中的属性。下面是一个`cs:citation`的例子：
 
 ```xml
 <citation>
@@ -229,11 +231,13 @@ styles  样式/格式
 </citation>
 ```
 
-**A note to CSL processor developers**
+**对 CSL 处理器开发者的一个建议**
+
+在 note 格式中，引文通常是一个句子。因此，当注释前面没有内容时，引文的首字母最好大写。在其他情况，引文应该是用原样打印。
 
 #### Bioliography
 
-`cs:bioliography`元素描述了参考文献条目的格式。同`cs:citation`相同，其子元素`cs:layout`用来描述每个条目的格式，`cs:sort`元素用来描述条目的排序。下面是一个`cs:bioliography`的例子：
+`cs:bioliography`元素描述了参考文献条目的格式。同`cs:citation`相同，其子元素`cs:layout`用来描述每个条目的格式，`cs:sort`元素用来描述条目的排序。此外，`cs:bibliography`可能携带任意的[参考文献目录选项](#参考文献目录选项)和 [可继承名称选项](#可继承的名称选项)中的属性。下面是一个`cs:bioliography`的例子：
 
 ```xml
 <bibliography>
@@ -251,13 +255,13 @@ styles  样式/格式
 
 #### Macro
 
-宏，使用`cs:macro`元素定义，包含了格式的指令。宏可以在其他宏，`cs:layout`元素(`cs:citation`和`cs:bioliography`中)，`cs:key`元素(`cs:sort`)中通过`cs:text`调用。宏在文件中位置的通常建议是：放在`cs:locale`元素后以及`cs:citation`元素前。
+宏，使用`cs:macro`元素定义，包含了格式的指令。宏可以在其他宏，`cs:layout`元素(`cs:citation`和`cs:bioliography`中)，`cs:key`元素(`cs:sort`元素)中通过`cs:text`调用。宏在文件中位置的通常建议是：放在`cs:locale`元素后以及`cs:citation`元素前。
 
-宏通过`cs:macro`元素的属性`name`的值来调用。`cs:macro`必须啊包含一个或者多个渲染元素。
+宏通过`cs:macro`元素的属性`name`的值来调用。`cs:macro`必须包含一个或者多个[渲染元素](#渲染元素)。
 
-使用宏可以提高样式的可读性，紧凑性以及可维护性。建议用过宏调用来保持`cs:citation`元素和`cs:bioliography`元素的内容紧凑。为了再其他样式中方便的重复使用，宏名字建议使用通用的名字。
+使用宏可以提高样式的可读性，紧凑性以及可维护性。通过过宏调用来保持`cs:citation`元素和`cs:bioliography`元素的内容紧凑通常是推荐的做法。为了在其他样式中方便的重复使用，宏名字建议使用通用的名字。
 
-下面是一个实例：引文中包括项目题目，并当条目为"book"时，设置字体为`italic`。
+下面是一个实例：引文中包括项目题目，并当条目为`"book"`时，设置字体为`italic`。
 
 ```xml
 <style>
@@ -283,9 +287,9 @@ styles  样式/格式
 
 来自`"locales-xx-XX.xml"`locale file 的本地化数据可以通过`cs:locale`元素来重定义或者补充定义。`cs:locale`元素应该放在`cs:info`元素后。
 
-`cs:locale`元素的`xml:lang`属性是可选的，必须设置为[xsd:language locale code](http://books.xmlschemata.org/relaxng/ch19-77191.html)中的一种，用来确定使用的语言环境（或方言，见 locale fallback）。
+`cs:locale`元素的`xml:lang`属性是可选的，必须设置为[xsd:language locale code](http://books.xmlschemata.org/relaxng/ch19-77191.html)中的一种，用来确定使用的语言环境（或方言，见 [locale fallback](locale fallback)）。
 
-See [Terms](https://docs.citationstyles.org/en/stable/specification.html#terms), [Localized Date Formats](https://docs.citationstyles.org/en/stable/specification.html#localized-date-formats) and [Localized Options](https://docs.citationstyles.org/en/stable/specification.html#localized-options) for further details on the use of `cs:locale`.
+对于`cs:locale`元素的详细使用，另见 [术语](Terms(术语))、[本地化日期格式](本地化日期格式)和[本地化选项](b本地化选项)。
 
 下面是一个`cs:locale`元素的例子：
 
@@ -304,7 +308,7 @@ See [Terms](https://docs.citationstyles.org/en/stable/specification.html#terms),
 
 **Locale Fallback**
 
-Locale file 为语言方言提供了本地化数据；可选的`cs:locale`元素的`xml:lang`属性设置为一种语言(e.g. “en” for English) 或者方言，`xml:lang`属性也可能缺失。Localr fallback 是一种在上述的属性设置中检索来确定本地化单元的机制。这些本地化单元包括日期格式，本地化选项或者术语的特定形式。
+本地化文件为语言方言提供了本地化数据；可选的`cs:locale`元素的`xml:lang`属性设置为一种语言(例如， `"en"` 代表英语 ) 或者方言(例如， `"en-US"` 代表美式英语 ) ，`xml:lang`属性也可能缺失。Localr fallback 是一种在上述的属性设置中检索来确定本地化单元的机制。这些本地化单元包括日期格式，本地化选项或者术语的特定形式。
 
 对于同一种语言的方言，一种被称为初级方言，其他都是二级方言。下面展示了部分语言的初级方言和二级方言：
 
@@ -315,27 +319,27 @@ Locale file 为语言方言提供了本地化数据；可选的`cs:locale`元素
 | pt-PT    | pt-BR        |
 | zh-CN    | zh-TW        |
 
-这里用一个例子来描述 Locale fallback。如果要选择 `"de-AT"`(Austrian German)，本地化单元可以来自下面的源（优先级逐渐降低）：# 这里有点问题
+这里用一个例子来描述 Locale fallback。如果要选择 `"de-AT"`(Austrian German)作为使用环境，本地化单元可以来自下面的源（优先级逐渐降低）：
 
-A. `cs:locale`元素
+A. 样式文件中的 `cs:locale`元素
 
 - `xml:lang`设置为方言 `"de-AT"`
 - `xml:lang`设置为 `"de"`
 - `xml:lang`不设置
 
-B. Locale files
+B. Locale files/本地化文件
 
 - `xml:lang`设置为方言  `"de-AT"`
 - `xml:lang`设置为对应的初级方言 `"de-DE"` (standard german)
 - `xml:lang`设置为`"en-US"`
 
-也就是说，如果要使用`"de-AT"`语言，首先在 Locale files 中寻找`"de"`对应的 files，即`"de-AT"`和`"de-DE"`，由于使用的是方言`"de-AT"`，所以选择`de-AT`对应的 locale file。接下来，如果 csl 文件中包含 `cs:locale`元素，将会覆盖 locale file 文件的设置。
+也就是说，如果要使用`"de-AT"`语言，首先在 Locale files 中寻找`"de"`对应的 `locales-de-XX.xml` 文件，即`"locales-de-AT.xml"`和`"locales-de-DE.xml"`，由于要设置的语言环境是方言`"de-AT"`，所以选择`de-AT`对应的 locale file `locales-de-AT.xml`。接下来，如果 csl 文件中包含 `cs:locale`元素，将会覆盖 `locales-de-AT.xml` 文件的设置。
 
-## Locale Files
+## Locale Files(本地化文件)
 
-尽管本地化数据可以包括在 csl 文件中(见[Locale](#Locale))，但是 Locale file 可以方便的提供本地化数据的设置，包括术语，日期格式以及语法选项。
+尽管本地化数据可以包括在 csl 文件中(见[Locale](#Locale))，但是本地化文件可以方便的提供本地化数据的设置，包括术语，日期格式以及语法选项。
 
-每个 Locale file 包括了一种语言方言的本地化数据。locale file 中根元素为`cs:locale`。在`cs:locale`根元素中，属性`xml:lang`用来设置方言。同时这一设置选项也用来对 locale file w文件命名（`"xx-XX"`文件名为`locales-xx-XX.xml`）。此外，根元素必须携带`version`属性，表明 locale file 的 CSL 版本（对 CSL 1.0 兼容的 locale file 必须设置为`"1.0"`）。Locale file 有和样式同样的[命名空间](https://docs.citationstyles.org/en/stable/specification.html#namespacing) 。`cs:locale`元素可能包含`cs:info`作为第一个子元素，同时，必须含有`cs:terms`、`cs:date`、`cs:style-options`子元素。下面是一个 locale file 的部分示例：
+每个本地化文件包括了一种语言方言的本地化数据。本地化文件中根元素为`cs:locale`（样式/style中则为`cs:style`元素）。在`cs:locale`根元素中，属性`xml:lang`用来设置方言。同时这一设置选项也用来对本地化文件命名（`"xx-XX"`文件名为`locales-xx-XX.xml`）。此外，根元素必须携带`version`属性，表明本地化文件的 CSL 版本（对 CSL 1.0 兼容的 locale file 必须设置为`"1.0"`）。本地化文件有和样式同样的命名空间。`cs:locale`元素可能包含`cs:info`作为第一个子元素，同时，必须含有`cs:terms`、`cs:date`、`cs:style-options`子元素。下面是一个 本地化文件的部分示例：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -368,35 +372,53 @@ B. Locale files
 
 ### Info
 
-`cs:info`元素用来给出 locale file 的元数据。它含有以下子元素：
+`cs:info`元素用来给出本地化文件的元数据。它含有以下子元素：
 
 `cs:translator`(可选)
 
-​	`cs:translator`用来致谢翻译者，并且能使用多次。在这个元素中。子元素`cs:name`必须出现一次，`cs:uri`则是可选的。这些子元素应该分别包括翻译者的名字，地址和 URI。
+​	`cs:translator`用来致谢翻译者，并且能使用多次。在这个元素中。子元素`cs:name`必须出现一次，`cs:uri`则是可选的。这些子元素应该分别包括翻译者的名字，地址和 URI。（与样式中类似）
 
 `cs:rights`(可选)
 
-​	可能出现一次。`cs:rights`的内容用来指定 locale file 发布版本的 license。该元素可能会携带`license`属性来指定`license`的 URI，`xml:lang`属性则用来指定元素内容的语言（值必须是[xsd:language locale code](http://books.xmlschemata.org/relaxng/ch19-77191.html)）。
+​	可能出现一次。`cs:rights`的内容用来指定本地化文件发布版本的 license。该元素可能会携带`license`属性来指定`license`的 URI，`xml:lang`属性则用来指定元素内容的语言（值必须是[xsd:language locale code](http://books.xmlschemata.org/relaxng/ch19-77191.html)）。
 
 `cs:updates`(可选)
 
-​	`cs:updated`元素的内容必须是一个时间戳来指定 locale file 最后一次更新的时间。
+​	`cs:updated`元素的内容必须是一个[时间戳](#时间戳)来指定本地化文件最后一次更新的时间。
 
 ### Terms(术语)
 
-术语是本地化的字符串（比如通过使用`"and"`术语，`"Doe and Smith"`在 locale 从英语到德语的转换中会自动变为`"Doe und Smith"`）。术语用`cs:term`元素定义，是`cs:terms`元素的子元素。每个`cs:term`元素必须携带一个`name`属性，设置为[附录II 术语](#附录II 术语)。
+术语是本地化的字符串，比如通过使用`"and"`术语，`"Doe and Smith"`在语言环境从英语到德语的转换中会自动变为`"Doe und Smith"`。术语用`cs:term`元素定义，是`cs:terms`元素的子元素。每个`cs:term`元素必须携带一个`name`属性，其属性值可以设置为[附录II 术语](#附录II 术语)列表中的值。
 
-术语可以直接在`cs:term`的内容中定义，或者，in cases where singular and plural variants are needed (e.g. “page” and “pages”), in the content of the child elements `cs:single` and `cs:multiple`, respectively。
+术语可以直接在`cs:term`的内容中定义，或者，在某些情况下，比如在需要单数和复数的情况下可以分别在子元素`cs:single`和`cs:multiple`中定义， (例如:` "page"`和`"pages"`)。
 
-Terms may be defined for specific forms by using `cs:term` with the optional `form` attribute set to:
+术语必须使用`cs:term`元素来定义，并在其中使用`form`属性来设置特定格式，`form`可以设置的值为：
 
-- “long” - (default), e.g. “editor” and “editors” for the “editor” term
-- “short” - e.g. “ed.” and “eds.” for the term “editor”
-- “verb” - e.g. “edited by” for the term “editor”
-- “verb-short” - e.g. “ed.” for the term “editor”
-- “symbol” - e.g. “§” and “§§” for the term “section”
+- `"long"` - （默认值）, e.g. “editor” and “editors” for the “editor” term
+
+- `"short"` - e.g. “ed.” and “eds.” for the term “editor”
+- `"verb"` - e.g. “edited by” for the term “editor”
+- `"verb-short"` - e.g. “ed.” for the term “editor”
+- `"symbol"` - e.g. “§” and “§§” for the term “section”
+
+如果一个样式使用了一个没有定义的格式，则会会退到其他形式，比如 `"werb-short"`会回退到`"verb"`，`"symbol"`会回退到`"short"`，`"verb"`和`"short"`都会回退到`"long"`。如果没有可以用的语言环境或者 form 格式，改术语的渲染结果就会显示为空字符串。
+
+`cs:term`元素可以使用`match`，`gender`和`gender-form`属性来设置数字变量渲染为序数（比如，`first`，`2nd`）。具体见下面的[序数后缀](#序数后缀)和[特定序数](#特定序数)。
+
+术语内容不应该包括 Latex 以及 HTML 等标记。上标可以使用 Unicode 上标字符。
 
 #### 序数后缀
+
+数字变量可以使用`cs:number`元素以`"ordinal"`格式（即序数格式）渲染，比如：`2nd`。序数的后缀则是使用术语来定义的。
+
+`"ordinal"`术语定义了默认的序数后缀格式，但这些默认的后缀可以被下面的术语对某些数字进行覆盖：
+
+- `"ordinal-00"` 到 `"ordinal-09"` -  默认地，当术语名称的最后一位数字与要渲染的数字的最后一个数字相同时，将使用在这个范围内的对应的术语。比如：`"ordinal-00"` 能够匹配数字 0 、10、20 等等。通过设置属性`match`为`"last-two-difits"`（默认值为`"last-digit"`），匹配范围将为变为两位，例如：0、100、200等。当`match`术语设置为`"whole-number"`时，只有术语与要渲染的数字相同时，才会实现匹配。
+- `"ordinal-10"` 到 `"ordinal-99"`- 默认地，当要渲染的数字的最后两位和术语中相同时，使用这个范围的术语。当`match`属性设置为`"whole-number"`时（默认为`"last-two-digits"`），只有术语与要渲染的数字相同时，才会实现匹配。
+
+当渲染的数据对上面的两组都匹配时（比如：13 可以同时匹配 `"ordinal-03"`和`"ordinal-13"`），则使用`"ordinal-10"` 到 `"ordinal-99"`。
+
+序数术语在 CSL 1.0.1 和 CSL 1.0 中表现时不同的。当样式和本地化文件中都没有定义`"ordinal"`术语，但是定义了`"ordinal-00"` 到 `"ordinal-04"`，原始的 CSL 1.0 的方案被使用，`"ordinal-01"`用于以1结尾的数字（以11结尾的数字除外），`" ordinal-02"`用于以2结尾的数字（以12结尾的数字除外），`"ordinal -03"`表示以3结尾（那些以13结尾的除外），`"ordinal-04"`表示所有其他数字。
 
 #### 特定序数
 
@@ -1071,26 +1093,28 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 ## 附录II 术语
 
-### [Locators](https://docs.citationstyles.org/en/stable/specification.html#id89)
+术语在本地化文件中使用
 
-- book
-- chapter
-- column
-- figure
-- folio
-- issue
-- line
-- note
-- opus
-- page
-- paragraph
-- part
-- section
-- sub verbo
-- verse
-- volume
+### Locators/用来定位的术语
 
-### [Months](https://docs.citationstyles.org/en/stable/specification.html#id90)
+- book   书
+- chapter  章
+- column  
+- figure  图
+- folio  作品集
+- issue 议题/问题
+- line  行
+- note  笔记/注记
+- opus  作品（音乐作品）
+- page 页
+- paragraph 段
+- part  部分
+- section 节
+- sub verbo  词条
+- verse 诗
+- volume 卷
+
+### Months/月
 
 - month-01
 - month-02
@@ -1105,7 +1129,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 - month-11
 - month-12
 
-### [Ordinals](https://docs.citationstyles.org/en/stable/specification.html#id91)
+### Ordinals/序数
 
 - ordinal
 - ordinal-00 through ordinal-99
@@ -1120,46 +1144,46 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 - long-ordinal-09
 - long-ordinal-10
 
-### [Quotation marks](https://docs.citationstyles.org/en/stable/specification.html#id92)
+### Quotation marks/引号
 
-- open-quote
+- open-quote 
 - close-quote
 - open-inner-quote
 - close-inner-quote
 
-### [Roles](https://docs.citationstyles.org/en/stable/specification.html#id93)
+### Roles/角色
 
-- author
-- collection-editor
-- composer
-- container-author
-- director
-- editor
-- editorial-director
+- author  作者
+- collection-editor  文集编辑
+- composer 作曲者
+- container-author  文章作者
+- director 主任/导演
+- editor 编辑
+- editorial-director  编辑部主任
 - editortranslator
-- illustrator
-- interviewer
-- original-author
-- recipient
-- reviewed-author
-- translator
+- illustrator  插画者
+- interviewer 采访者
+- original-author  原作者
+- recipient  收件人
+- reviewed-author  复查作者
+- translator  译者
 
-### [Seasons](https://docs.citationstyles.org/en/stable/specification.html#id94)
+### Seasons/季节
 
 - season-01
 - season-02
 - season-03
 - season-04
 
-### [Miscellaneous](https://docs.citationstyles.org/en/stable/specification.html#id95)
+### Miscellaneous/其他
 
 - accessed
-- ad
+- ad 
 - and
 - and others
 - anonymous
 - at
-- available at
+- available at 
 - bc
 - by
 - circa
