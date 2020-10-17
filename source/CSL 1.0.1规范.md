@@ -483,34 +483,34 @@ B. Locale files/本地化文件
 
 `cs:text`渲染元素用来输出文字。其必须携带下面的属性来确定什么部分需要渲染：
 
-- `variable`- 渲染一个变量的文本内容。属性值必须是[标准变量](#标准变量)。可以与`form`属性一起选择变量的“long”（默认）或“short”形式（e.g. the full or short title）。如果选择了`"short"`形式，但是却没法获得，就使用`"long"`形式来渲染。
+- `variable`- 渲染一个变量的文本内容。属性值必须是[标准变量](#标准变量)。可以与`form`属性一起选择变量的`"long"`（默认）或`"short"`形式（例如：设置题目，完整题目或者简写）。如果选择了`"short"`形式，但是却没法获得，就使用`"long"`形式来渲染。
 - `macro` - 渲染宏的文字输出。属性值必须和`cs:macro`元素的`name`属性的值相匹配。
-- `term` - 渲染术语。属性必须是[Appendix II-Terms](Appendix II-Terms)中的术语列表中的一个。May be accompanied by the `plural` attribute to select the singular (“false”, default) or plural (“true”) variant of a term, and by the `form` attribute to select the “long” (default), “short”, “verb”, “verb-short” or “symbol” form variant (see also [Terms](https://docs.citationstyles.org/en/stable/specification.html#terms)).
+- `term` - 渲染术语。属性必须是[附录II 术语](#附录II 术语)中的术语列表中的一个。通过设置复数属性`plura l`来这只其使用单数还是复数形式，其中`"true"`为默认，表示使用复数形式，设置为`"false"`表示使用单数形式。 使用`form`属性可以设置术语的形式，其值可以为`"long"` （默认）、`"short"`、`"verb"`、`"verb-short"`或者`"symbol"` （见[术语](#术语)）.
 - `value` - 渲染属性值自己。
 
-一个`cs:text`的渲染`"title"`变量的例子：
+一个`cs:text`的渲染`title`变量的例子：
 
 ```xml
 <text variable="title"/>
 ```
 
-`cs:text` 可能会携带 [affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes), [display](https://docs.citationstyles.org/en/stable/specification.html#display), [formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting), [quotes](https://docs.citationstyles.org/en/stable/specification.html#quotes), [strip-periods](https://docs.citationstyles.org/en/stable/specification.html#strip-periods) 和 [text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) 属性。
+`cs:text` 可能会携带 [affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes)，[display](https://docs.citationstyles.org/en/stable/specification.html#display)，[formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting)，[quotes](https://docs.citationstyles.org/en/stable/specification.html#quotes)，[strip-periods](https://docs.citationstyles.org/en/stable/specification.html#strip-periods) 和 [text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) 属性。
 
 ### Date
 
-`cs:date`渲染元素输出从[日期变量](#日期变量)列表中的选择的日期。日期可以以本地化或者非本地化格式呈现。
+`cs:date`渲染元素输出必须从[日期变量](#日期变量)列表中的选择。日期可以以本地化或者非本地化格式呈现。
 
-本地化的日期格式通过可选的`form`属性来选择，其值必须设置为`"numeric"`(for fully numeric formats, e.g. “12-15-2005”)或者`"text"`(for formats with a non-numeric month, e.g. “December 15, 2005”)。本地化日期格式可以通过两种方式进行自定义。第一种：`date-parts`属性可以用来设置较少的日期部分。可能得值为：
+[本地化的日期格式](#本地化日期格式)通过可选的`form`属性来选择，其值必须设置为`"numeric"`（完全的数字格式 ，例如：12-15-2005）或者`"text"`（非数字的月份格式，例如： December 15, 2005）。本地化日期格式可以通过两种方式进行自定义。第一种：`date-parts`属性可以用来设置不同的日期组成部分。其值可以设置为：
 
-- “year-month-day” - 默认值，渲染年，月，日
-- “year-month” - 渲染年月
-- “year” - 只渲染年
+- `"year-month-day"` - 默认值，渲染年，月，日
+- `"year-month"` - 渲染年月
+- `"year"` - 只渲染年
 
-第二种，`cs:date`可以含有一个或者多个`cs:date-part`子元素。在这些子元素种可以设置属性来覆盖之前的设置(e.g. to get abbreviated months for all locales, the `form` attribute on the month-`cs:date-part` element can be set to “short”)。这些子元素不影响各个日期部分渲染的顺序和以及其是否渲染。 [Affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes), which are very locale-specific, are not allowed on these `cs:date-part` elements.
+第二种，`cs:date`可以含有一个或者多个`cs:date-part`子元素（见[Date-part](#Date-part)）。在这些子元素中可以设置属性来覆盖之前的本地化设置（例如：要获得所有语言环境的缩写月份，可以将月份的`cs:date-part`元素的`form`属性设置为`"short"`）。这些`cs:date-part`子元素不影响各个日期部分渲染的顺序和以及其是否渲染。`cs:date-part`元素中不能使用词缀 [Affixes](#词缀).
 
-没有属性`form`的情况下,`cs:date`则描述了一个自带的非本地化的日期格式。其日期格式使用`cs:date-part`子元素来构建。在使用`name`属性并设置为`day`,`month`或`year`时，这些元素的顺序反应了其显示顺序。日期可以在`cs:date-part`元素种使用`formatting`属性以及多个`cs:date-part`的属性来格式化。`cs:date`种的`delimiter`属性可以用来设置`cs:date-part`元素不同日期部分的分隔符，and [affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes) may be applied to the `cs:date-part` elements。
+没有属性`form`的情况下，`cs:date`则描述了一个自带的非本地化的日期格式。其日期格式使用`cs:date-part`子元素来构建。在使用`name`属性并设置为`day`，`month`或`year`时，这些元素的顺序反应了其显示顺序。日期可以在`cs:date-part`元素种使用[`formatting`](格式化)属性以及多个`cs:date-part`的属性来格式化（见[Date-part](#Date-part)）。`cs:date`中的`delimiter`属性可以用来设置`cs:date-part`元素不同日期部分的分隔符，此外，[词缀](#词缀)可以用在 `cs:date-part` elements。
 
-本地化的日期或者是非本地化的日期，, `cs:date` 都可能携带 [affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes), [display](https://docs.citationstyles.org/en/stable/specification.html#display), [formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting) 和[text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) 属性。
+本地化的日期或者是非本地化的日期，, `cs:date` 都可能携带 [affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes)，[display](https://docs.citationstyles.org/en/stable/specification.html#display)，[formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting) 和[text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) 属性。
 
 #### Date-part
 
