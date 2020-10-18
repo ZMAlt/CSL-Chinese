@@ -52,7 +52,7 @@ macro 宏
 
 ### 从属样式
 
-从属样式的内容仅包含样式元数据，不包括任何格式说明。通过将具有相同引用风格的期刊（e.g., “Nature Biotechnology”, “Nature Nanotechnology”）的从属样式链接到独立样式（e.g., “Nature Journals”），从属样式就不再需要重复的格式说明。（也就是说从属样式是依赖其他样式的，被依赖的样式成为称为**父样式**）
+从属样式的内容仅包含样式元数据，不包括任何格式说明。通过将具有相同引用风格的期刊（e.g., "Nature Biotechnology", "Nature Nanotechnology"）的从属样式链接到独立样式（e.g., "Nature Journals"），从属样式就不再需要重复的格式说明。（也就是说从属样式是依赖其他样式的，被依赖的样式成为称为**父样式**）
 
 ### 本地化文件
 
@@ -135,7 +135,7 @@ macro 宏
 
 ​	样式可能被分类到一个或者多个类别，`cs:category`可能被使用一次，用来描述 in-text 引文怎么渲染。使用`citation-format`属性设置其为以下几种情形：
 
-- "author-date" - 例如 "… (Doe, 1999)”
+- "author-date" - 例如 "… (Doe, 1999)"
 
 - "author" - 例如 "… (Doe)"
 
@@ -394,12 +394,12 @@ B. Locale files/本地化文件
 
 术语必须使用`cs:term`元素来定义，并在其中使用`form`属性来设置特定格式，`form`可以设置的值为：
 
-- `"long"` - （默认值）, e.g. “editor” and “editors” for the “editor” term
+- `"long"` - （默认值）, e.g. "editor" and "editors" for the "editor" term
 
-- `"short"` - e.g. “ed.” and “eds.” for the term “editor”
-- `"verb"` - e.g. “edited by” for the term “editor”
-- `"verb-short"` - e.g. “ed.” for the term “editor”
-- `"symbol"` - e.g. “§” and “§§” for the term “section”
+- `"short"` - e.g. "ed." and "eds." for the term "editor"
+- `"verb"` - e.g. "edited by" for the term "editor"
+- `"verb-short"` - e.g. "ed." for the term "editor"
+- `"symbol"` - e.g. "§" and "§§" for the term "section"
 
 如果一个样式使用了一个没有定义的格式，则会会退到其他形式，比如 `"werb-short"`会回退到`"verb"`，`"symbol"`会回退到`"short"`，`"verb"`和`"short"`都会回退到`"long"`。如果没有可以用的语言环境或者 form 格式，改术语的渲染结果就会显示为空字符串。
 
@@ -516,39 +516,40 @@ B. Locale files/本地化文件
 
 `cs:date-part`元素用来控制日期的各个部分怎么渲染。除了其父元素`cs:date`调用了本地化日期格式，这些子元素同样可以决定哪些部分出现以及各部分的渲染顺序。`cs:date-part`元素描述了`name`属性选择的日期部分，其`name`值可以是：
 
-**“day”**
+**"day"**
 
 ​	对于`"day"`来说，`cs:date-part`可能会携带`form`属性，值可以设置为：
 
-- “numeric” - (default), e.g. “1”
+- "numeric" - （默认），例如，每个月第一天显示为 `1`
 
-- “numeric-leading-zeros” - e.g. “01”
+- "numeric-leading-zeros" - 不够的位数用0补齐，例如，`01`
 
-- “ordinal” - e.g. “1st”
+- "ordinal" - 使用序数形式，例如，`1st`
 
-  有的语言种，比如法语，只在月份的第一天使用`"oridinal"`也就是序数形式(“1er janvier”, “2 janvier”, “3 janvier”, etc.)。这种输出可以通过`"oridinal"`以及`limit-day-oridinals-to-day`属性来设置 (see [Locale Options](https://docs.citationstyles.org/en/stable/specification.html#locale-options))。
+  有的语言种，比如法语，只在月份的第一天使用`"oridinal"`也就是序数形式（"1er janvier"，"2 janvier"，"3 janvier"等)。这种输出可以通过`"oridinal"`以及`limit-day-oridinals-to-day-1`属性来设置 (see [本地化选项](#本地化选项))。
 
-**“month”**
+**"month"**
 
-​	对于`"month"`来说，`cs:date-part`可能会携带`strip-periods`和`form`属性。在locale files中，月份缩写应该后面要加点（e.g. “Jan.”, “Feb.”）。点可以设置`strip-periods`为`"true"`去掉。`form`属性可以设置为：
+​	对于`"month"`来说，`cs:date-part`可能会携带[`strip-periods`](#strip-periods)和`form`属性。在locale files中，月份缩写应该后面要加点（例如： "Jan.", "Feb."）。点可以设置`strip-periods`为`"true"`去掉。`form`属性可以设置为：
 
-- “long” - (default), e.g. “January”
-- “short” - e.g. “Jan.”
-- “numeric” - e.g. “1”
-- “numeric-leading-zeros” - e.g. “01”
+- "long" - 默认，例如：`January`
+- "short" - 例如：`Jan.`
+- "numeric" - 例如：`1`
+- "numeric-leading-zeros" - 例如：`01`
 
-**“year”**
+**"year"**
 
 ​	对`"year"`来说，`cs:date-part`可能会携带`form`属性，值可以设置为：
 
-- “long” - (default), e.g. “2005”
-- “short” - e.g. “05”
+- "long" - 默认，例如：`2020`
+- "short" - 例如：`20`
 
-`cs:date-part` 也可能携带[formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting), [text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) 和 `range-delimiter` 属性。 Attributes for [affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes) are allowed, unless `cs:date` calls a localized date format.
+
+`cs:date-part` 也可能携带[formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting)，[text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) 和 `range-delimiter` 属性。除在`cs:date`元素中使用，其他情况下，`cs:date-part`是可以使用词缀的。 
 
 #### Date Ranges
 
-默认的日期范围中的分隔符是短线(en-dash)，比如：“May–July 2008”。可以在`cs:date-part`元素中通过`range-delimiter`属性来设置常用的分隔符。当日期范围被渲染的时候，范围分隔符从`cs:date-part`元素中提取，并且匹配两个日期差别中最大的部分(“year”, “month”, 或 “day”)。如下面的例子，将会渲染出类似`“1-4 May 2008”, “May–July 2008” and “May 2008/June 2009”`的日期范围。
+默认的日期范围中的分隔符是短线（en-dash），比如：`May–July 2008`。可以在`cs:date-part`元素中通过`range-delimiter`属性来设置常用的分隔符。当日期范围被渲染的时候，范围分隔符从`cs:date-part`元素中提取，并且匹配两个日期差别中最大的部分（"year"，"month"，或 "day"）。如下面的例子，将会渲染出类似`"1-4 May 2008", "May–July 2008"`和` "May 2008/June 2009"`的日期范围。
 
 ```xml
 <style>
@@ -566,11 +567,11 @@ B. Locale files/本地化文件
 
 #### AD and BC
 
-`“ad”`一词（Anno Domini）自动附加到小于四位数的正年份（例如，`“79”`变为`“79AD”`）。`“bc”`一词（Before Christ）自动附加到负年份（例如，`“-2500”`变为`“2500BC”`）。
+`"ad"`一词（Anno Domini）自动附加到小于四位数的正年份（例如，`"79"`变为`"79AD"`）。`"bc"`一词（Before Christ）自动附加到负年份（例如，`"-2500"`变为`"2500BC"`）。
 
 #### Seasons
 
-如果日期中包含了季节而不是月份，日期术语(`“season-01” `到` “season-04”`, 分别代表春夏秋冬)将取代月份术语。比如，下面将会被渲染为`“May 2008”` 和` “Winter 2009”`
+如果日期中包含了季节而不是月份，日期术语(`"season-01" `到` "season-04"`, 分别代表春夏秋冬)将取代月份术语。比如，下面将会被渲染为`"May 2008"` 和` "Winter 2009"`。
 
 ```xml
 <style>
@@ -587,7 +588,7 @@ B. Locale files/本地化文件
 
 #### Approximate Dates
 
-Approximate dates test “true” for the `is-uncertain-date` conditional (see [Choose](https://docs.citationstyles.org/en/stable/specification.html#choose)). For example,would result in “2005” (normal date) and “ca. 2003” (approximate date).
+近似日期，在`is-uncertain-date`属性设置为`"true"`时即渲染（见[choose](#choose)）。例如：下面的例子讲渲染出`2005`（正常日期）和`ca.2003`（近似日期）的结果。
 
 ```xml
 <style>
@@ -595,7 +596,7 @@ Approximate dates test “true” for the `is-uncertain-date` conditional (see [
     <layout>
       <choose>
         <if is-uncertain-date="issued">
-          <text term="circa" form="short" suffix=" "/>
+          <text term="circa" form="short" suffix=" "/> # circa 是大约的意思
         </if>
       </choose>
       <date variable="issued">
@@ -608,26 +609,26 @@ Approximate dates test “true” for the `is-uncertain-date` conditional (see [
 
 ### Number
 
-`cs:number`渲染元素输出`variable`属性选择的数字变量。数字变量是标准变量的子集（见附录 变量）。
+`cs:number`渲染元素输出`variable`属性选择的数字变量。[数字变量](#数字变量)是[标准变量](#标准变量)的子集。
 
-使用`cs:number`元素来渲染数字变量时，如果只包含数字内容(as determined by the rules for `is-numeric`, see [Choose](https://docs.citationstyles.org/en/stable/specification.html#choose))，数字就被提取出来。变量内容包含非数字内容时，变量内容将呈现为原样。
+使用`cs:number`元素来渲染数字变量时，如果只包含数字内容(使用`is-numeric`属性设置，见 [Choose](https://docs.citationstyles.org/en/stable/specification.html#choose))，数字就被提取出来并渲染。变量内容包含非数字内容时，变量内容将呈现为原样。
 
-在提取的过程中，用连字符分隔的数字将去掉中见的空格（“2 - 4” 变为 “2-4”）。用逗号分隔的数字在都好后会添加一个空格，并删掉其余的空格(“2,3” 和 “2 , 3” 变为 “2, 3”)。当数字使用`&`分隔时，在前后各添加一个空格(“2&3” 变为 “2 & 3”)。
+在提取的过程中，用连字符分隔的数字将去掉中间的空格（"2 - 4" 变为 "2-4"）。用逗号分隔的数字在逗号后会添加一个空格，并删掉其余的空格("2,3" 和 "2 , 3" 变为 "2, 3")。当数字使用`&`分隔时，在前后各添加一个空格("2&3" 变为 "2 & 3")。
 
 提取的数字可以通过`form`属性行进格式化，其值可以设置为：
 
-- “numeric” - 默认, e.g. “1”, “2”, “3”
-- “ordinal” -  序数数字 e.g. “1st”, “2nd”, “3rd”。序数后缀可以使用术语定义 (see [Ordinal Suffixes](https://docs.citationstyles.org/en/stable/specification.html#ordinal-suffixes)).
-- “long-ordinal” - 长序数 e.g. “first”, “second”, “third”。Long ordinals are defined with the [terms](https://docs.citationstyles.org/en/stable/specification.html#terms) “long-ordinal-01” to “long-ordinal-10”, which are used for the numbers 1 through 10. For other numbers “long-ordinal” falls back to “ordinal”.
-- “roman” - 罗马数字 e.g. “i”, “ii”, “iii”
+- "numeric" - 默认，例如： "1", "2", "3"
+- "ordinal" -  序数数字，例如： "1st", "2nd", "3rd"。序数后缀可以使用术语定义 (见 [序数后缀](#序数后缀).
+- "long-ordinal" - 长序数，例如： "first", "second", "third"。畅序数使用术语"long-ordinal-01" 到 "long-ordinal-10"定义, 用来在数字1到10使用。对于其他的数字，长序数渲染的结果讲和序数相同.
+- "roman" - 罗马数字，例如："i", "ii", "iii"
 
-带有前缀或者后缀的数字不能使用罗马数字进行排序或者渲染(e.g. “2E” 仍然时 “2E”)。没有词缀的数字可以被分别转换(“2, 3” 可以转换为 “2nd, 3rd”, “second, third” 或者 “ii, iii”)。
+带有前缀或者后缀的数字不能使用罗马数字进行排序或者渲染（例如："2E" 仍然时 "2E"）。没有词缀的数字可以被分别转换（"2, 3" 可以转换为 "2nd, 3rd", "second, third" 或者 "ii, iii"）。
 
-`cs:number`元素可能会携带[affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes), [display](https://docs.citationstyles.org/en/stable/specification.html#display), [formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting) 和 [text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) 属性。
+`cs:number`元素可能会携带[affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes)，[display](https://docs.citationstyles.org/en/stable/specification.html#display)，[formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting) 和 [text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) 属性。
 
 ### Names
 
-`cs:names`y元素用来输出一个或多个名字变量的内容（通过必选属性`variable`来选择），。
+`cs:names`元素用来输出一个或多个[名字变量](#名称变量)（或名称变量）的内容（通过必选属性`variable`来选择），每个`names`元素可以包含一个或者多个名称变量（例如：`"author"`名称变量会携带引用项中所有的作者名称）。如果选择了多个变量，每个变量将会按顺序单独渲染，但当选择中包括编辑和翻译（`"editor"`和`"translator"`）不适用。当包含的内容中有两个名字变量相同时，则只渲染一个。另外，如果`cs:names`元素中包含`cs:label`元素，`"editortranslator"`将用来代替`"editor"`和`"translator"`（例如：Doe(editor & tranlator)）。`cs:names`元素中的[`delimiter`](#分隔符)属性可以用来分割不同的名字变量（例如：`Doe, Smith (editors); Johnson (translator)`中间使用了分号隔开）。
 
 ```xml
 <names variable="editor translator" delimiter="; ">
@@ -635,7 +636,7 @@ Approximate dates test “true” for the `is-uncertain-date` conditional (see [
 </names>
 ```
 
-`cs:names`有四个子元素:`cs:name`,`cs:et-al`,`cs:substitute`,`cs:label`。 `cs:names` element 元素可能会携带 [affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes), [display](https://docs.citationstyles.org/en/stable/specification.html#display) 和 [formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting) 属性。如果选择了多个变量，每个变量将按照顺序独立的渲染，只有当选择的出现"editor"和"translator"时，并且两个是相同时，只渲染一个内容。此外，如果`cs:names`元素包含`cs:label`元素，则使用“editortranslator”术语，替换默认的“editor”和“translator”术语。`cs:names`元素中的`delimiter`属性可以用来设置不同名字变量的名字。
+`cs:names`有四个子元素:`cs:name`，`cs:et-al`，`cs:substitute`和`cs:label`。 `cs:names` 元素可能会携带 [affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes), [display](https://docs.citationstyles.org/en/stable/specification.html#display) 和 [formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting) 属性。
 
 #### Name
 
@@ -643,30 +644,49 @@ Approximate dates test “true” for the `is-uncertain-date` conditional (see [
 
 `and`
 
-​	在名称变量中用来设置倒数第二个名字和倒数第一个名字的分隔符。可选的值为`"text"`(“Doe, Johnson and Smith”)或者`"symbol"`(eg: “Doe, Johnson & Smith”)。
+​	在名称变量中用来设置倒数第二个名字和倒数第一个名字的分隔符。可选的值为`"text"`("Doe, Johnson and Smith")或者`"symbol"`(eg: "Doe, Johnson & Smith")。
 
 `delimiter`
 
-​	在名称变量中设置字符串来分隔名称。默认的是`","`(e.g. “Doe, Smith”)。
+​	在名称变量中设置字符串来分隔名称。默认的是`","`(e.g. "Doe, Smith")。
 
 `delimiter-precedes-et-al`
 
-​	确定何时使用分隔符分隔名称变量中的倒数第一个作者和最后一个作者。（如果`and`没有被设置，则使用`delimiter`，不管`delimiter-precedes-et-al`的值）。该属性可选的值有：
+​	确定在使用`et-al`缩写的情况下，在截断的姓名列表和`et-al`术语之间何时使用分隔符或者空格。该属性可选的值有：
 
-- “contextual” - 默认，在作者列表中有3个或者3个以上的人时使用。
-  - 2 个名字: “J. Doe and T. Williams”
-  - 3 个名字: “J. Doe, S. Smith, and T. Williams”
-- “after-inverted-name” -仅前面的名称因`name-as-sort-order` 属性颠倒时，才使用分隔符。E.g. `name-as-sort-order`设置为`"first"`
-  - “Doe, J., and T. Williams”
-  - “Doe, J., S. Smith and T. Williams”
-- “always” - 分隔符一直使用。
-  - 2 names: “J. Doe, and T. Williams”
-  - 3 names: “J. Doe, S. Smith, and T. Williams”
-- “never” - 禁用分隔符
-  - 2 names: “J. Doe and T. Williams”
-  - 3 names: “J. Doe, S. Smith and T. Williams”
+- "contextual" - (default), 在作者列表中有2个及以上的人时使用
+  - 1 name: "J. Doe et al."
+  - 2 names: "J. Doe, S. Smith, et al."  两个人，则在最后一个人名和`et-al`间使用`,`分隔
+- "after-inverted-name" - 在`name-as-sort-order`属性使当前的名字发生了颠倒时使用。例如：当`name-as-sort-order`属性设置为`"first"`时，第一个名字的前后部分 Doe 和 J 发生了反转，因此在第一个名字后面使用了分隔符`,`
+  - "Doe, J., et al."
+  - "Doe, J., S. Smith et al."
+- "always" - 不论几个名字或者怎样的设置，总是使用
+  - 1 name: "J. Doe, et al."
+  - 2 names: "J. Doe, S. Smith, et al."
+- "never" - 禁止使用分隔符，不论几个名字。
+  - 1 name: "J. Doe et al."
+  - 2 names: "J. Doe, S. Smith et al."
 
+`delimiter-precedes-last`
 
+ 在名字列表中确定何时使用分隔符来分割最后一个作者和倒数第二个作者。如果`and`没有被设置，则不论`delimiter-precedes-last`属性的值，名字分隔符总是使用。
+
+- "contextual" - 默认，当名字列表中的名字有3个或以上时使用。下面在使用3个名字时，在`and`前使用了分隔符`,`
+  - 2 个名字: "J. Doe and T. Williams"
+  - 3 个名字: "J. Doe, S. Smith, and T. Williams"
+- "after-inverted-name" - 在`name-as-sort-order`属性使当前的名字发生了颠倒时使用。例如：当`name-as-sort-order`属性设置为`"first"`时，仅在第一个名字后使用了分隔符`,`
+  - "Doe, J., and T. Williams"
+  - "Doe, J., S. Smith and T. Williams"
+- "always" - 分隔符一直使用。
+  - 2 names: "J. Doe, and T. Williams"
+  - 3 names: "J. Doe, S. Smith, and T. Williams"
+- "never" - 禁用分隔符
+  - 2 names: "J. Doe and T. Williams"
+  - 3 names: "J. Doe, S. Smith and T. Williams"
+
+`et-al-min`/`et-al-use-first`
+
+通过设置这两个属性，可是使用`et-al`对名字列表进行缩写。********
 
 #### Et-al
 
@@ -697,17 +717,17 @@ Et-al缩写通过`et-al-...`属性来控制，同时也可以使用可选的`cs:
 
 #### Label in `cs:names`
 
-`cs:label`元素时可选的，而且必须位于`cs:name`和`cs:et-al`元素后，在`cs:substitute`元素前。当`cs:label`作为`cs:names`元素的子元素时，`cs:label`不能携带`variable`属性，而是使用父元素`cs:names`中的变量。A second difference is that the `form` attribute may also be set to “verb” or “verb-short”, so that the allowed values are:
+`cs:label`元素时可选的，而且必须位于`cs:name`和`cs:et-al`元素后，在`cs:substitute`元素前。当`cs:label`作为`cs:names`元素的子元素时，`cs:label`不能携带`variable`属性，而是使用父元素`cs:names`中的变量。A second difference is that the `form` attribute may also be set to "verb" or "verb-short", so that the allowed values are:
 
-- “long” - (default), e.g. “editor” and “editors” for the “editor” term
-- “short” - e.g. “ed.” and “eds.” for the term “editor”
-- “verb” - e.g. “edited by” for the term “editor”
-- “verb-short” - e.g. “ed.” for the term “editor”
-- “symbol” - e.g. “§” and “§§” for the term “section”
+- "long" - (default), e.g. "editor" and "editors" for the "editor" term
+- "short" - e.g. "ed." and "eds." for the term "editor"
+- "verb" - e.g. "edited by" for the term "editor"
+- "verb-short" - e.g. "ed." for the term "editor"
+- "symbol" - e.g. "§" and "§§" for the term "section"
 
 ### Label
 
-`cs:label`渲染元素输出与所选变量匹配的术语，该属性必须设置为“locator”、“page”或数字变量之一。只有当选择的变量是非空的受，术语才会渲染。例如：
+`cs:label`渲染元素输出与所选变量匹配的术语，该属性必须设置为"locator"、"page"或数字变量之一。只有当选择的变量是非空的受，术语才会渲染。例如：
 
 ```xml
 <group delimiter=" ">
@@ -722,17 +742,17 @@ Et-al缩写通过`et-al-...`属性来控制，同时也可以使用可选的`cs:
 
 ​	选择术语的形式，可以使用下面的值：
 
-- “long” - (default), e.g. “page”/”pages” for the “page” term
-- “short” - e.g. “p.”/”pp.” for the “page” term
-- “symbol” - e.g. “§”/”§§” for the “section” term
+- "long" - (default), e.g. "page"/"pages" for the "page" term
+- "short" - e.g. "p."/"pp." for the "page" term
+- "symbol" - e.g. "§"/"§§" for the "section" term
 
 `plural`
 
 ​	设置术语的复数形式，可以使用下面的值：
 
-- “contextual” - (default), the term plurality matches that of the variable content. Content is considered plural when it contains multiple numbers (e.g. “page 1”, “pages 1-3”, “volume 2”, “volumes 2 & 4”), or, in the case of the “number-of-pages” and “number-of-volumes” variables, when the number is higher than 1 (“1 volume” and “3 volumes”).
-- “always” - always use the plural form, e.g. “pages 1” and “pages 1-3”
-- “never” - always use the singular form, e.g. “page 1” and “page 1-3”
+- "contextual" - (default), the term plurality matches that of the variable content. Content is considered plural when it contains multiple numbers (e.g. "page 1", "pages 1-3", "volume 2", "volumes 2 & 4"), or, in the case of the "number-of-pages" and "number-of-volumes" variables, when the number is higher than 1 ("1 volume" and "3 volumes").
+- "always" - always use the plural form, e.g. "pages 1" and "pages 1-3"
+- "never" - always use the singular form, e.g. "page 1" and "page 1-3"
 
 `cs:label`也可能会携带[affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes), [formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting), [text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) 和 [strip-periods](https://docs.citationstyles.org/en/stable/specification.html#strip-periods) 属性。
 
@@ -750,7 +770,7 @@ Et-al缩写通过`et-al-...`属性来控制，同时也可以使用可选的`cs:
 </layout>
 ```
 
-上述代码可以生成`“retrieved from http://dx.doi.org/10.1128/AEM.02591-07”`类似得结果，但是当URL为空的时候，不生成结果。
+上述代码可以生成`"retrieved from http://dx.doi.org/10.1128/AEM.02591-07"`类似得结果，但是当URL为空的时候，不生成结果。
 
 ### Choose
 
@@ -771,13 +791,13 @@ Et-al缩写通过`et-al-...`属性来控制，同时也可以使用可选的`cs:
 
 `disambiguate`
 
-​	当改属性设置为`"true"`(并且是唯一允许的值)的时候，When set to “true” (the only allowed value), the element content is only rendered if it disambiguates two otherwise identical citations. This attempt at [disambiguation](https://docs.citationstyles.org/en/stable/specification.html#disambiguation) is only made when all other disambiguation methods have failed to uniquely identify the target source.
+​	当改属性设置为`"true"`(并且是唯一允许的值)的时候，When set to "true" (the only allowed value), the element content is only rendered if it disambiguates two otherwise identical citations. This attempt at [disambiguation](https://docs.citationstyles.org/en/stable/specification.html#disambiguation) is only made when all other disambiguation methods have failed to uniquely identify the target source.
 
 ```
 is-numeric
 ```
 
-Tests whether the given variables ([Appendix IV - Variables](https://docs.citationstyles.org/en/stable/specification.html#appendix-iv-variables)) contain numeric content. Content is considered numeric if it solely consists of numbers. Numbers may have prefixes and suffixes (“D2”, “2b”, “L2d”), and may be separated by a comma, hyphen, or ampersand, with or without spaces (“2, 3”, “2-4”, “2 & 4”). For example, “2nd” tests “true” whereas “second” and “2nd edition” test “false”.
+Tests whether the given variables ([Appendix IV - Variables](https://docs.citationstyles.org/en/stable/specification.html#appendix-iv-variables)) contain numeric content. Content is considered numeric if it solely consists of numbers. Numbers may have prefixes and suffixes ("D2", "2b", "L2d"), and may be separated by a comma, hyphen, or ampersand, with or without spaces ("2, 3", "2-4", "2 & 4"). For example, "2nd" tests "true" whereas "second" and "2nd edition" test "false".
 
 ```
 is-uncertain-date
@@ -789,17 +809,17 @@ Tests whether the given [date variables](https://docs.citationstyles.org/en/stab
 locator
 ```
 
-Tests whether the locator matches the given locator types (see [Locators](https://docs.citationstyles.org/en/stable/specification.html#locators)). Use “sub-verbo” to test for the “sub verbo” locator type.
+Tests whether the locator matches the given locator types (see [Locators](https://docs.citationstyles.org/en/stable/specification.html#locators)). Use "sub-verbo" to test for the "sub verbo" locator type.
 
 ```
 position
 ```
 
-Tests whether the cite position matches the given positions (terminology: citations consist of one or more cites to individual items). When called within the scope of cs:bibliography, `position` tests “false”. The positions that can be tested are:
+Tests whether the cite position matches the given positions (terminology: citations consist of one or more cites to individual items). When called within the scope of cs:bibliography, `position` tests "false". The positions that can be tested are:
 
-- “first”: position of cites that are the first to reference an item
+- "first": position of cites that are the first to reference an item
 
-- “ibid”/”ibid-with-locator”/”subsequent”: cites referencing previously cited items have the “subsequent” position. Such cites may also have the “ibid” or “ibid-with-locator” position when:
+- "ibid"/"ibid-with-locator"/"subsequent": cites referencing previously cited items have the "subsequent" position. Such cites may also have the "ibid" or "ibid-with-locator" position when:
 
   1. the current cite immediately follows on another cite, within the same citation, that references the same item
 
@@ -809,12 +829,12 @@ Tests whether the cite position matches the given positions (terminology: citati
 
   If either requirement is met, the presence of locators determines which position is assigned:
 
-  - **Preceding cite does not have a locator**: if the current cite has a locator, the position of the current cite is “ibid-with-locator”. Otherwise the position is “ibid”.
-  - **Preceding cite does have a locator**: if the current cite has the same locator, the position of the current cite is “ibid”. If the locator differs the position is “ibid-with-locator”. If the current cite lacks a locator its only position is “subsequent”.
+  - **Preceding cite does not have a locator**: if the current cite has a locator, the position of the current cite is "ibid-with-locator". Otherwise the position is "ibid".
+  - **Preceding cite does have a locator**: if the current cite has the same locator, the position of the current cite is "ibid". If the locator differs the position is "ibid-with-locator". If the current cite lacks a locator its only position is "subsequent".
 
-- “near-note”: position of a cite following another cite referencing the same item. Both cites have to be located in foot or endnotes, and the distance between both cites may not exceed the maximum distance (measured in number of foot or endnotes) set with the `near-note-distance` option (see [Note Distance](https://docs.citationstyles.org/en/stable/specification.html#note-distance)).
+- "near-note": position of a cite following another cite referencing the same item. Both cites have to be located in foot or endnotes, and the distance between both cites may not exceed the maximum distance (measured in number of foot or endnotes) set with the `near-note-distance` option (see [Note Distance](https://docs.citationstyles.org/en/stable/specification.html#note-distance)).
 
-Whenever position=”ibid-with-locator” tests true, position=”ibid” also tests true. And whenever position=”ibid” or position=”near-note” test true, position=”subsequent” also tests true.
+Whenever position="ibid-with-locator" tests true, position="ibid" also tests true. And whenever position="ibid" or position="near-note" test true, position="subsequent" also tests true.
 
 ```
 type
@@ -894,21 +914,21 @@ Tests whether the default (long) forms of the given variables ([Appendix IV - Va
 
 **Sort order A: non-dropping-particle not demoted**
 
-- primary sort key: “La Fontaine”
-- secondary sort key: “de”
-- tertiary sort key: “Jean”
+- primary sort key: "La Fontaine"
+- secondary sort key: "de"
+- tertiary sort key: "Jean"
 
 **Sort order B: non-dropping-particle demoted**
 
-- primary sort key: “Fontaine”
-- secondary sort key: “de La”
-- tertiary sort key: “Jean”
+- primary sort key: "Fontaine"
+- secondary sort key: "de La"
+- tertiary sort key: "Jean"
 
 The handling of the non-dropping-particle can be customized with the `demote-non-dropping-particle` option:
 
 - `demote-non-dropping-particle`
 
-  Sets the display and sorting behavior of the non-dropping-particle in inverted names (e.g. “Koning, W. de”). Allowed values:“never”: the non-dropping-particle is treated as part of the family name, whereas the dropping-particle is appended (e.g. “de Koning, W.”, “La Fontaine, Jean de”). The non-dropping-particle is part of the primary sort key (sort order A, e.g. “de Koning, W.” appears under “D”).“sort-only”: same display behavior as “never”, but the non-dropping-particle is demoted to a secondary sort key (sort order B, e.g. “de Koning, W.” appears under “K”).“display-and-sort” (default): the dropping and non-dropping-particle are appended (e.g. “Koning, W. de” and “Fontaine, Jean de La”). For name sorting, all particles are part of the secondary sort key (sort order B, e.g. “Koning, W. de” appears under “K”).
+  Sets the display and sorting behavior of the non-dropping-particle in inverted names (e.g. "Koning, W. de"). Allowed values:"never": the non-dropping-particle is treated as part of the family name, whereas the dropping-particle is appended (e.g. "de Koning, W.", "La Fontaine, Jean de"). The non-dropping-particle is part of the primary sort key (sort order A, e.g. "de Koning, W." appears under "D")."sort-only": same display behavior as "never", but the non-dropping-particle is demoted to a secondary sort key (sort order B, e.g. "de Koning, W." appears under "K")."display-and-sort" (default): the dropping and non-dropping-particle are appended (e.g. "Koning, W. de" and "Fontaine, Jean de La"). For name sorting, all particles are part of the secondary sort key (sort order B, e.g. "Koning, W. de" appears under "K").
 
 Some names include a particle that should never be demoted. For these cases the particle should just be included in the family name field, for example for the French general Charles de Gaulle:
 
@@ -975,9 +995,9 @@ Some names include a particle that should never be demoted. For these cases the 
 
 ### 范围分隔符
 
-“引文数量”和“年后缀”变量的折叠范围以短划线分隔（例如“（1-3，5）”和“（Doe 2000a-c，e）”）。
+"引文数量"和"年后缀"变量的折叠范围以短划线分隔（例如"（1-3，5）"和"（Doe 2000a-c，e）"）。
 
-The “locator” variable is always rendered with an en-dash replacing any hyphens. For the “page” variable, this replacement is only performed if the page-range-format attribute is set on cs:style (see Page Ranges).
+The "locator" variable is always rendered with an en-dash replacing any hyphens. For the "page" variable, this replacement is only performed if the page-range-format attribute is set on cs:style (see Page Ranges).
 
 ### 格式化
 
@@ -987,39 +1007,39 @@ The “locator” variable is always rendered with an en-dash replacing any hyph
 
 用来设置字体，可能的值为：
 
-- “normal”  默认
-- “italic”  设置文字的斜体
-- “oblique”  设置没有斜体的问题倾斜
+- "normal"  默认
+- "italic"  设置文字的斜体
+- "oblique"  设置没有斜体的问题倾斜
 
 `font-variant`
 
 Allows for the use of small capitals, with values:
 
-- “normal” (default)
-- “small-caps”
+- "normal" (default)
+- "small-caps"
 
 `font-weight`
 
 设置字宽，值可以为：
 
-- “normal” (default)
-- “bold”
-- “light”
+- "normal" (default)
+- "bold"
+- "light"
 
 `text-decoration`
 
 设置时候有下划线，值可以为：
 
-- “none” (default)
-- “underline”
+- "none" (default)
+- "underline"
 
 `vertical-align`
 
 设置垂直对齐，值可以为：
 
-- “baseline” (default)
-- “sup” 上标
-- “sub” 下标
+- "baseline" (default)
+- "sup" 上标
+- "sub" 下标
 
 ### 词缀
 
@@ -1033,10 +1053,10 @@ Allows for the use of small capitals, with values:
 
 `display`属性可用于将各个条目构成一个或者多个文本块。如果使用该属性，所有的渲染原属都在该属性的控制下。（译注：是用来设置对齐效果的）属性可能的值为：
 
-- “block” - 文字居中？
-- “left-margin” - 左对齐
-- “right-inline” - 右对齐
-- “indent” - 缩进
+- "block" - 文字居中？
+- "left-margin" - 左对齐
+- "right-inline" - 右对齐
+- "indent" - 缩进
 
 ### 引用\quotes
 
@@ -1046,18 +1066,18 @@ Allows for the use of small capitals, with values:
 
 ### Strip-periods
 
-`strip-periods`属性可以在`cs:label`或者`cd:text`中设置，此外，当`name`被设置为`"month"`时，也可以在`cs:date-part`中设置。当该属性被设置为`true`的时候（默认的是`"false"`），所有文本中的句号将会被删除。
+`strip-periods`属性可以在`cs:label`或者`cd:text`中设置，此外，当`name`被设置为`"month"`时，也可以在`cs:date-part`中设置。当该属性被设置为`true`的时候（默认的是`"false"`），所有文本中的句号（英文中为点）将会被删除。
 
 ### 文字大小写
 
 `Text-case` 属性可以在`cs:date`,`cs:date-part`,`cs:label`,`cs:name-part`,`cs:number`和`cs:text`中设置，可设置的值为：
 
-- “lowercase”: 使用小写字母渲染文本
-- “uppercase”: 使用大写字母渲染文本
-- “capitalize-first”: 如果第一个词是小写的，将首字母设置为大写
-- “capitalize-all”: 将每个小写词的首字母设置为大写
-- “sentence”: renders text in sentence case(以句子的格式设置？)
-- “title”: renders text in title case(以标题的格式来设置？)
+- "lowercase": 使用小写字母渲染文本
+- "uppercase": 使用大写字母渲染文本
+- "capitalize-first": 如果第一个词是小写的，将首字母设置为大写
+- "capitalize-all": 将每个小写词的首字母设置为大写
+- "sentence": renders text in sentence case(以句子的格式设置？)
+- "title": renders text in title case(以标题的格式来设置？)
 
 #### 句子大小写转换
 
@@ -1075,7 +1095,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 1. 对大写的字符串，每个单词的第一个字母保持大写，其它的字母保持小写。
 2. 对于小写或者是混合的字符串，每个小写字符串的首字母大写。大写的字符串或者是混合的字符串保持原样。
 
-两种情况下，`stop words`必须是小写的，除非他们是第一个或者对后一个单词，或者跟在冒号后面。`stop words`包括：` “a”, “an”, “and”, “as”, “at”, “but”, “by”, “down”, “for”, “from”, “in”, “into”, “nor”, “of”, “on”, “onto”, “or”, “over”, “so”, “the”, “till”, “to”, “up”, “via”, “with”,  “yet”`.
+两种情况下，`stop words`必须是小写的，除非他们是第一个或者对后一个单词，或者跟在冒号后面。`stop words`包括：` "a", "an", "and", "as", "at", "but", "by", "down", "for", "from", "in", "into", "nor", "of", "on", "onto", "or", "over", "so", "the", "till", "to", "up", "via", "with",  "yet"`.
 
 **非英语项目**
 
@@ -1289,7 +1309,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 - citation-label
 
-  label identifying the item in in-text citations of label styles (e.g. “Ferr78”). May be assigned by the CSL processor based on item metadata.
+  label identifying the item in in-text citations of label styles (e.g. "Ferr78"). May be assigned by the CSL processor based on item metadata.
 
 - citation-number
 
@@ -1305,7 +1325,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 - container-title-short
 
-  short/abbreviated form of “container-title” (also accessible through the “short” form of the “container-title” variable)
+  short/abbreviated form of "container-title" (also accessible through the "short" form of the "container-title" variable)
 
 - dimensions
 
@@ -1313,7 +1333,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 - DOI
 
-  Digital Object Identifier (e.g. “10.1128/AEM.02591-07”)
+  Digital Object Identifier (e.g. "10.1128/AEM.02591-07")
 
 - event
 
@@ -1321,7 +1341,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 - event-place
 
-  geographic location of the related event (e.g. “Amsterdam, the Netherlands”)
+  geographic location of the related event (e.g. "Amsterdam, the Netherlands")
 
 - first-reference-note-number
 
@@ -1329,7 +1349,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 - genre
 
-  class, type or genre of the item (e.g. “adventure” for an adventure movie, “PhD dissertation” for a PhD thesis)
+  class, type or genre of the item (e.g. "adventure" for an adventure movie, "PhD dissertation" for a PhD thesis)
 
 - ISBN
 
@@ -1341,17 +1361,17 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 - jurisdiction
 
-  geographic scope of relevance (e.g. “US” for a US patent)
+  geographic scope of relevance (e.g. "US" for a US patent)
 
 - keyword    关键字
 
 - locator
 
-  a cite-specific pinpointer within the item (e.g. a page number within a book, or a volume in a multi-volume work). Must be accompanied in the input data by a label indicating the locator type (see the [Locators](https://docs.citationstyles.org/en/stable/specification.html#locators) term list), which determines which term is rendered by `cs:label` when the “locator” variable is selected.
+  a cite-specific pinpointer within the item (e.g. a page number within a book, or a volume in a multi-volume work). Must be accompanied in the input data by a label indicating the locator type (see the [Locators](https://docs.citationstyles.org/en/stable/specification.html#locators) term list), which determines which term is rendered by `cs:label` when the "locator" variable is selected.
 
 - medium
 
-  medium description (e.g. “CD”, “DVD”, etc.)
+  medium description (e.g. "CD", "DVD", etc.)
 
 - note
 
@@ -1363,7 +1383,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 - original-publisher-place
 
-  geographic location of the original publisher (e.g. “London, UK”)
+  geographic location of the original publisher (e.g. "London, UK")
 
 - original-title    最初版本的题目
 
@@ -1397,7 +1417,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 - section
 
-  container section holding the item (e.g. “politics” for a newspaper article)
+  container section holding the item (e.g. "politics" for a newspaper article)
 
 - source
 
@@ -1405,7 +1425,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 - status
 
-  (publication) status of the item (e.g. “forthcoming”)
+  (publication) status of the item (e.g. "forthcoming")
 
 - title
 
@@ -1413,7 +1433,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 - title-short
 
-  short/abbreviated form of “title” (also accessible through the “short” form of the “title” variable)
+  short/abbreviated form of "title" (also accessible through the "short" form of the "title" variable)
 
 - URL   链接
 
@@ -1421,7 +1441,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 - year-suffix
 
-  disambiguating year suffix in author-date styles (e.g. “a” in “Doe, 1999a”)
+  disambiguating year suffix in author-date styles (e.g. "a" in "Doe, 1999a")
 
 ### 数据变量
 
@@ -1441,7 +1461,7 @@ Number variables are a subset of the [Standard Variables](https://docs.citations
 
 - issue
 
-  (container) issue holding the item (e.g. “5” when citing a journal article from journal volume 2, issue 5)
+  (container) issue holding the item (e.g. "5" when citing a journal article from journal volume 2, issue 5)
 
 - number
 
@@ -1457,7 +1477,7 @@ Number variables are a subset of the [Standard Variables](https://docs.citations
 
 - volume
 
-  (container) volume holding the item (e.g. “2” when citing a chapter from book volume 2)
+  (container) volume holding the item (e.g. "2" when citing a chapter from book volume 2)
 
 ### 日期变量
 
@@ -1509,7 +1529,7 @@ Number variables are a subset of the [Standard Variables](https://docs.citations
 
 - editorial-director
 
-  managing editor (“Directeur de la Publication” in French)
+  managing editor ("Directeur de la Publication" in French)
 
 - illustrator
 
