@@ -667,6 +667,8 @@ B. Locale files/本地化文件
   - 1 name: "J. Doe et al."
   - 2 names: "J. Doe, S. Smith et al."
 
+
+
 `delimiter-precedes-last`
 
  在名字列表中确定何时使用分隔符来分割最后一个作者和倒数第二个作者。如果`and`没有被设置，则不论`delimiter-precedes-last`属性的值，名字分隔符总是使用。
@@ -684,9 +686,54 @@ B. Locale files/本地化文件
   - 2 names: "J. Doe and T. Williams"
   - 3 names: "J. Doe, S. Smith and T. Williams"
 
+
+
 `et-al-min`/`et-al-use-first`
 
-通过设置这两个属性，可是使用`et-al`对名字列表进行缩写。********
+通过设置这两个属性，可是使用`et-al`对名字列表进行缩写。如果名字变量中的名字的数目超过了`et-al-min`属性设置的值，则达到`et-al-use-first`设置的名称数量后，渲染的名字列表将被截断。`"et-al"`（或者`"and others"`）术语用来添加到截断列表的后面（见[et-al](#et-al)）。默认地，当名字列表被截断到单个名字，则名字和`"et-al"`术语之间使用空格进行隔开（例如：Doe et al.）。当一个名字列表被截断到两个或者三个名字，则使用分隔符（例如：Doe, Smith, et al.）。这些行为可以使用`delimiter-precedes-et-al`属性来设置。
+
+
+
+`et-al-subsequent-min`/`st-al-subsequent-use-first`
+
+如果使用了这两个属性，则属性的值分别替换`et-al-min`和`et-al-use-first`的值以便后续引用。
+
+
+
+`et-al-use-last`
+
+当该属性设置为`"true"`时，（默认为`"false"`），则使用下面的格式：截断的名称列表，分隔符，省略号，名称列表最后一个名字。这个属性只能在名称列表有多余两个的名称时使用。例：
+
+```
+A. Goffeau, B. G. Barrell, H. Bussey, R. W. Davis, B. Dujon, H.
+Feldmann, … S. G. Oliver
+```
+
+***
+
+下面讨论的属性将只会影响单个人的名字，这里先给出名字的组成部分。单个人的名字必须含有 "family" 部分，还可以含有 "given"，"suffix"，"non-dropping-particle"，和"dropping particle" 等部分。下面对这些部分分别进行解释：
+
+- "family" - 姓氏，必须去掉 particle（译注：暂译为粒子）和后缀
+- "given" - 全名  "John Edward"或者 J. E.
+- "suffix" - 名字后缀，比如：外国人常用的 Jr 或者罗马数字（经常翻译为 xx世，比如伊丽莎白二世） "Jr." in "John Smith Jr." 或者 "III" in "Bill Gates III"
+- "non-dropping-particle" - 不可删除（省略）的粒子。当只显示姓氏的时候，不能省略("de" in the Dutch surname "de Koning") ，但是可能会在姓氏中分别对待，比如在排序的时候
+- "dropping-particle" - 可删除的粒子。当只显示姓氏的是欧，可以省略 ("van" in "Ludwig van Beethoven", which becomes "Beethoven")
+
+下面的属性将会影响单个人的名称的渲染：*******
+
+`form`
+
+`initialize`
+
+`initialize-with`
+
+`name-as-sort-order`
+
+`sort-separator`
+
+
+
+`cs:name`元素也可以携带[词缀](#词缀)和[格式化](#格式化属性)。
 
 #### Et-al
 

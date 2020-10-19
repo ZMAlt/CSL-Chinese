@@ -838,7 +838,31 @@
 </li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">et-al-min</span></code>/<code class="docutils literal notranslate"><span class="pre">et-al-use-first</span></code></p>
-<p>通过设置这两个属性，可是使用<code class="docutils literal notranslate"><span class="pre">et-al</span></code>对名字列表进行缩写。********</p>
+<p>通过设置这两个属性，可是使用<code class="docutils literal notranslate"><span class="pre">et-al</span></code>对名字列表进行缩写。如果名字变量中的名字的数目超过了<code class="docutils literal notranslate"><span class="pre">et-al-min</span></code>属性设置的值，则达到<code class="docutils literal notranslate"><span class="pre">et-al-use-first</span></code>设置的名称数量后，渲染的名字列表将被截断。<code class="docutils literal notranslate"><span class="pre">&quot;et-al&quot;</span></code>（或者<code class="docutils literal notranslate"><span class="pre">&quot;and</span> <span class="pre">others&quot;</span></code>）术语用来添加到截断列表的后面（见<a class="reference external" href="#et-al">et-al</a>）。默认地，当名字列表被截断到单个名字，则名字和<code class="docutils literal notranslate"><span class="pre">&quot;et-al&quot;</span></code>术语之间使用空格进行隔开（例如：Doe et al.）。当一个名字列表被截断到两个或者三个名字，则使用分隔符（例如：Doe, Smith, et al.）。这些行为可以使用<code class="docutils literal notranslate"><span class="pre">delimiter-precedes-et-al</span></code>属性来设置。</p>
+<p><code class="docutils literal notranslate"><span class="pre">et-al-subsequent-min</span></code>/<code class="docutils literal notranslate"><span class="pre">st-al-subsequent-use-first</span></code></p>
+<p>如果使用了这两个属性，则属性的值分别替换<code class="docutils literal notranslate"><span class="pre">et-al-min</span></code>和<code class="docutils literal notranslate"><span class="pre">et-al-use-first</span></code>的值以便后续引用。</p>
+<p><code class="docutils literal notranslate"><span class="pre">et-al-use-last</span></code></p>
+<p>当该属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>时，（默认为<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>），则使用下面的格式：截断的名称列表，分隔符，省略号，名称列表最后一个名字。这个属性只能在名称列表有多余两个的名称时使用。例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>A. Goffeau, B. G. Barrell, H. Bussey, R. W. Davis, B. Dujon, H.
+Feldmann, … S. G. Oliver
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>下面讨论的属性将只会影响单个人的名字，这里先给出名字的组成部分。单个人的名字必须含有 “family” 部分，还可以含有 “given”，”suffix”，”non-dropping-particle”，和”dropping particle” 等部分。下面对这些部分分别进行解释：</p>
+<ul class="simple">
+<li><p>“family” - 姓氏，必须去掉 particle（译注：暂译为粒子）和后缀</p></li>
+<li><p>“given” - 全名  “John Edward”或者 J. E.</p></li>
+<li><p>“suffix” - 名字后缀，比如：外国人常用的 Jr 或者罗马数字（经常翻译为 xx世，比如伊丽莎白二世） “Jr.” in “John Smith Jr.” 或者 “III” in “Bill Gates III”</p></li>
+<li><p>“non-dropping-particle” - 不可删除（省略）的粒子。当只显示姓氏的时候，不能省略(“de” in the Dutch surname “de Koning”) ，但是可能会在姓氏中分别对待，比如在排序的时候</p></li>
+<li><p>“dropping-particle” - 可删除的粒子。当只显示姓氏的是欧，可以省略 (“van” in “Ludwig van Beethoven”, which becomes “Beethoven”)</p></li>
+</ul>
+<p>下面的属性将会影响单个人的名称的渲染：*******</p>
+<p><code class="docutils literal notranslate"><span class="pre">form</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">initialize</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">initialize-with</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">name-as-sort-order</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">sort-separator</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:name</span></code>元素也可以携带<a class="reference external" href="#%E8%AF%8D%E7%BC%80">词缀</a>和<a class="reference external" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%B1%9E%E6%80%A7">格式化</a>。</p>
 </div>
 <div class="section" id="et-al">
 <h4>Et-al<a class="headerlink" href="#et-al" title="Permalink to this headline">¶</a></h4>
