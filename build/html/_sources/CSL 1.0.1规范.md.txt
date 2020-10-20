@@ -719,21 +719,48 @@ Feldmann, … S. G. Oliver
 - "non-dropping-particle" - 不可删除（省略）的粒子。当只显示姓氏的时候，不能省略("de" in the Dutch surname "de Koning") ，但是可能会在姓氏中分别对待，比如在排序的时候
 - "dropping-particle" - 可删除的粒子。当只显示姓氏的是欧，可以省略 ("van" in "Ludwig van Beethoven", which becomes "Beethoven")
 
-下面的属性将会影响单个人的名称的渲染：*******
+下面的属性将会影响单个人的名称的渲染：
 
 `form`
 
+指定是否显示名字的所有部分（默认为`"long"`），或者只显示姓氏和不可省略粒子（值为`"short"`）。除这两种情况外，还可以设置为`"count"`，返回使用`cs:names`元素渲染的部分的总数（考虑`et-al`缩写和编辑/翻译等折叠的影响）。
+
 `initialize`
+
+当该属性设置为`"false`时（默认的结果为`"true"`），并且`"initialize-with"`属性被设置时，全名将不使用缩写。但是，如果在全名中有单独的大写字母的时候，仍然会添加``"initialize-with"`的值。例如：当`initialize`设置为`"false"`，并且`initialize-with`设置为`"."`时，James T kirk 将会变为 James T. Kirk。
 
 `initialize-with`
 
+当该实行被设置时，全名将会使用缩写。该属性将会在每个首字母后添加属性值，比如：上述的名字会变为 J.J. Doe。对于合成的全名，例如：Jean-luc，可以使用全局的带有连字符的`initialize-with-hyphen`属性来设置其缩写形式（见[人名中的连字符](#人名中的连字符)）。
+
 `name-as-sort-order`
+
+指定名字的显示顺序为：姓，然后是名，例如：John Doe 变为 Doe,John。该属性值可以设置为：
+
+- "first" - 属性只影响名字变量中的第一个名字
+- "all" - 属性将会影响所有的名字
+
+注意：即使`name-as-sort-order`改变了名字内部的顺序，最终显示的顺序不一定与包含粒子和后缀的名字的相同（见[名字内部顺序](#名字内部顺序)）。`name-as-sort-order`只影响以拉丁字母或者西里尔字母书写的名字。其他字母书写的名字（比如，亚洲的大部分名字）总是将全名中的姓显示在前面。
 
 `sort-separator`
 
-
+设置名字的不同部分由于`name-as-sort-order`属性导致的内部位置变换后的分隔符。默认值为`","`（Doe, John）。和`name-as-sort-order`属性相同，该属性只适用于拉丁字母和西里尔字母的名字。
 
 `cs:name`元素也可以携带[词缀](#词缀)和[格式化](#格式化属性)。
+
+#### 名字内部顺序
+
+名字内部各部分的顺序取决于`cs:name`元素中`form`和`name-as-sort-order`属性和`cs:style`元素中的`demote-non-droping-particle`属性的设置。名称各部分的显示和排序的属性通常是不同的。下面将对名字顺序进行简单的介绍：
+
+**拉丁/西里尔名字的显示顺序**
+
+**拉丁/西里尔名字的排序顺序**
+
+**非拉丁和非西里尔名字的显示和排序顺序**
+
+#### 名字格式化
+
+
 
 #### Et-al
 
