@@ -145,7 +145,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#label-in-cs-names">Label in <code class="docutils literal notranslate"><span class="pre">cs:names</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#label">Label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#label">Label  *****</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#group">Group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#choose">Choose</a></li>
 </ul>
@@ -664,7 +664,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;year&quot;</span></code> - 只渲染年</p></li>
 </ul>
 <p>第二种，<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>可以含有一个或者多个<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>子元素（见<a class="reference external" href="#Date-part">Date-part</a>）。在这些子元素中可以设置属性来覆盖之前的本地化设置（例如：要获得所有语言环境的缩写月份，可以将月份的<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素的<code class="docutils literal notranslate"><span class="pre">form</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;short&quot;</span></code>）。这些<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>子元素不影响各个日期部分渲染的顺序和以及其是否渲染。<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素中不能使用词缀 <a class="reference external" href="#%E8%AF%8D%E7%BC%80">Affixes</a>.</p>
-<p>没有属性<code class="docutils literal notranslate"><span class="pre">form</span></code>的情况下，<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>则描述了一个自带的非本地化的日期格式。其日期格式使用<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>子元素来构建。在使用<code class="docutils literal notranslate"><span class="pre">name</span></code>属性并设置为<code class="docutils literal notranslate"><span class="pre">day</span></code>，<code class="docutils literal notranslate"><span class="pre">month</span></code>或<code class="docutils literal notranslate"><span class="pre">year</span></code>时，这些元素的顺序反应了其显示顺序。日期可以在<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素种使用<a class="reference external" href="%E6%A0%BC%E5%BC%8F%E5%8C%96"><code class="docutils literal notranslate"><span class="pre">formatting</span></code></a>属性以及多个<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>的属性来格式化（见<a class="reference external" href="#Date-part">Date-part</a>）。<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>中的<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>属性可以用来设置<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素不同日期部分的分隔符，此外，<a class="reference external" href="#%E8%AF%8D%E7%BC%80">词缀</a>可以用在 <code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code> elements。</p>
+<p>没有属性<code class="docutils literal notranslate"><span class="pre">form</span></code>的情况下，<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>则描述了一个自带的非本地化的日期格式。其日期格式使用<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>子元素来构建。在使用<code class="docutils literal notranslate"><span class="pre">name</span></code>属性并设置为<code class="docutils literal notranslate"><span class="pre">day</span></code>，<code class="docutils literal notranslate"><span class="pre">month</span></code>或<code class="docutils literal notranslate"><span class="pre">year</span></code>时，这些元素的顺序反应了其显示顺序。日期可以在<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素中使用<a class="reference external" href="%E6%A0%BC%E5%BC%8F%E5%8C%96"><code class="docutils literal notranslate"><span class="pre">formatting</span></code></a>属性以及多个<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>的属性来格式化（见<a class="reference external" href="#Date-part">Date-part</a>）。<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>中的<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>属性可以用来设置<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>元素不同日期部分的分隔符，此外，<a class="reference external" href="#%E8%AF%8D%E7%BC%80">词缀</a>可以用在 <code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code> elements。</p>
 <p>本地化的日期或者是非本地化的日期，, <code class="docutils literal notranslate"><span class="pre">cs:date</span></code> 都可能携带 <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#affixes">affixes</a>，<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#display">display</a>，<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a> 和<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#text-case">text-case</a> 属性。</p>
 <div class="section" id="date-part">
 <h4>Date-part<a class="headerlink" href="#date-part" title="Permalink to this headline">¶</a></h4>
@@ -880,15 +880,61 @@ Feldmann, … S. G. Oliver
 <h4>名字内部顺序<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
 <p>名字内部各部分的顺序取决于<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>元素中<code class="docutils literal notranslate"><span class="pre">form</span></code>和<code class="docutils literal notranslate"><span class="pre">name-as-sort-order</span></code>属性和<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>元素中的<code class="docutils literal notranslate"><span class="pre">demote-non-droping-particle</span></code>属性的设置。名称各部分的显示和排序的属性通常是不同的。下面将对名字顺序进行简单的介绍：</p>
 <p><strong>拉丁/西里尔名字的显示顺序</strong></p>
+<hr class="docutils" />
+<p>条件：<code class="docutils literal notranslate"><span class="pre">form</span> </code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;long&quot;</span></code></p>
+<p>顺序：1. 名   2. 可省略粒子   3. 不可省略粒子   4. 姓   5. 后缀</p>
+<p>示例：Jean de La Fontaine III</p>
+<hr class="docutils" />
+<p>条件：<code class="docutils literal notranslate"><span class="pre">form</span> </code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;long&quot;</span></code>，<code class="docutils literal notranslate"><span class="pre">name-as-sort-order</span></code>属性激活，<code class="docutils literal notranslate"><span class="pre">demote-non-dropping-particle</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;never&quot;</span></code>或者<code class="docutils literal notranslate"><span class="pre">&quot;sort-only&quot;</span></code></p>
+<p>顺序：1. 不可省略粒子   2. 姓   3. 名   4. 可省略粒子   5. 后缀</p>
+<p>示例：La Fontaine, Jean de, III</p>
+<hr class="docutils" />
+<p>条件：<code class="docutils literal notranslate"><span class="pre">form</span> </code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;long&quot;</span></code>，<code class="docutils literal notranslate"><span class="pre">name-as-sort-order</span></code>属性激活，<code class="docutils literal notranslate"><span class="pre">demote-non-dropping-particle</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;display-and-sort&quot;</span></code></p>
+<p>顺序：1. 姓   2. 名   3. 可省略粒子   4. 不可省略粒子   5. 后缀</p>
+<p>示例：Fontaine, Jean de La III</p>
+<hr class="docutils" />
+<p>条件：<code class="docutils literal notranslate"><span class="pre">form</span> </code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;short&quot;</span></code></p>
+<p>顺序：1. 不可省略粒子   2. 姓</p>
+<p>示例：La Fontaine</p>
+<hr class="docutils" />
 <p><strong>拉丁/西里尔名字的排序顺序</strong></p>
+<hr class="docutils" />
+<p>条件：<code class="docutils literal notranslate"><span class="pre">demote-non-dropping-particle</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;never&quot;</span></code></p>
+<p>顺序：1. 不可省略粒子+姓   2. 可省略粒子   3. 名   4. 后缀</p>
+<p>示例：La Fontaine de Jean III</p>
+<hr class="docutils" />
+<p>条件：<code class="docutils literal notranslate"><span class="pre">demote-non-dropping-particle</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;sort-only&quot;</span></code>或者<code class="docutils literal notranslate"><span class="pre">&quot;display-and-sort&quot;</span></code></p>
+<p>顺序：1. 姓   2. 可省略粒子+不可省略粒子   3. 名   4. 后缀</p>
+<p>示例：Fontaine de La Jean III</p>
+<hr class="docutils" />
 <p><strong>非拉丁和非西里尔名字的显示和排序顺序</strong></p>
+<hr class="docutils" />
+<p>条件：<code class="docutils literal notranslate"><span class="pre">form</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;long&quot;</span></code></p>
+<p>顺序：1. 姓   2. 名</p>
+<p>示例：张三   或者   Zhang San</p>
+<hr class="docutils" />
+<p>条件：<code class="docutils literal notranslate"><span class="pre">form</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;short&quot;</span></code></p>
+<p>顺序：1. 姓</p>
+<p>示例：张   或者   Zhang</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="id18">
 <h4>名字格式化<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">cs:name</span></code>元素可能会携带一个或者两个<code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>子元素来对名字的小部分进行特定的格式化。<code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>必须携带<code class="docutils literal notranslate"><span class="pre">name</span></code>属性，设置为<code class="docutils literal notranslate"><span class="pre">&quot;given&quot;</span></code>或者<code class="docutils literal notranslate"><span class="pre">&quot;family&quot;</span></code>。</p>
+<p>如果设置为<code class="docutils literal notranslate"><span class="pre">&quot;given&quot;</span></code>，<code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>元素的<a class="reference external" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96">格式化</a>和<a class="reference external" href="#%E6%96%87%E5%AD%97%E5%A4%A7%E5%B0%8F%E5%86%99">文字大小写</a>属性会影响<code class="docutils literal notranslate"><span class="pre">&quot;given&quot;</span></code>和<code class="docutils literal notranslate"><span class="pre">&quot;dropping-particle&quot;</span></code>部分。<a class="reference external" href="#%E8%AF%8D%E7%BC%80">词缀</a>出现在<code class="docutils literal notranslate"><span class="pre">&quot;given&quot;</span></code>左右，将该部分扩起来。</p>
+<p>如果设置为<code class="docutils literal notranslate"><span class="pre">&quot;family&quot;</span></code>，<code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>元素的<a class="reference external" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96">格式化</a>和<a class="reference external" href="#%E6%96%87%E5%AD%97%E5%A4%A7%E5%B0%8F%E5%86%99">文字大小写</a>属性会影响<code class="docutils literal notranslate"><span class="pre">&quot;given&quot;</span></code>和<code class="docutils literal notranslate"><span class="pre">&quot;non-dropping-particle&quot;</span></code>部分。<a class="reference external" href="#%E8%AF%8D%E7%BC%80">词缀</a>出现在<code class="docutils literal notranslate"><span class="pre">&quot;family&quot;</span></code>左右，将该部分扩起来。</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;suffix&quot;</span></code>部分不受 name-part 部分格式限制。<code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>元素不影响 name-part 渲染的顺序。下面的代码，将产生类似 Jane DOE 的效果：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;names</span> <span class="na">variable=</span><span class="s">&quot;author&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;name&gt;</span>
+    <span class="nt">&lt;name-part</span> <span class="na">name=</span><span class="s">&quot;family&quot;</span> <span class="na">text-case=</span><span class="s">&quot;uppercase&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;/names&gt;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="et-al">
 <h4>Et-al<a class="headerlink" href="#et-al" title="Permalink to this headline">¶</a></h4>
-<p>Et-al缩写通过<code class="docutils literal notranslate"><span class="pre">et-al-...</span></code>属性来控制，同时也可以使用可选的<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>元素设置，<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>元素必须放在<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>元素后。<code class="docutils literal notranslate"><span class="pre">term</span></code>属性可以被设置为<code class="docutils literal notranslate"><span class="pre">&quot;et-al&quot;</span></code>（默认）或者<code class="docutils literal notranslate"><span class="pre">&quot;and</span> <span class="pre">others&quot;</span></code>。下面是 <code class="docutils literal notranslate"><span class="pre">&quot;et-al&quot;</span></code>术语的一个例子：</p>
+<p>Et-al 缩写通过<code class="docutils literal notranslate"><span class="pre">et-al-...</span></code>属性来控制（见<a class="reference external" href="#Name">Name</a>），同时也可以使用可选的<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>元素设置，<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>元素必须放在<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>元素后。<code class="docutils literal notranslate"><span class="pre">term</span></code>属性可以被设置为<code class="docutils literal notranslate"><span class="pre">&quot;et-al&quot;</span></code>（默认）或者<code class="docutils literal notranslate"><span class="pre">&quot;and</span> <span class="pre">others&quot;</span></code>。<a class="reference external" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96">格式化</a>属性可以用来设置 et-al 的格式，下面是 <code class="docutils literal notranslate"><span class="pre">&quot;et-al&quot;</span></code>术语的一个例子：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;names</span> <span class="na">variable=</span><span class="s">&quot;author&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;et-al</span> <span class="na">term=</span><span class="s">&quot;and others&quot;</span> <span class="na">font-style=</span><span class="s">&quot;italic&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/names&gt;</span>
@@ -897,7 +943,7 @@ Feldmann, … S. G. Oliver
 </div>
 <div class="section" id="substitute">
 <h4>Substitute<a class="headerlink" href="#substitute" title="Permalink to this headline">¶</a></h4>
-<p>可选的<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>元素，是<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>的子元素，且必须是最后一个子元素，在父元素<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>中指定的名称变量为空时添加替换。替换必须放在<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>元素种，并且必须包含一个或者多个渲染元素（除<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>）。<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>的简洁版本没有子元素，继承了<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>元素中在<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>子元素的属性值。如果<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>元素包含了多个子元素，第一个非空的元素用于替换。替换变量在输出的其余部分被抑制，以防止重复。下面的例子中：<code class="docutils literal notranslate"><span class="pre">&quot;author&quot;</span></code>名称变量为空时，就被<code class="docutils literal notranslate"><span class="pre">&quot;editor&quot;</span></code>名称变量替换，在没有 editor 时，则使用<code class="docutils literal notranslate"><span class="pre">&quot;title&quot;</span></code>宏替换。</p>
+<p>可选的<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>元素，是<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>的子元素，且必须是最后一个子元素，在父元素<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>中指定的<a class="reference external" href="#%E5%90%8D%E7%A7%B0%E5%8F%98%E9%87%8F">名称变量</a>为空时添加替换。替换必须放在<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>元素中，并且必须包含一个或者多个渲染元素（除<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>）。<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>的简洁版本没有子元素，继承了<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>元素中在<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>子元素的属性值。如果<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>元素包含了多个子元素，第一个非空的元素用于替换。替换变量在输出的其余部分被抑制，以防止重复。下面的例子中：<code class="docutils literal notranslate"><span class="pre">&quot;author&quot;</span></code>名称变量为空时，就被<code class="docutils literal notranslate"><span class="pre">&quot;editor&quot;</span></code>名称变量替换，在没有 editor 时，则使用<code class="docutils literal notranslate"><span class="pre">&quot;title&quot;</span></code>宏替换。</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;macro</span> <span class="na">name=</span><span class="s">&quot;author&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;names</span> <span class="na">variable=</span><span class="s">&quot;author&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;substitute&gt;</span>
@@ -911,18 +957,18 @@ Feldmann, … S. G. Oliver
 </div>
 <div class="section" id="label-in-cs-names">
 <h4>Label in <code class="docutils literal notranslate"><span class="pre">cs:names</span></code><a class="headerlink" href="#label-in-cs-names" title="Permalink to this headline">¶</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">cs:label</span></code>元素时可选的，而且必须位于<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>元素后，在<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>元素前。当<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>作为<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>元素的子元素时，<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>不能携带<code class="docutils literal notranslate"><span class="pre">variable</span></code>属性，而是使用父元素<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>中的变量。A second difference is that the <code class="docutils literal notranslate"><span class="pre">form</span></code> attribute may also be set to “verb” or “verb-short”, so that the allowed values are:</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:label</span></code>元素是可选的（见<a class="reference external" href="#Label">Label</a>），而且必须位于<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>元素后，在<code class="docutils literal notranslate"><span class="pre">cs:substitute</span></code>元素前。当<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>作为<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>元素的子元素时，<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>不能携带<code class="docutils literal notranslate"><span class="pre">variable</span></code>属性，而是使用父元素<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>中的变量。第二个区别是：<code class="docutils literal notranslate"><span class="pre">form</span></code>属性可以设置为<code class="docutils literal notranslate"><span class="pre">&quot;verb&quot;</span></code>或者<code class="docutils literal notranslate"><span class="pre">&quot;verb-short&quot;</span></code>，其所有允许的值为：</p>
 <ul class="simple">
-<li><p>“long” - (default), e.g. “editor” and “editors” for the “editor” term</p></li>
-<li><p>“short” - e.g. “ed.” and “eds.” for the term “editor”</p></li>
-<li><p>“verb” - e.g. “edited by” for the term “editor”</p></li>
-<li><p>“verb-short” - e.g. “ed.” for the term “editor”</p></li>
-<li><p>“symbol” - e.g. “§” and “§§” for the term “section”</p></li>
+<li><p>“long” - （默认）, 例如， “editor”术语渲染为”editor” 和 “editors”</p></li>
+<li><p>“short” - 例如，”editor”术语渲染为”ed.” 和 “eds”</p></li>
+<li><p>“verb” - 例如，”editor”术语渲染为”edited by”</p></li>
+<li><p>“verb-short” - 例如，”editor”术语渲染为”ed.”</p></li>
+<li><p>“symbol” - 例如，”section”术语渲染为 “§” 和 “§§”</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="label">
-<h3>Label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h3>
+<h3>Label  *****<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">cs:label</span></code>渲染元素输出与所选变量匹配的术语，该属性必须设置为”locator”、”page”或数字变量之一。只有当选择的变量是非空的受，术语才会渲染。例如：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;group</span> <span class="na">delimiter=</span><span class="s">&quot; &quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;label</span> <span class="na">variable=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;</span>

@@ -508,7 +508,7 @@ B. Locale files/本地化文件
 
 第二种，`cs:date`可以含有一个或者多个`cs:date-part`子元素（见[Date-part](#Date-part)）。在这些子元素中可以设置属性来覆盖之前的本地化设置（例如：要获得所有语言环境的缩写月份，可以将月份的`cs:date-part`元素的`form`属性设置为`"short"`）。这些`cs:date-part`子元素不影响各个日期部分渲染的顺序和以及其是否渲染。`cs:date-part`元素中不能使用词缀 [Affixes](#词缀).
 
-没有属性`form`的情况下，`cs:date`则描述了一个自带的非本地化的日期格式。其日期格式使用`cs:date-part`子元素来构建。在使用`name`属性并设置为`day`，`month`或`year`时，这些元素的顺序反应了其显示顺序。日期可以在`cs:date-part`元素种使用[`formatting`](格式化)属性以及多个`cs:date-part`的属性来格式化（见[Date-part](#Date-part)）。`cs:date`中的`delimiter`属性可以用来设置`cs:date-part`元素不同日期部分的分隔符，此外，[词缀](#词缀)可以用在 `cs:date-part` elements。
+没有属性`form`的情况下，`cs:date`则描述了一个自带的非本地化的日期格式。其日期格式使用`cs:date-part`子元素来构建。在使用`name`属性并设置为`day`，`month`或`year`时，这些元素的顺序反应了其显示顺序。日期可以在`cs:date-part`元素中使用[`formatting`](格式化)属性以及多个`cs:date-part`的属性来格式化（见[Date-part](#Date-part)）。`cs:date`中的`delimiter`属性可以用来设置`cs:date-part`元素不同日期部分的分隔符，此外，[词缀](#词缀)可以用在 `cs:date-part` elements。
 
 本地化的日期或者是非本地化的日期，, `cs:date` 都可能携带 [affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes)，[display](https://docs.citationstyles.org/en/stable/specification.html#display)，[formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting) 和[text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) 属性。
 
@@ -754,17 +754,103 @@ Feldmann, … S. G. Oliver
 
 **拉丁/西里尔名字的显示顺序**
 
+---
+
+条件：`form `属性设置为`"long"`
+
+顺序：1. 名   2. 可省略粒子   3. 不可省略粒子   4. 姓   5. 后缀
+
+示例：Jean de La Fontaine III
+
+---
+
+条件：`form `属性设置为`"long"`，`name-as-sort-order`属性激活，`demote-non-dropping-particle`属性设置为`"never"`或者`"sort-only"`
+
+顺序：1. 不可省略粒子   2. 姓   3. 名   4. 可省略粒子   5. 后缀
+
+示例：La Fontaine, Jean de, III
+
+---
+
+条件：`form `属性设置为`"long"`，`name-as-sort-order`属性激活，`demote-non-dropping-particle`属性设置为`"display-and-sort"`
+
+顺序：1. 姓   2. 名   3. 可省略粒子   4. 不可省略粒子   5. 后缀
+
+示例：Fontaine, Jean de La III
+
+---
+
+条件：`form `属性设置为`"short"`
+
+顺序：1. 不可省略粒子   2. 姓  
+
+示例：La Fontaine
+
+---
+
 **拉丁/西里尔名字的排序顺序**
+
+---
+
+条件：`demote-non-dropping-particle`属性设置为`"never"`
+
+顺序：1. 不可省略粒子+姓   2. 可省略粒子   3. 名   4. 后缀
+
+示例：La Fontaine de Jean III
+
+---
+
+条件：`demote-non-dropping-particle`属性设置为`"sort-only"`或者`"display-and-sort"`
+
+顺序：1. 姓   2. 可省略粒子+不可省略粒子   3. 名   4. 后缀
+
+示例：Fontaine de La Jean III
+
+---
 
 **非拉丁和非西里尔名字的显示和排序顺序**
 
+---
+
+条件：`form`属性设置为`"long"`
+
+顺序：1. 姓   2. 名
+
+示例：张三   或者   Zhang San
+
+---
+
+条件：`form`属性设置为`"short"`
+
+顺序：1. 姓  
+
+示例：张   或者   Zhang
+
+---
+
+
+
 #### 名字格式化
 
+`cs:name`元素可能会携带一个或者两个`cs:name-part`子元素来对名字的小部分进行特定的格式化。`cs:name-part`必须携带`name`属性，设置为`"given"`或者`"family"`。
 
+如果设置为`"given"`，`cs:name-part`元素的[格式化](#格式化)和[文字大小写](#文字大小写)属性会影响`"given"`和`"dropping-particle"`部分。[词缀](#词缀)出现在`"given"`左右，将该部分扩起来。
+
+如果设置为`"family"`，`cs:name-part`元素的[格式化](#格式化)和[文字大小写](#文字大小写)属性会影响`"given"`和`"non-dropping-particle"`部分。[词缀](#词缀)出现在`"family"`左右，将该部分扩起来。
+
+`"suffix"`部分不受 name-part 部分格式限制。`cs:name-part`元素不影响 name-part 渲染的顺序。下面的代码，将产生类似 Jane DOE 的效果：
+
+```xml
+<names variable="author">
+  <name>
+    <name-part name="family" text-case="uppercase"/>
+  </name>
+</names>
+```
 
 #### Et-al
 
-Et-al缩写通过`et-al-...`属性来控制，同时也可以使用可选的`cs:et-al`元素设置，`cs:et-al`元素必须放在`cs:name`元素后。`term`属性可以被设置为`"et-al"`（默认）或者`"and others"`。下面是 `"et-al"`术语的一个例子：
+Et-al 缩写通过`et-al-...`属性来控制（见[Name](#Name)），同时也可以使用可选的`cs:et-al`元素设置，`cs:et-al`元素必须放在`cs:name`元素后。`term`属性可以被设置为`"et-al"`（默认）或者`"and others"`。[格式化](#格式化)属性可以用来设置 et-al 的格式，下面是 `"et-al"`术语的一个例子：
 
 ```xml
 <names variable="author">
@@ -774,7 +860,7 @@ Et-al缩写通过`et-al-...`属性来控制，同时也可以使用可选的`cs:
 
 #### Substitute
 
-可选的`cs:substitute`元素，是`cs:names`的子元素，且必须是最后一个子元素，在父元素`cs:names`中指定的名称变量为空时添加替换。替换必须放在`cs:substitute`元素种，并且必须包含一个或者多个渲染元素（除`cs:layout`）。`cs:names`的简洁版本没有子元素，继承了`cs:names`元素中在`cs:name`和`cs:et-al`子元素的属性值。如果`cs:substitute`元素包含了多个子元素，第一个非空的元素用于替换。替换变量在输出的其余部分被抑制，以防止重复。下面的例子中：`"author"`名称变量为空时，就被`"editor"`名称变量替换，在没有 editor 时，则使用`"title"`宏替换。
+可选的`cs:substitute`元素，是`cs:names`的子元素，且必须是最后一个子元素，在父元素`cs:names`中指定的[名称变量](#名称变量)为空时添加替换。替换必须放在`cs:substitute`元素中，并且必须包含一个或者多个渲染元素（除`cs:layout`）。`cs:names`的简洁版本没有子元素，继承了`cs:names`元素中在`cs:name`和`cs:et-al`子元素的属性值。如果`cs:substitute`元素包含了多个子元素，第一个非空的元素用于替换。替换变量在输出的其余部分被抑制，以防止重复。下面的例子中：`"author"`名称变量为空时，就被`"editor"`名称变量替换，在没有 editor 时，则使用`"title"`宏替换。
 
 ```xml
 <macro name="author">
@@ -791,15 +877,15 @@ Et-al缩写通过`et-al-...`属性来控制，同时也可以使用可选的`cs:
 
 #### Label in `cs:names`
 
-`cs:label`元素时可选的，而且必须位于`cs:name`和`cs:et-al`元素后，在`cs:substitute`元素前。当`cs:label`作为`cs:names`元素的子元素时，`cs:label`不能携带`variable`属性，而是使用父元素`cs:names`中的变量。A second difference is that the `form` attribute may also be set to "verb" or "verb-short", so that the allowed values are:
+`cs:label`元素是可选的（见[Label](#Label)），而且必须位于`cs:name`和`cs:et-al`元素后，在`cs:substitute`元素前。当`cs:label`作为`cs:names`元素的子元素时，`cs:label`不能携带`variable`属性，而是使用父元素`cs:names`中的变量。第二个区别是：`form`属性可以设置为`"verb"`或者`"verb-short"`，其所有允许的值为：
 
-- "long" - (default), e.g. "editor" and "editors" for the "editor" term
-- "short" - e.g. "ed." and "eds." for the term "editor"
-- "verb" - e.g. "edited by" for the term "editor"
-- "verb-short" - e.g. "ed." for the term "editor"
-- "symbol" - e.g. "§" and "§§" for the term "section"
+- "long" - （默认）, 例如， "editor"术语渲染为"editor" 和 "editors" 
+- "short" - 例如，"editor"术语渲染为"ed." 和 "eds"
+- "verb" - 例如，"editor"术语渲染为"edited by" 
+- "verb-short" - 例如，"editor"术语渲染为"ed."
+- "symbol" - 例如，"section"术语渲染为 "§" 和 "§§"
 
-### Label
+### Label  *****
 
 `cs:label`渲染元素输出与所选变量匹配的术语，该属性必须设置为"locator"、"page"或数字变量之一。只有当选择的变量是非空的受，术语才会渲染。例如：
 
