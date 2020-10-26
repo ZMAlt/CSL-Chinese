@@ -885,9 +885,9 @@ Et-al 缩写通过`et-al-...`属性来控制（见[Name](#Name)），同时也�
 - "verb-short" - 例如，"editor"术语渲染为"ed."
 - "symbol" - 例如，"section"术语渲染为 "§" 和 "§§"
 
-### Label  *****
+### Label
 
-`cs:label`渲染元素输出与所选变量匹配的术语，该属性必须设置为"locator"、"page"或数字变量之一。只有当选择的变量是非空的受，术语才会渲染。例如：
+`cs:label`渲染元素输出与所选变量匹配的术语，该属性必须设置为"locator"、"page"或数字变量之一。只有当选择的变量是非空的时候，术语才会渲染。例如：
 
 ```xml
 <group delimiter=" ">
@@ -900,19 +900,19 @@ Et-al 缩写通过`et-al-...`属性来控制（见[Name](#Name)），同时也�
 
 `form`
 
-​	选择术语的形式，可以使用下面的值：
+​	选择术语的形式，可以设置为下面的值：
 
-- "long" - (default), e.g. "page"/"pages" for the "page" term
-- "short" - e.g. "p."/"pp." for the "page" term
-- "symbol" - e.g. "§"/"§§" for the "section" term
+- "long" - （默认）， 例如：  "page" 术语渲染为"page"/"pages"
+- "short" - 例如：  "page" 术语渲染为"p."/"pp." 
+- "symbol" - 例如：  "section" 术语渲染为 "§"/"§§"
 
 `plural`
 
 ​	设置术语的复数形式，可以使用下面的值：
 
-- "contextual" - (default), the term plurality matches that of the variable content. Content is considered plural when it contains multiple numbers (e.g. "page 1", "pages 1-3", "volume 2", "volumes 2 & 4"), or, in the case of the "number-of-pages" and "number-of-volumes" variables, when the number is higher than 1 ("1 volume" and "3 volumes").
-- "always" - always use the plural form, e.g. "pages 1" and "pages 1-3"
-- "never" - always use the singular form, e.g. "page 1" and "page 1-3"
+- "contextual" - （默认），复数形式的渲染和具体的内容相匹配。当内容中包含多个数字时，使用复数形式。如下面的渲染结果："page 1"，"pages 1-3"，"volume 2"，"volumes 2 & 4"。或者在使用`number-of-pages`和`number-of-volumes`时，数字大于1，例如： ("1 volume" 和 "3 volumes"。
+- "always" - 总是使用复数形式，不管具体的内容如何。例如："pages 1" 和 "pages 1-3"
+- "never" - 禁止使用复数形式，不管具体内容： "page 1"和"page 1-3"
 
 `cs:label`也可能会携带[affixes](https://docs.citationstyles.org/en/stable/specification.html#affixes), [formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting), [text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) 和 [strip-periods](https://docs.citationstyles.org/en/stable/specification.html#strip-periods) 属性。
 
@@ -949,9 +949,9 @@ Et-al 缩写通过`et-al-...`属性来控制（见[Name](#Name)），同时也�
 
 `cs:choose`元素中必须还有`cs:if`子元素，后面还可以有一个或者多个`cs:else-if`子元素以及一个可选的用来结尾的`cs:else`元素。`cs:if`和`cs:else-if`元素可能回包含任意个除`cs:layout`的渲染元素。由于空的`cs:else`元素是多余的，所以`cs:else`元素必须至少包含一个渲染元素。`cs:if`和`cs:else-if`元素必须含有一个或多个判断条件，这些条件可以使用下买的属性设置：
 
-`disambiguate`
+`disambiguate` ****
 
-​	当改属性设置为`"true"`(并且是唯一允许的值)的时候，When set to "true" (the only allowed value), the element content is only rendered if it disambiguates two otherwise identical citations. This attempt at [disambiguation](https://docs.citationstyles.org/en/stable/specification.html#disambiguation) is only made when all other disambiguation methods have failed to uniquely identify the target source.
+​	当改属性设置为`"true"`(唯一允许的值)的时候，When set to "true" (the only allowed value), the element content is only rendered if it disambiguates two otherwise identical citations. This attempt at [disambiguation](https://docs.citationstyles.org/en/stable/specification.html#disambiguation) is only made when all other disambiguation methods have failed to uniquely identify the target source.
 
 ```
 is-numeric
