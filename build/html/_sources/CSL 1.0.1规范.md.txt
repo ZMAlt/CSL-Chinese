@@ -949,37 +949,29 @@ Et-al 缩写通过`et-al-...`属性来控制（见[Name](#Name)），同时也�
 
 `cs:choose`元素中必须还有`cs:if`子元素，后面还可以有一个或者多个`cs:else-if`子元素以及一个可选的用来结尾的`cs:else`元素。`cs:if`和`cs:else-if`元素可能回包含任意个除`cs:layout`的渲染元素。由于空的`cs:else`元素是多余的，所以`cs:else`元素必须至少包含一个渲染元素。`cs:if`和`cs:else-if`元素必须含有一个或多个判断条件，这些条件可以使用下买的属性设置：
 
-`disambiguate` ****
+`disambiguate` 
 
-​	当改属性设置为`"true"`(唯一允许的值)的时候，When set to "true" (the only allowed value), the element content is only rendered if it disambiguates two otherwise identical citations. This attempt at [disambiguation](https://docs.citationstyles.org/en/stable/specification.html#disambiguation) is only made when all other disambiguation methods have failed to uniquely identify the target source.
+​	当改属性设置为`"true"`(唯一允许的值)的时候，在元素内容消除了两个相同的引用时渲染。当所有其他消除歧义的方法都不能识别唯一的目标时，才进行消除歧义的尝试。
 
-```
-is-numeric
-```
+`is-numeric`
 
-Tests whether the given variables ([Appendix IV - Variables](https://docs.citationstyles.org/en/stable/specification.html#appendix-iv-variables)) contain numeric content. Content is considered numeric if it solely consists of numbers. Numbers may have prefixes and suffixes ("D2", "2b", "L2d"), and may be separated by a comma, hyphen, or ampersand, with or without spaces ("2, 3", "2-4", "2 & 4"). For example, "2nd" tests "true" whereas "second" and "2nd edition" test "false".
+​	测试给定的变量（[附录IV 变量](#附录IV 变量)）是不是包含数字部分。如果内容仅由数字构成，则识别为数字。数字可以带有前缀、后缀（"D2"，"2b"，"L2d"）、并且可能被逗号，连字符或`&`分隔（"2, 3"，"2-4"，"2 & 4"）。 例如， "2nd"被识别为 "true" ，但 "second"和"2nd edition"被识别为"false".
 
-```
-is-uncertain-date
-```
+`is-uncertain-date`
 
-Tests whether the given [date variables](https://docs.citationstyles.org/en/stable/specification.html#date-variables) contain [approximate dates](https://docs.citationstyles.org/en/stable/specification.html#approximate-dates).
+​	判断给定的[日期变量](#日期变量)是不是包含[近似日期](#Approximate Dates)。
 
-```
-locator
-```
+`locator`
 
-Tests whether the locator matches the given locator types (see [Locators](https://docs.citationstyles.org/en/stable/specification.html#locators)). Use "sub-verbo" to test for the "sub verbo" locator type.
+​	判断位置是不是和给定的位置符合。这里的位置主要是在一个文档中的位置，比如，题目，第几段。使用 "sub-verbo"判断是不是"sub-verbo"类型
 
-```
-position
-```
+`position`
 
-Tests whether the cite position matches the given positions (terminology: citations consist of one or more cites to individual items). When called within the scope of cs:bibliography, `position` tests "false". The positions that can be tested are:
+​	判断引用的位置湿否和给定的位置匹配。当在`cs:bibliography`中调用时，`position`的结果为"false"。位置可以使用下面的选项测试：
 
-- "first": position of cites that are the first to reference an item
+- "first": 第一个引用项的位置
 
-- "ibid"/"ibid-with-locator"/"subsequent": cites referencing previously cited items have the "subsequent" position. Such cites may also have the "ibid" or "ibid-with-locator" position when:
+- "ibid"/"ibid-with-locator"/"subsequent": 引用先前引用的项目的引用，Such cites may also have the "ibid" or "ibid-with-locator" position when:
 
   1. the current cite immediately follows on another cite, within the same citation, that references the same item
 
@@ -996,27 +988,35 @@ Tests whether the cite position matches the given positions (terminology: citati
 
 Whenever position="ibid-with-locator" tests true, position="ibid" also tests true. And whenever position="ibid" or position="near-note" test true, position="subsequent" also tests true.
 
-```
-type
-```
+`type`
 
-Tests whether the item matches the given types ([Appendix III - Types](https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types)).
+​	测试项目是不是和给定的类型匹配（[附录 III 类型](#附录 III 类型)）。这里的类型指条目的类型，例如，书，期刊文献，学位论文。
 
-```
-variable
-```
+`variable`
 
-Tests whether the default (long) forms of the given variables ([Appendix IV - Variables](https://docs.citationstyles.org/en/stable/specification.html#appendix-iv-variables)) contain non-empty values.
+​	测试给定变量（[附录IV 变量](#附录IV 变量)）的默认的形式(long)是不是为空。
+
+---
+
+除了`disambiguate`外，所有的条件都允许有多个测试值，多个测试值使用空格分隔（"book thesis"）。
+
+`cs:if`元素和`cs:else-if`元素可能会携带`match`属性用来控制判断的逻辑，`match`可设置的值为：
+
+- "all" - 默认，仅当所有给定测试值都为 true 的时候结果才为 true
+- "any" - 当任意一个值为 true 的时候，结果就为 true
+- "none" - 当没有值测试为 true 的时候，结果为 true
 
 ## 样式行为
 
 ### 选项
 
-样式可以使用不同的元素来进行特定的配置。在`cs:citation`元素中设置元素可以配置特定的引文选项；在`cs:bibliography`元素和全局选项（同时影响引文和参考文献条目）中，可以配置特定的参考文献条目。继承的名字选项可以在`cs:style`,`cs:style`和`cs:bibliography`中设置。最后，本地化选项可以在`cs:locale`元素中设置。
+样式可以使用不同的元素来进行特定的配置。在`cs:citation`元素中设置元素可以配置特定的[引文选项](#引文选项)；在`cs:bibliography`元素和[全局选项](#全局选项)（同时影响引文和参考文献条目）中，可以配置特定的参考文献条目。继承的名字选项可以在`cs:style`,`cs:style`和`cs:bibliography`中设置。最后，[本地化选项](#本地化选项)可以在`cs:locale`元素中设置。
 
 #### 引文选项
 
 **消除歧义**
+
+
 
 **引用分组**
 
@@ -1211,18 +1211,73 @@ Allows for the use of small capitals, with values:
 
 ### 显示\display
 
-`display`属性可用于将各个条目构成一个或者多个文本块。如果使用该属性，所有的渲染原属都在该属性的控制下。（译注：是用来设置对齐效果的）属性可能的值为：
+`display`属性可用于将各个参考文献条目构成一个或者多个文本块。如果使用该属性，所有的渲染元素都在该属性的控制下。（译注：是用来设置对齐效果的）属性可能的值为：
 
-- "block" - 文字居中？
-- "left-margin" - 左对齐
+- "block" - 两边对其
+- "left-margin" - 左对齐。
 - "right-inline" - 右对齐
-- "indent" - 缩进
+- "indent" - 缩进。
+
+**例**      ****
+
+A. 
+
+```xml
+<bibliography>
+  <layout>
+    <text display="left-margin" variable="citation-number"
+        prefix="[" suffix="]"/>
+    <group display="right-inline">
+      <!-- rendering elements -->
+    </group>
+  </layout>
+</bibliography>
+```
+
+
+
+B. 
+
+```xml
+<bibliography subsequent-author-substitute="">
+  <sort>
+    <key variable="author"/>
+    <key variable="issued"/>
+  </sort>
+  <layout>
+    <group display="block">
+      <names variable="author"/>
+    </group>
+    <group display="left-margin">
+      <date variable="issued">
+        <date-part name="year" />
+      </date>
+    </group>
+    <group display="right-inline">
+      <text variable="title"/>
+    </group>
+  </layout>
+</bibliography>
+```
+
+C. 
+
+```xml
+<bibliography>
+  <layout>
+    <group display="block">
+      <!-- rendering elements -->
+    </group>
+    <text display="indent" variable="abstract" />
+  </layout>
+</bibliography>
+```
+
+
 
 ### 引用\quotes
 
 `quotes`属性可以在`cs:text`中设置。当设置为`"true"`时（默认为`"false"`），渲染文本将会被包含在引用中。本地化的`punctuation-in-quote`选项控制用来连接的逗号或者句号是出现在引号的内部还是外部（默认外部）。
-
-
 
 ### Strip-periods
 
@@ -1259,7 +1314,7 @@ CSL 处理器不能识别专有名词。因此，可以将句子大小写的字�
 
 **非英语项目**
 
-由于许多语言不使用标题大小写，标题大小写转换(在"Text-case"中设置为"title")仅影响英语项目：
+由于许多语言不使用标题大小写，标题大小写转换(在"Text-case"中设置为"title")仅影响英语项目。
 
 如果`cs:style`中的`default-locale`属性没有设置，或者设置为`en`开头的单词，则假定为英语环境。如果某项的元数据包含一个语言字段，而且该字段不是以`"en"`开头的，才被视为是非英语环境。
 

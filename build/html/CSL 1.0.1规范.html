@@ -1021,27 +1021,19 @@ Feldmann, … S. G. Oliver
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">cs:choose</span></code>元素中必须还有<code class="docutils literal notranslate"><span class="pre">cs:if</span></code>子元素，后面还可以有一个或者多个<code class="docutils literal notranslate"><span class="pre">cs:else-if</span></code>子元素以及一个可选的用来结尾的<code class="docutils literal notranslate"><span class="pre">cs:else</span></code>元素。<code class="docutils literal notranslate"><span class="pre">cs:if</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:else-if</span></code>元素可能回包含任意个除<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>的渲染元素。由于空的<code class="docutils literal notranslate"><span class="pre">cs:else</span></code>元素是多余的，所以<code class="docutils literal notranslate"><span class="pre">cs:else</span></code>元素必须至少包含一个渲染元素。<code class="docutils literal notranslate"><span class="pre">cs:if</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:else-if</span></code>元素必须含有一个或多个判断条件，这些条件可以使用下买的属性设置：</p>
-<p><code class="docutils literal notranslate"><span class="pre">disambiguate</span></code> ****</p>
-<p>​	当改属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>(唯一允许的值)的时候，When set to “true” (the only allowed value), the element content is only rendered if it disambiguates two otherwise identical citations. This attempt at <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#disambiguation">disambiguation</a> is only made when all other disambiguation methods have failed to uniquely identify the target source.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">-</span><span class="n">numeric</span>
-</pre></div>
-</div>
-<p>Tests whether the given variables (<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#appendix-iv-variables">Appendix IV - Variables</a>) contain numeric content. Content is considered numeric if it solely consists of numbers. Numbers may have prefixes and suffixes (“D2”, “2b”, “L2d”), and may be separated by a comma, hyphen, or ampersand, with or without spaces (“2, 3”, “2-4”, “2 &amp; 4”). For example, “2nd” tests “true” whereas “second” and “2nd edition” test “false”.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">-</span><span class="n">uncertain</span><span class="o">-</span><span class="n">date</span>
-</pre></div>
-</div>
-<p>Tests whether the given <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#date-variables">date variables</a> contain <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#approximate-dates">approximate dates</a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">locator</span>
-</pre></div>
-</div>
-<p>Tests whether the locator matches the given locator types (see <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#locators">Locators</a>). Use “sub-verbo” to test for the “sub verbo” locator type.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">position</span>
-</pre></div>
-</div>
-<p>Tests whether the cite position matches the given positions (terminology: citations consist of one or more cites to individual items). When called within the scope of cs:bibliography, <code class="docutils literal notranslate"><span class="pre">position</span></code> tests “false”. The positions that can be tested are:</p>
+<p><code class="docutils literal notranslate"><span class="pre">disambiguate</span></code></p>
+<p>​	当改属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>(唯一允许的值)的时候，在元素内容消除了两个相同的引用时渲染。当所有其他消除歧义的方法都不能识别唯一的目标时，才进行消除歧义的尝试。</p>
+<p><code class="docutils literal notranslate"><span class="pre">is-numeric</span></code></p>
+<p>​	测试给定的变量（[附录IV 变量](#附录IV 变量)）是不是包含数字部分。如果内容仅由数字构成，则识别为数字。数字可以带有前缀、后缀（”D2”，”2b”，”L2d”）、并且可能被逗号，连字符或<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>分隔（”2, 3”，”2-4”，”2 &amp; 4”）。 例如， “2nd”被识别为 “true” ，但 “second”和”2nd edition”被识别为”false”.</p>
+<p><code class="docutils literal notranslate"><span class="pre">is-uncertain-date</span></code></p>
+<p>​	判断给定的<a class="reference external" href="#%E6%97%A5%E6%9C%9F%E5%8F%98%E9%87%8F">日期变量</a>是不是包含[近似日期](#Approximate Dates)。</p>
+<p><code class="docutils literal notranslate"><span class="pre">locator</span></code></p>
+<p>​	判断位置是不是和给定的位置符合。这里的位置主要是在一个文档中的位置，比如，题目，第几段。使用 “sub-verbo”判断是不是”sub-verbo”类型</p>
+<p><code class="docutils literal notranslate"><span class="pre">position</span></code></p>
+<p>​	判断引用的位置湿否和给定的位置匹配。当在<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>中调用时，<code class="docutils literal notranslate"><span class="pre">position</span></code>的结果为”false”。位置可以使用下面的选项测试：</p>
 <ul>
-<li><p>“first”: position of cites that are the first to reference an item</p></li>
-<li><p>“ibid”/”ibid-with-locator”/”subsequent”: cites referencing previously cited items have the “subsequent” position. Such cites may also have the “ibid” or “ibid-with-locator” position when:</p>
+<li><p>“first”: 第一个引用项的位置</p></li>
+<li><p>“ibid”/”ibid-with-locator”/”subsequent”: 引用先前引用的项目的引用，Such cites may also have the “ibid” or “ibid-with-locator” position when:</p>
 <ol class="simple">
 <li><p>the current cite immediately follows on another cite, within the same citation, that references the same item</p></li>
 </ol>
@@ -1058,21 +1050,25 @@ Feldmann, … S. G. Oliver
 <li><p>“near-note”: position of a cite following another cite referencing the same item. Both cites have to be located in foot or endnotes, and the distance between both cites may not exceed the maximum distance (measured in number of foot or endnotes) set with the <code class="docutils literal notranslate"><span class="pre">near-note-distance</span></code> option (see <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#note-distance">Note Distance</a>).</p></li>
 </ul>
 <p>Whenever position=”ibid-with-locator” tests true, position=”ibid” also tests true. And whenever position=”ibid” or position=”near-note” test true, position=”subsequent” also tests true.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span>
-</pre></div>
-</div>
-<p>Tests whether the item matches the given types (<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types">Appendix III - Types</a>).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">variable</span>
-</pre></div>
-</div>
-<p>Tests whether the default (long) forms of the given variables (<a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#appendix-iv-variables">Appendix IV - Variables</a>) contain non-empty values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">type</span></code></p>
+<p>​	测试项目是不是和给定的类型匹配（[附录 III 类型](#附录 III 类型)）。这里的类型指条目的类型，例如，书，期刊文献，学位论文。</p>
+<p><code class="docutils literal notranslate"><span class="pre">variable</span></code></p>
+<p>​	测试给定变量（[附录IV 变量](#附录IV 变量)）的默认的形式(long)是不是为空。</p>
+<hr class="docutils" />
+<p>除了<code class="docutils literal notranslate"><span class="pre">disambiguate</span></code>外，所有的条件都允许有多个测试值，多个测试值使用空格分隔（”book thesis”）。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cs:if</span></code>元素和<code class="docutils literal notranslate"><span class="pre">cs:else-if</span></code>元素可能会携带<code class="docutils literal notranslate"><span class="pre">match</span></code>属性用来控制判断的逻辑，<code class="docutils literal notranslate"><span class="pre">match</span></code>可设置的值为：</p>
+<ul class="simple">
+<li><p>“all” - 默认，仅当所有给定测试值都为 true 的时候结果才为 true</p></li>
+<li><p>“any” - 当任意一个值为 true 的时候，结果就为 true</p></li>
+<li><p>“none” - 当没有值测试为 true 的时候，结果为 true</p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="id19">
 <h2>样式行为<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id20">
 <h3>选项<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
-<p>样式可以使用不同的元素来进行特定的配置。在<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素中设置元素可以配置特定的引文选项；在<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>元素和全局选项（同时影响引文和参考文献条目）中，可以配置特定的参考文献条目。继承的名字选项可以在<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>中设置。最后，本地化选项可以在<code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素中设置。</p>
+<p>样式可以使用不同的元素来进行特定的配置。在<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素中设置元素可以配置特定的<a class="reference external" href="#%E5%BC%95%E6%96%87%E9%80%89%E9%A1%B9">引文选项</a>；在<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>元素和<a class="reference external" href="#%E5%85%A8%E5%B1%80%E9%80%89%E9%A1%B9">全局选项</a>（同时影响引文和参考文献条目）中，可以配置特定的参考文献条目。继承的名字选项可以在<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>中设置。最后，<a class="reference external" href="#%E6%9C%AC%E5%9C%B0%E5%8C%96%E9%80%89%E9%A1%B9">本地化选项</a>可以在<code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素中设置。</p>
 <div class="section" id="id21">
 <h4>引文选项<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
 <p><strong>消除歧义</strong></p>
@@ -1236,13 +1232,59 @@ Feldmann, … S. G. Oliver
 </div>
 <div class="section" id="display">
 <h3>显示\display<a class="headerlink" href="#display" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">display</span></code>属性可用于将各个条目构成一个或者多个文本块。如果使用该属性，所有的渲染原属都在该属性的控制下。（译注：是用来设置对齐效果的）属性可能的值为：</p>
+<p><code class="docutils literal notranslate"><span class="pre">display</span></code>属性可用于将各个参考文献条目构成一个或者多个文本块。如果使用该属性，所有的渲染元素都在该属性的控制下。（译注：是用来设置对齐效果的）属性可能的值为：</p>
 <ul class="simple">
-<li><p>“block” - 文字居中？</p></li>
-<li><p>“left-margin” - 左对齐</p></li>
+<li><p>“block” - 两边对其</p></li>
+<li><p>“left-margin” - 左对齐。</p></li>
 <li><p>“right-inline” - 右对齐</p></li>
-<li><p>“indent” - 缩进</p></li>
+<li><p>“indent” - 缩进。</p></li>
 </ul>
+<p><strong>例</strong>      ****</p>
+<p>A.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;bibliography&gt;</span>
+  <span class="nt">&lt;layout&gt;</span>
+    <span class="nt">&lt;text</span> <span class="na">display=</span><span class="s">&quot;left-margin&quot;</span> <span class="na">variable=</span><span class="s">&quot;citation-number&quot;</span>
+        <span class="na">prefix=</span><span class="s">&quot;[&quot;</span> <span class="na">suffix=</span><span class="s">&quot;]&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;group</span> <span class="na">display=</span><span class="s">&quot;right-inline&quot;</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- rendering elements --&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+  <span class="nt">&lt;/layout&gt;</span>
+<span class="nt">&lt;/bibliography&gt;</span>
+</pre></div>
+</div>
+<p>B.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;bibliography</span> <span class="na">subsequent-author-substitute=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;sort&gt;</span>
+    <span class="nt">&lt;key</span> <span class="na">variable=</span><span class="s">&quot;author&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;key</span> <span class="na">variable=</span><span class="s">&quot;issued&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/sort&gt;</span>
+  <span class="nt">&lt;layout&gt;</span>
+    <span class="nt">&lt;group</span> <span class="na">display=</span><span class="s">&quot;block&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;names</span> <span class="na">variable=</span><span class="s">&quot;author&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+    <span class="nt">&lt;group</span> <span class="na">display=</span><span class="s">&quot;left-margin&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;date</span> <span class="na">variable=</span><span class="s">&quot;issued&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;year&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/date&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+    <span class="nt">&lt;group</span> <span class="na">display=</span><span class="s">&quot;right-inline&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;text</span> <span class="na">variable=</span><span class="s">&quot;title&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+  <span class="nt">&lt;/layout&gt;</span>
+<span class="nt">&lt;/bibliography&gt;</span>
+</pre></div>
+</div>
+<p>C.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;bibliography&gt;</span>
+  <span class="nt">&lt;layout&gt;</span>
+    <span class="nt">&lt;group</span> <span class="na">display=</span><span class="s">&quot;block&quot;</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- rendering elements --&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+    <span class="nt">&lt;text</span> <span class="na">display=</span><span class="s">&quot;indent&quot;</span> <span class="na">variable=</span><span class="s">&quot;abstract&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/layout&gt;</span>
+<span class="nt">&lt;/bibliography&gt;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="quotes">
 <h3>引用\quotes<a class="headerlink" href="#quotes" title="Permalink to this headline">¶</a></h3>
@@ -1281,7 +1323,7 @@ Feldmann, … S. G. Oliver
 </ol>
 <p>两种情况下，<code class="docutils literal notranslate"><span class="pre">stop</span> <span class="pre">words</span></code>必须是小写的，除非他们是第一个或者对后一个单词，或者跟在冒号后面。<code class="docutils literal notranslate"><span class="pre">stop</span> <span class="pre">words</span></code>包括：<code class="docutils literal notranslate"> <span class="pre">&quot;a&quot;,</span> <span class="pre">&quot;an&quot;,</span> <span class="pre">&quot;and&quot;,</span> <span class="pre">&quot;as&quot;,</span> <span class="pre">&quot;at&quot;,</span> <span class="pre">&quot;but&quot;,</span> <span class="pre">&quot;by&quot;,</span> <span class="pre">&quot;down&quot;,</span> <span class="pre">&quot;for&quot;,</span> <span class="pre">&quot;from&quot;,</span> <span class="pre">&quot;in&quot;,</span> <span class="pre">&quot;into&quot;,</span> <span class="pre">&quot;nor&quot;,</span> <span class="pre">&quot;of&quot;,</span> <span class="pre">&quot;on&quot;,</span> <span class="pre">&quot;onto&quot;,</span> <span class="pre">&quot;or&quot;,</span> <span class="pre">&quot;over&quot;,</span> <span class="pre">&quot;so&quot;,</span> <span class="pre">&quot;the&quot;,</span> <span class="pre">&quot;till&quot;,</span> <span class="pre">&quot;to&quot;,</span> <span class="pre">&quot;up&quot;,</span> <span class="pre">&quot;via&quot;,</span> <span class="pre">&quot;with&quot;,</span>&#160; <span class="pre">&quot;yet&quot;</span></code>.</p>
 <p><strong>非英语项目</strong></p>
-<p>由于许多语言不使用标题大小写，标题大小写转换(在”Text-case”中设置为”title”)仅影响英语项目：</p>
+<p>由于许多语言不使用标题大小写，标题大小写转换(在”Text-case”中设置为”title”)仅影响英语项目。</p>
 <p>如果<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>中的<code class="docutils literal notranslate"><span class="pre">default-locale</span></code>属性没有设置，或者设置为<code class="docutils literal notranslate"><span class="pre">en</span></code>开头的单词，则假定为英语环境。如果某项的元数据包含一个语言字段，而且该字段不是以<code class="docutils literal notranslate"><span class="pre">&quot;en&quot;</span></code>开头的，才被视为是非英语环境。</p>
 <p>同样的，<code class="docutils literal notranslate"><span class="pre">default-locale</span></code>被这是为除<code class="docutils literal notranslate"><span class="pre">en</span></code>开头的字段，就假定为非英语。如果项目是以<code class="docutils literal notranslate"><span class="pre">en</span></code>开头的字段，就被视为是英语。</p>
 </div>
