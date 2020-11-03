@@ -153,27 +153,27 @@
 <li class="toctree-l2"><a class="reference internal" href="#id19">样式行为</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id20">选项</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id21">引文选项</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id22">参考文献目录选项</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id23">全局选项</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id24">可继承的名称选项</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id25">局部选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">参考文献目录选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">全局选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30">可继承的名称选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31">局部选项</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id26">排序</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id27">排序变量</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id28">排序宏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">排序</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id33">排序变量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id34">排序宏</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id29">范围分隔符</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id30">格式化</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id31">词缀</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">范围分隔符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">格式化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">词缀</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#delimiter">分隔符\delimiter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#display">显示\display</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#quotes">引用\quotes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#strip-periods">Strip-periods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id32">文字大小写</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id33">句子大小写转换</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id34">标题大小写转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">文字大小写</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id39">句子大小写转换</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id40">标题大小写转换</a></li>
 </ul>
 </li>
 </ul>
@@ -185,16 +185,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#ordinals">Ordinals/序数</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#quotation-marks">Quotation marks/引号</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#roles">Roles/角色</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id35">Seasons/季节</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">Seasons/季节</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous/其他</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#iii">附录III 文献类型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#iv">附录IV 变量</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id36">标准变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id37">数据变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id38">日期变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id39">名字变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">标准变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">数据变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">日期变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id45">名字变量</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v">附录V 页码范围格式</a></li>
@@ -1071,18 +1071,75 @@ Feldmann, … S. G. Oliver
 <p>样式可以使用不同的元素来进行特定的配置。在<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>元素中设置元素可以配置特定的<a class="reference external" href="#%E5%BC%95%E6%96%87%E9%80%89%E9%A1%B9">引文选项</a>；在<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>元素和<a class="reference external" href="#%E5%85%A8%E5%B1%80%E9%80%89%E9%A1%B9">全局选项</a>（同时影响引文和参考文献条目）中，可以配置特定的参考文献条目。继承的名字选项可以在<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>中设置。最后，<a class="reference external" href="#%E6%9C%AC%E5%9C%B0%E5%8C%96%E9%80%89%E9%A1%B9">本地化选项</a>可以在<code class="docutils literal notranslate"><span class="pre">cs:locale</span></code>元素中设置。</p>
 <div class="section" id="id21">
 <h4>引文选项<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
-<p><strong>消除歧义</strong></p>
-<p><strong>引用分组</strong></p>
-<p><strong>引用奔溃</strong></p>
-<p><strong>标注距离</strong></p>
-</div>
 <div class="section" id="id22">
-<h4>参考文献目录选项<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
-<p><strong>空白</strong></p>
-<p><strong>参考文献分组</strong></p>
+<h5>消除歧义<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h5>
+<p>当一个引用对应多个参考文献条目的时候会产生歧义。下面有四种方法用来消除歧义：</p>
+<ol class="simple">
+<li><p>显示更多作者姓名</p></li>
+<li><p>扩展姓名（添加缩写或者完整的名）</p></li>
+<li><p>添加年份后缀</p></li>
+<li><p>在<code class="docutils literal notranslate"><span class="pre">cs:choose</span></code>的<code class="docutils literal notranslate"><span class="pre">disambiguate</span></code>属性为 true 的时候，实行渲染</p></li>
+</ol>
+<p>方法2也可以在全局名称歧义消除异己整个文档中有歧义的地方。</p>
+<p>消除歧义的方法在下面属性被设置的时候，将会被激活，并且按上述列表中的方法进行尝试：</p>
+<p><code class="docutils literal notranslate"><span class="pre">disambiguate-add-names</span></code> 步骤1</p>
+<p>​	如果设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>（默认为<code class="docutils literal notranslate"><span class="pre">false</span></code>），使用 et-al 缩写锁代替的名字列表会逐个的加入到渲染列表中，知道添加的名字可以消除引用歧义为止。</p>
+<p><code class="docutils literal notranslate"><span class="pre">disambiguate-add-givenname</span></code> 步骤2</p>
+<p>​	如果设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>（默认为<code class="docutils literal notranslate"><span class="pre">false</span></code>），产生歧义的名字将被扩展。名字扩展可以使用<code class="docutils literal notranslate"><span class="pre">givenname-disambiguation-rule</span></code>设置。下面是一个例子。
+</p>
+<p>| 含有歧义的引用               | 消除歧义的引用                     |
+| —————————- | ———————————- |
+| (Simpson 2005; Simpson 2005) | (H. Simpson 2005; B. Simpson 2005) |
+| (Doe 1950; Doe 1950)         | (John Doe 1950; Jane Doe 1950)     |</p>
+<p>如果不能通过扩展名字来实现消除歧义，当<code class="docutils literal notranslate"><span class="pre">disambiguate-add-names</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>， the names still hidden as a result of et-al abbreviation after the disambiguation attempt of <code class="docutils literal notranslate"><span class="pre">disambiguate-add-names</span></code> are added one by one to all members of a set of ambiguous cites, until no more cites in the set can be disambiguated by adding expanded names.</p>
+<p><code class="docutils literal notranslate"><span class="pre">givenname-disambiguation-rule</span></code></p>
+<p>用来指定 a) 名字扩展的目的是不是仅限于消除歧义，还是对消除歧义的名字有其他的目的(只有在后面的情况中，有歧义的名字才会在明确的引用中扩展，例如：从(Doe 1950; Doe 2000)扩展到(Jane Doe 1950; John Doe 2000))   b)名称扩展是针对全部还是针对每个引用的名字     c)扩展名字的方法。</p>
+<p><strong>扩展单个名字</strong></p>
+<p>​	扩展单个名字的步骤是：</p>
+<ol class="simple">
+<li><p>如果<code class="docutils literal notranslate"><span class="pre">initialize-with</span></code>被设置并且<code class="docutils literal notranslate"><span class="pre">initialize</span></code>的值为默认的 true：
+(a) 可以通过<code class="docutils literal notranslate"><span class="pre">&quot;long&quot;</span></code>而不是<code class="docutils literal notranslate"><span class="pre">&quot;short&quot;</span></code>的形式来渲染首字母 (e.g. Doe 变为 J. Doe)
+(b) 如果<code class="docutils literal notranslate"><span class="pre">initialize</span></code>设置为<code class="docutils literal notranslate"><span class="pre">&quot;flase&quot;</span></code>，完整的姓名被渲染，而不是首字母（J. Doe 变为 John Doe）</p></li>
+<li><p>如果<code class="docutils literal notranslate"><span class="pre">initialize-with</span></code>没有被设置，使用<code class="docutils literal notranslate"><span class="pre">&quot;long&quot;</span></code>格式渲染完整的姓名（Doe 变为 John Doe）</p></li>
+</ol>
+<p><strong>消除歧义法则</strong></p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">givenname-disambiguation-rule</span></code>属性可设置的值为：</p>
+<p>​	“all-name”</p>
+<p>​		名字扩展具有消除名字歧义和消除引用歧义的双重目的。在渲染的有歧义的名称中，所有的有歧义的或者没有歧义的名字都将被消除歧义。</p>
+<p>​	“all-names-with-initials”</p>
+<p>​		和 “all-name” 一样，但是名称的扩展仅限于缩写。当<code class="docutils literal notranslate"><span class="pre">initialize-with</span></code>没被设置或者<code class="docutils literal notranslate"><span class="pre">initialize</span></code>被设置为<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>时，不会进行消除歧义的尝试。</p>
+<p>​	“primary-name”</p>
+<p>​		和 “all-name” 一样，但是消除歧义仅限于每个引用的第一个名字。</p>
+<p>​	“primary-name-with-initials”</p>
+<p>​		和 “all-names-with-initials” 一样，但是消除歧义仅限于每个引用的第一个名字。</p>
+<p>​	“by-cite”</p>
+<p>​		默认，和 “all-name” 一样，但是名称扩展的目的仅限于消除引用的歧义，只有有歧义的名字在有歧义的引用中才会被影响，并且在引用的第一个名字消除歧义后就停止消除歧义。</p>
+<p><code class="docutils literal notranslate"><span class="pre">disambiguate-add-year-suffix</span></code> 步骤3</p>
+<p>如果设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>（默认为<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>），字母序的年后缀将会被添加到有歧义的名字上（“Doe 2007, Doe 2007” 变为 “Doe 2007a, Doe 2007b”）。当字母序到达<code class="docutils literal notranslate"><span class="pre">&quot;z&quot;</span></code>，后，就会启用两个字母（“z”, “aa”, “ab”, …, “az”, “ba” 等等）。</p>
+<hr class="docutils" />
+<p>如果应用上述的歧义消除方法后仍然存在歧义，则尝试通过<code class="docutils literal notranslate"><span class="pre">disambiguate</span></code>条件来渲染不同的引用[步骤4] (见<a class="reference external" href="#choose">choose</a>)。</p>
 </div>
 <div class="section" id="id23">
-<h4>全局选项<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<h5>引用分组    *********<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="id24">
+<h5>引用奔溃<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="id25">
+<h5>标注距离<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h5>
+</div>
+</div>
+<div class="section" id="id26">
+<h4>参考文献目录选项<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id27">
+<h5>空白<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="id28">
+<h5>参考文献分组<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h5>
+</div>
+</div>
+<div class="section" id="id29">
+<h4>全局选项<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
 <p><strong>人名中的连字符</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">initialize-with-hyphen</span></code></p>
 <p>​	该属性用来制定合成名字中间是不是使用连字符。例如，<code class="docutils literal notranslate"><span class="pre">&quot;Jean-Luc&quot;</span></code>是一个合成名字，如果改属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>（默认），渲染结果为<code class="docutils literal notranslate"><span class="pre">&quot;J.-L.&quot;</span></code>，如果设置为<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>，渲染结果为<code class="docutils literal notranslate"><span class="pre">&quot;J.L.&quot;</span></code>。</p>
@@ -1140,15 +1197,15 @@ Feldmann, … S. G. Oliver
 </pre></div>
 </div>
 </div>
-<div class="section" id="id24">
-<h4>可继承的名称选项<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id30">
+<h4>可继承的名称选项<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
 </div>
-<div class="section" id="id25">
-<h4>局部选项<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id31">
+<h4>局部选项<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
 </div>
 </div>
-<div class="section" id="id26">
-<h3>排序<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id32">
+<h3>排序<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>元素可以在<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>元素之前携带一个<code class="docutils literal notranslate"><span class="pre">cs:sort</span></code>子元素，来实现对引文或者参考文献条目的排序。在缺失<code class="docutils literal notranslate"><span class="pre">cs:sort</span></code>元素时，引文和文献条目将会使用他们在文章中出现的顺序来排序。</p>
 <p><code class="docutils literal notranslate"><span class="pre">cs:sort</span></code>元素必须包含一个或者多个<code class="docutils literal notranslate"><span class="pre">cs:key</span></code>子元素，可以在该元素中设置变量或者宏名来实现排序。对于每个<code class="docutils literal notranslate"><span class="pre">cs:key</span></code>元素，排序的顺序可以通过设置<code class="docutils literal notranslate"><span class="pre">sort</span></code>属性来设置为升序（<code class="docutils literal notranslate"><span class="pre">&quot;ascending&quot;</span></code>，默认）或者降序（<code class="docutils literal notranslate"><span class="pre">&quot;descending&quot;</span></code>）。属性<code class="docutils literal notranslate"><span class="pre">names-min,names-use-first,names-use-last</span></code>可以用来覆盖<code class="docutils literal notranslate"><span class="pre">et-al-min</span></code>/<code class="docutils literal notranslate"><span class="pre">et-al-subsequent-min</span></code>, <code class="docutils literal notranslate"><span class="pre">et-al-use-first</span></code>/<code class="docutils literal notranslate"><span class="pre">et-al-subsequent-use-first</span></code> 和 <code class="docutils literal notranslate"><span class="pre">et-al-use-last</span></code> 属性的值，并且可以通过<code class="docutils literal notranslate"><span class="pre">cs:key</span></code>影响所有的名字.</p>
 <p>排序的键值是按顺序求值的，也就是说：首先，使用第一个排序键值对所有的项目进行排序。然后使用第二个键值对第一个键值排序后的结果进行排序，直到所有的键值都完成排序为止。如果键值为空，就放到最后。</p>
@@ -1165,28 +1222,28 @@ Feldmann, … S. G. Oliver
 </pre></div>
 </div>
 <p>变量或者宏的排序键值可以与<code class="docutils literal notranslate"><span class="pre">&quot;normal&quot;</span></code>渲染的输出不同，具体要依赖下面的细节：</p>
-<div class="section" id="id27">
-<h4>排序变量<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id33">
+<h4>排序变量<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">cs:key</span></code>元素通过变量属性调用变量的排序键值。名称变量、日期变量和数字变量除外：</p>
 <p><strong>名称</strong>: 名字变量通过变量属性被调用，例如 <code class="docutils literal notranslate"><span class="pre">&lt;key</span> <span class="pre">variable=&quot;author&quot;/&gt;</span></code>，返回的</p>
 <p><strong>日期</strong></p>
 <p><strong>数字</strong></p>
 </div>
-<div class="section" id="id28">
-<h4>排序宏<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id34">
+<h4>排序宏<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
 <p>变量排序的键值是由字符串值组成，没有富文本标记。通过变量的属性中的兼职来调用。但名称，日期和数字变量除外：</p>
 <p><strong>names</strong>：</p>
 <p><strong>dates</strong>:</p>
 <p><strong>numbers</strong>:</p>
 </div>
 </div>
-<div class="section" id="id29">
-<h3>范围分隔符<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id35">
+<h3>范围分隔符<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <p>“引文数量”和”年后缀”变量的折叠范围以短划线分隔（例如”（1-3，5）”和”（Doe 2000a-c，e）”）。</p>
 <p>The “locator” variable is always rendered with an en-dash replacing any hyphens. For the “page” variable, this replacement is only performed if the page-range-format attribute is set on cs:style (see Page Ranges).</p>
 </div>
-<div class="section" id="id30">
-<h3>格式化<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id36">
+<h3>格式化<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <p>下面的属性可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:group</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:label</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:name</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:names</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:number</span></code> 和 <code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置：</p>
 <p><code class="docutils literal notranslate"><span class="pre">font-style</span></code></p>
 <p>用来设置字体，可能的值为：</p>
@@ -1222,8 +1279,8 @@ Feldmann, … S. G. Oliver
 <li><p>“sub” 下标</p></li>
 </ul>
 </div>
-<div class="section" id="id31">
-<h3>词缀<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id37">
+<h3>词缀<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
 <p>前缀属性<code class="docutils literal notranslate"><span class="pre">prefix</span></code>和后缀属性<code class="docutils literal notranslate"><span class="pre">suffix</span></code>可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:group</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:number</span></code>以及<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置。属性值用来在输出的前面或者后面添加东西。With the exception of affixes set on <code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>, affixes are outside the scope of <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#quotes">quotes</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#strip-periods">strip-periods</a> and <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#text-case">text-case</a> attributes set on the same element (as a workaround, these attributes take effect on affixes when set on a parent <code class="docutils literal notranslate"><span class="pre">cs:group</span></code> element).</p>
 </div>
 <div class="section" id="delimiter">
@@ -1294,8 +1351,8 @@ Feldmann, … S. G. Oliver
 <h3>Strip-periods<a class="headerlink" href="#strip-periods" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">strip-periods</span></code>属性可以在<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>或者<code class="docutils literal notranslate"><span class="pre">cd:text</span></code>中设置，此外，当<code class="docutils literal notranslate"><span class="pre">name</span></code>被设置为<code class="docutils literal notranslate"><span class="pre">&quot;month&quot;</span></code>时，也可以在<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>中设置。当该属性被设置为<code class="docutils literal notranslate"><span class="pre">true</span></code>的时候（默认的是<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>），所有文本中的句号（英文中为点）将会被删除。</p>
 </div>
-<div class="section" id="id32">
-<h3>文字大小写<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h3>文字大小写<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Text-case</span></code> 属性可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:number</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置，可设置的值为：</p>
 <ul class="simple">
 <li><p>“lowercase”: 使用小写字母渲染文本</p></li>
@@ -1305,8 +1362,8 @@ Feldmann, … S. G. Oliver
 <li><p>“sentence”: renders text in sentence case(以句子的格式设置？)</p></li>
 <li><p>“title”: renders text in title case(以标题的格式来设置？)</p></li>
 </ul>
-<div class="section" id="id33">
-<h4>句子大小写转换<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id39">
+<h4>句子大小写转换<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h4>
 <p>句子大小写转换(在”Text-case”中设置为”sentence”),</p>
 <ol class="simple">
 <li><p>对于大写字符串，字符串的第一个字符保持为大写。其它字母表示为小写</p></li>
@@ -1314,8 +1371,8 @@ Feldmann, … S. G. Oliver
 </ol>
 <p>CSL 处理器不能识别专有名词。因此，可以将句子大小写的字符转缺的转换为标题大小写，反之亦然。因此，通常最好在句子大小写的情况下存储注入标题之类的字符串，并且仅在样式需要其它大小写的情况下菜使用文本大小写。</p>
 </div>
-<div class="section" id="id34">
-<h4>标题大小写转换<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id40">
+<h4>标题大小写转换<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h4>
 <p>标题大小写转换(在”Text-case”中设置为”title”)对英语来说：</p>
 <ol class="simple">
 <li><p>对大写的字符串，每个单词的第一个字母保持大写，其它的字母保持小写。</p></li>
@@ -1446,8 +1503,8 @@ Feldmann, … S. G. Oliver
 <li><p>translator  译者</p></li>
 </ul>
 </div>
-<div class="section" id="id35">
-<h3>Seasons/季节<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id41">
+<h3>Seasons/季节<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>season-01</p></li>
 <li><p>season-02</p></li>
@@ -1531,8 +1588,8 @@ Feldmann, … S. G. Oliver
 </div>
 <div class="section" id="iv">
 <h2>附录IV 变量<a class="headerlink" href="#iv" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id36">
-<h3>标准变量<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id42">
+<h3>标准变量<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>abstract    项目的摘要（例：期刊文章的摘要）</p></li>
 <li><p>annote    读者关于项目内容的笔记</p></li>
@@ -1643,8 +1700,8 @@ Feldmann, … S. G. Oliver
 </li>
 </ul>
 </div>
-<div class="section" id="id37">
-<h3>数据变量<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id43">
+<h3>数据变量<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
 <p>Number variables are a subset of the <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#standard-variables">Standard Variables</a>.</p>
 <ul>
 <li><p>chapter-number</p>
@@ -1673,8 +1730,8 @@ Feldmann, … S. G. Oliver
 </li>
 </ul>
 </div>
-<div class="section" id="id38">
-<h3>日期变量<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id44">
+<h3>日期变量<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>accessed</p>
 <p>date the item has been accessed</p>
@@ -1696,8 +1753,8 @@ Feldmann, … S. G. Oliver
 </li>
 </ul>
 </div>
-<div class="section" id="id39">
-<h3>名字变量<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id45">
+<h3>名字变量<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>author</p></li>
 <li><p>collection-editor</p>

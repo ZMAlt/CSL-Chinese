@@ -1014,21 +1014,91 @@ Whenever position="ibid-with-locator" tests true, position="ibid" also tests tru
 
 #### 引文选项
 
-**消除歧义**
+##### 消除歧义
 
+当一个引用对应多个参考文献条目的时候会产生歧义。下面有四种方法用来消除歧义：
 
+1. 显示更多作者姓名
+2. 扩展姓名（添加缩写或者完整的名）
+3. 添加年份后缀
+4. 在`cs:choose`的`disambiguate`属性为 true 的时候，实行渲染
 
-**引用分组**
+方法2也可以在全局名称歧义消除异己整个文档中有歧义的地方。
 
-**引用奔溃**
+消除歧义的方法在下面属性被设置的时候，将会被激活，并且按上述列表中的方法进行尝试：
 
-**标注距离**
+`disambiguate-add-names` 步骤1
+
+​	如果设置为`"true"`（默认为`false`），使用 et-al 缩写锁代替的名字列表会逐个的加入到渲染列表中，知道添加的名字可以消除引用歧义为止。
+
+`disambiguate-add-givenname` 步骤2
+
+​	如果设置为`"true"`（默认为`false`），产生歧义的名字将被扩展。名字扩展可以使用`givenname-disambiguation-rule`设置。下面是一个例子。
+
+
+| 含有歧义的引用               | 消除歧义的引用                     |
+| ---------------------------- | ---------------------------------- |
+| (Simpson 2005; Simpson 2005) | (H. Simpson 2005; B. Simpson 2005) |
+| (Doe 1950; Doe 1950)         | (John Doe 1950; Jane Doe 1950)     |
+
+如果不能通过扩展名字来实现消除歧义，当`disambiguate-add-names`属性设置为`"true"`， the names still hidden as a result of et-al abbreviation after the disambiguation attempt of `disambiguate-add-names` are added one by one to all members of a set of ambiguous cites, until no more cites in the set can be disambiguated by adding expanded names.
+
+`givenname-disambiguation-rule`
+
+用来指定 a) 名字扩展的目的是不是仅限于消除歧义，还是对消除歧义的名字有其他的目的(只有在后面的情况中，有歧义的名字才会在明确的引用中扩展，例如：从(Doe 1950; Doe 2000)扩展到(Jane Doe 1950; John Doe 2000))   b)名称扩展是针对全部还是针对每个引用的名字     c)扩展名字的方法。
+
+**扩展单个名字**
+
+​	扩展单个名字的步骤是：
+
+1. 如果`initialize-with`被设置并且`initialize`的值为默认的 true：
+   (a) 可以通过`"long"`而不是`"short"`的形式来渲染首字母 (e.g. Doe 变为 J. Doe)
+   (b) 如果`initialize`设置为`"flase"`，完整的姓名被渲染，而不是首字母（J. Doe 变为 John Doe）
+2. 如果`initialize-with`没有被设置，使用`"long"`格式渲染完整的姓名（Doe 变为 John Doe）
+
+**消除歧义法则**
+
+​	`givenname-disambiguation-rule`属性可设置的值为：
+
+​	"all-name"
+
+​		名字扩展具有消除名字歧义和消除引用歧义的双重目的。在渲染的有歧义的名称中，所有的有歧义的或者没有歧义的名字都将被消除歧义。
+
+​	"all-names-with-initials"
+
+​		和 "all-name" 一样，但是名称的扩展仅限于缩写。当`initialize-with`没被设置或者`initialize`被设置为`"false"`时，不会进行消除歧义的尝试。
+
+​	"primary-name"
+
+​		和 "all-name" 一样，但是消除歧义仅限于每个引用的第一个名字。
+
+​	"primary-name-with-initials"
+
+​		和 "all-names-with-initials" 一样，但是消除歧义仅限于每个引用的第一个名字。
+
+​	"by-cite"
+
+​		默认，和 "all-name" 一样，但是名称扩展的目的仅限于消除引用的歧义，只有有歧义的名字在有歧义的引用中才会被影响，并且在引用的第一个名字消除歧义后就停止消除歧义。
+
+`disambiguate-add-year-suffix` 步骤3
+
+如果设置为`"true"`（默认为`"false"`），字母序的年后缀将会被添加到有歧义的名字上（“Doe 2007, Doe 2007” 变为 “Doe 2007a, Doe 2007b”）。当字母序到达`"z"`，后，就会启用两个字母（“z”, “aa”, “ab”, …, “az”, “ba” 等等）。
+
+---
+
+如果应用上述的歧义消除方法后仍然存在歧义，则尝试通过`disambiguate`条件来渲染不同的引用[步骤4] (见[choose](#choose))。
+
+##### 引用分组    *********
+
+##### 引用奔溃
+
+##### 标注距离
 
 #### 参考文献目录选项
 
-**空白**
+##### 空白
 
-**参考文献分组**
+##### 参考文献分组
 
 
 
