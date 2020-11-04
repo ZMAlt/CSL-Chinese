@@ -1082,15 +1082,44 @@ Whenever position="ibid-with-locator" tests true, position="ibid" also tests tru
 
 `disambiguate-add-year-suffix` 步骤3
 
-如果设置为`"true"`（默认为`"false"`），字母序的年后缀将会被添加到有歧义的名字上（“Doe 2007, Doe 2007” 变为 “Doe 2007a, Doe 2007b”）。当字母序到达`"z"`，后，就会启用两个字母（“z”, “aa”, “ab”, …, “az”, “ba” 等等）。
+如果设置为`"true"`（默认为`"false"`），字母序的年后缀将会被添加到有歧义的名字上（"Doe 2007, Doe 2007" 变为 "Doe 2007a, Doe 2007b"）。当字母序到达`"z"`，后，就会启用两个字母（"z", "aa", "ab", …, "az", "ba" 等等）。
 
 ---
 
 如果应用上述的歧义消除方法后仍然存在歧义，则尝试通过`disambiguate`条件来渲染不同的引用[步骤4] (见[choose](#choose))。
 
-##### 引用分组    *********
+##### 引用分组
 
-##### 引用奔溃
+通过引用分组，可以将相同名称的文本引用放在一起，比如：(Doe 1999; Smith 2002; Doe 2006; Doe et al. 2007)将会变为(Doe 1999; Doe 2006; Smith 2002; Doe et al. 2007)。引用分组在引用排序和消除歧义后执行。分组后的引用保持其相对顺序，并移到第一个改组中引用出现的第一个位置。
+
+引用分组可以在`cs:citation`元素中通过设置`cite-group-delimiter`属性或者`collapse`属性（见[cite collapsing](#cite collapsing)）激活。
+
+`cite-group-delimiter`
+
+激活引用分组并为引用组中的引用指定分隔符，默认为`","`。例如，当`cs:citation`元素中的`cs:layout`中的`delimiter`设置为`";"`时，`collapse`设置为`"year"`，`cite-group-delimiter`设置为`","`，将生成类似 "(Doe 1999,2001; Jones 2000)" 的引用。
+
+##### cite collapsing/引用折叠
+
+author或者author-date类型的引用格式中的引用分组和数字格式中的引用范围可以通过`collapse`属性来折叠。折叠引用组中分隔符可以是使用`year-suffix-delimiter`和`after-collapse-delimiter`属性来设置：
+
+`collapse`
+
+激活引用分组和折叠。允许的值为：
+
+- "citation-number" - 当使用数字样式的时候，折叠引用数字的范围（通过`"citation-number"`变量来渲染） ，例如："[1, 2, 3, 5]" 变为 "[1–3, 5]"。只有升序的引用才可以折叠，比如：  "[3, 2, 1]" 将不会折叠。
+- "year" - 通过压缩相同的名字来折叠引用分组，例如： "(Doe 2000, Doe 2001)" 变为 "(Doe 2000, 2001)"。
+- "year-suffix" - 对名字相同的折叠项，折叠相同的年份，例如：  "(Doe 2000a, 2000b)"变为"(Doe 2000a, b)"。
+- "year-suffix-ranged" - 对名字相同的折叠项，折叠年份范围，例如： "(Doe 2000a, b, c, e)"变为"(Doe 2000a–c,e)"。
+
+当`disambiguate-add-year-suffix`设置为`"false"`时，或者引用中包含位置（例如：“(Doe 2000a-c, 2000d, p. 5, 2000e,f)”，"Doe 2000d"有一个页码位置），"year-suffix"和"year-suffix-ranged"回退到"year"。
+
+`year-suffix-delimiter`
+
+​	设置年份后缀的分隔符。默认在`cs:citation`元素的`cs:layout`中设置。例如：当`collapse`设置为`"year-suffix"`，`cs:citation`中的`cs:layout`的`delimiter`元素设置为`";"`，并且`year-suffix-delimiter`设置为`","`时，渲染结果将类似于 "(Doe 1999a,b; Jones 2000)"。
+
+`after-collapse-delimiter`
+
+​	设置折叠后的引用组要使用的分隔符。默认在`cs:citation`元素的`cs:layout`中设置。例如：当`collapse`设置为`"year"`，`cs:citation`中的`cs:layout`的`delimiter`元素设置为`","`，并且`after-collapse-delimiter`设置为`";"`时，渲染结果将类似于 "(Doe 1999, 2001; Jones 2000, Brown 2001)"。
 
 ##### 标注距离
 
