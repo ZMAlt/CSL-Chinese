@@ -1145,15 +1145,80 @@ Feldmann, … S. G. Oliver
 </div>
 <div class="section" id="id24">
 <h5>标注距离<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h5>
+<p><code class="docutils literal notranslate"><span class="pre">near-note-distance</span></code></p>
+<p>当有一个预先的标注时，<code class="docutils literal notranslate"><span class="pre">&quot;near-note&quot;</span></code>位置是我引用被判断为真，这种预先的标注可以为 a) 指向同一个项目 b) 当前注视以前的脚注或尾注。（译注：不知道讲了什么）</p>
 </div>
 </div>
 <div class="section" id="id25">
 <h4>参考文献目录选项<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="id26">
 <h5>空白<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h5>
+<p><code class="docutils literal notranslate"><span class="pre">hanging-indent</span></code></p>
+<p>​	如果设置为 <code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>（默认为<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>），参考文献列表将采用悬挂缩进渲染。</p>
+<p><code class="docutils literal notranslate"><span class="pre">second-field-align</span></code></p>
+<p>​	如果该属性被设置，则书目条目的后续行沿第二字段对齐。 使用”flush”时，第一个字段与边距齐平。 对于”margin”，第一个字段放在margin中，随后的行与margin对齐。例如，当第一个字段设置为<code class="docutils literal notranslate"><span class="pre">&lt;text</span> <span class="pre">variable=&quot;citation-number&quot;</span> <span class="pre">suffix=&quot;.</span> <span class="pre">&quot;/&gt;</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">9.</span>  <span class="n">Adams</span><span class="p">,</span> <span class="n">D</span><span class="o">.</span> <span class="p">(</span><span class="mi">2002</span><span class="p">)</span><span class="o">.</span> <span class="n">The</span> <span class="n">Ultimate</span> <span class="n">Hitchhiker</span><span class="s1">&#39;s Guide to the</span>
+    <span class="n">Galaxy</span> <span class="p">(</span><span class="mi">1</span><span class="n">st</span> <span class="n">ed</span><span class="o">.</span><span class="p">)</span><span class="o">.</span>
+<span class="mf">10.</span> <span class="n">Asimov</span><span class="p">,</span> <span class="n">I</span><span class="o">.</span> <span class="p">(</span><span class="mi">1951</span><span class="p">)</span><span class="o">.</span> <span class="n">Foundation</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">line-spacing</span></code></p>
+<p>​	指定垂直方向的行距。默认值为<code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code>，即单倍行距。可以被设置为任意正整数，用来表示对应倍数的行距。</p>
+<p><code class="docutils literal notranslate"><span class="pre">entry-spacing</span></code></p>
+<p>​	指定不同条目垂直方向的距离，默认值为<code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code>，即一倍距离，可以被设置为任意正整数，用来表示对应倍数的距离。</p>
 </div>
 <div class="section" id="id27">
 <h5>参考文献分组<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>Doe. 1999.
+Doe. 2000.
+Doe, Johnson &amp; Williams. 2001.
+Doe &amp; Smith. 2002.
+Doe, Stevens &amp; Miller. 2003.
+Doe, Stevens &amp; Miller. 2004.
+Doe, Williams et al. 2005.
+Doe, Williams et al. 2006.
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>Doe. 1999.
+---. 2000.
+Doe, Johnson &amp; Williams. 2001.
+Doe &amp; Smith. 2002.
+Doe, Stevens &amp; Miller. 2003.
+---. 2004.
+Doe, Williams et al. 2005.
+---. 2005.
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>Doe. 1999.
+---. 2000.
+Doe, Johnson &amp; Williams. 2001.
+Doe &amp; Smith. 2002.
+Doe, Stevens &amp; Miller. 2003.
+---, --- &amp; ---. 2004.
+Doe, Williams et al. 2005.
+---, --- et al. 2006.
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>Doe. 1999.
+---. 2000.
+Doe, Johnson &amp; Williams. 2001.
+--- &amp; Smith. 2002.
+Doe, Stevens &amp; Miller. 2003.
+---, --- &amp; ---. 2004.
+Doe, Williams et al. 2005.
+---, --- et al. 2005.
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>Doe. 1999.
+---. 2000.
+Doe, Johnson &amp; Williams. 2001.
+--- &amp; Smith. 2002.
+Doe, Stevens &amp; Miller. 2003.
+---, Stevens &amp; Miller. 2004.
+Doe, Williams et al. 2005.
+---, Williams et al. 2005.
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="id28">

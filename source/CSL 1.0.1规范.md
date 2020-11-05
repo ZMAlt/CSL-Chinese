@@ -1123,11 +1123,100 @@ author或者author-date类型的引用格式中的引用分组和数字格式中
 
 ##### 标注距离
 
+`near-note-distance`
+
+当有一个预先的标注时，`"near-note"`位置是我引用被判断为真，这种预先的标注可以为 a) 指向同一个项目 b) 当前注视以前的脚注或尾注。（译注：不知道讲了什么）
+
 #### 参考文献目录选项
 
 ##### 空白
 
+`hanging-indent`
+
+​	如果设置为 `"true"`（默认为`"false"`），参考文献列表将采用悬挂缩进渲染。
+
+`second-field-align`
+
+​	如果该属性被设置，则书目条目的后续行沿第二字段对齐。 使用"flush"时，第一个字段与边距齐平。 对于"margin"，第一个字段放在margin中，随后的行与margin对齐。例如，当第一个字段设置为`<text variable="citation-number" suffix=". "/>`
+
+```
+9.  Adams, D. (2002). The Ultimate Hitchhiker's Guide to the
+    Galaxy (1st ed.).
+10. Asimov, I. (1951). Foundation.
+```
+
+`line-spacing`
+
+​	指定垂直方向的行距。默认值为`"1"`，即单倍行距。可以被设置为任意正整数，用来表示对应倍数的行距。	
+
+`entry-spacing`
+
+​	指定不同条目垂直方向的距离，默认值为`"1"`，即一倍距离，可以被设置为任意正整数，用来表示对应倍数的距离。	
+
 ##### 参考文献分组
+
+```xml
+Doe. 1999.
+Doe. 2000.
+Doe, Johnson & Williams. 2001.
+Doe & Smith. 2002.
+Doe, Stevens & Miller. 2003.
+Doe, Stevens & Miller. 2004.
+Doe, Williams et al. 2005.
+Doe, Williams et al. 2006.
+```
+
+
+
+```xml
+Doe. 1999.
+---. 2000.
+Doe, Johnson & Williams. 2001.
+Doe & Smith. 2002.
+Doe, Stevens & Miller. 2003.
+---. 2004.
+Doe, Williams et al. 2005.
+---. 2005.
+```
+
+
+
+```xml
+Doe. 1999.
+---. 2000.
+Doe, Johnson & Williams. 2001.
+Doe & Smith. 2002.
+Doe, Stevens & Miller. 2003.
+---, --- & ---. 2004.
+Doe, Williams et al. 2005.
+---, --- et al. 2006.
+```
+
+
+
+```xml
+Doe. 1999.
+---. 2000.
+Doe, Johnson & Williams. 2001.
+--- & Smith. 2002.
+Doe, Stevens & Miller. 2003.
+---, --- & ---. 2004.
+Doe, Williams et al. 2005.
+---, --- et al. 2005.
+```
+
+
+
+```xml
+Doe. 1999.
+---. 2000.
+Doe, Johnson & Williams. 2001.
+--- & Smith. 2002.
+Doe, Stevens & Miller. 2003.
+---, Stevens & Miller. 2004.
+Doe, Williams et al. 2005.
+---, Williams et al. 2005.
+```
 
 
 
