@@ -1155,6 +1155,21 @@ author或者author-date类型的引用格式中的引用分组和数字格式中
 
 ##### 参考文献分组
 
+`subsequent-author-substitute`
+
+​	如果该属性被设置，则此属性将用上一条条目中的名称替换参考文献条目中的名字。具体的代替方案取决于`subsequent-author-substitute-rule`属性的值。替换仅限于`cs:names`元素中渲染的第一个名字。
+
+`subsequent-author-substitute-rule`
+
+​	用来指定`subsequent-author-substitute`的结果怎么替换。允许的值为：
+
+- "complete-all" - 默认值，当名字变量中的所有渲染的名字和上一个参考文献条目相同时，`subsequent-author-substitute` 属性的值将代替整个名字列表（包括标点和术语，比如 et-al 和 and 等术语），但`cs:names`元素中设置的后缀将不会被代替。
+- "complete-each" - 和"complete-all"一样，需要完整的匹配，但是`subsequent-author-substitute` 属性的值将会代替所有被渲染的名字。
+- "partial-each" - 当有一个或者多个名字变量中的渲染名字和上一个条目中相同时，使用`subsequent-author-substitute` 属性代替对应的值。匹配从第一个名字开始，直到不匹配的名字为止。
+- "partial-first" -  和"partial-each"相同，但是替换仅限于第一个名字。
+
+对下面的例子：
+
 ```xml
 Doe. 1999.
 Doe. 2000.
@@ -1166,7 +1181,7 @@ Doe, Williams et al. 2005.
 Doe, Williams et al. 2006.
 ```
 
-
+当`subsequent-author-substitute`设置为`"-"`，并且`subsequent-author-substitute-rule`设置为`"complete-all"`，渲染结果将变为：
 
 ```xml
 Doe. 1999.
@@ -1179,7 +1194,7 @@ Doe, Williams et al. 2005.
 ---. 2005.
 ```
 
-
+当`subsequent-author-substitute-rule`设置为`"complete-each"`时，渲染的结果为：
 
 ```xml
 Doe. 1999.
@@ -1192,7 +1207,7 @@ Doe, Williams et al. 2005.
 ---, --- et al. 2006.
 ```
 
-
+当`subsequent-author-substitute-rule`设置为`"partial-each"`时，渲染的结果为：
 
 ```xml
 Doe. 1999.
@@ -1205,7 +1220,7 @@ Doe, Williams et al. 2005.
 ---, --- et al. 2005.
 ```
 
-
+当`subsequent-author-substitute-rule`设置为`"partial-first"`时，渲染的结果为：
 
 ```xml
 Doe. 1999.
@@ -1226,7 +1241,7 @@ Doe, Williams et al. 2005.
 
 `initialize-with-hyphen`
 
-​	该属性用来制定合成名字中间是不是使用连字符。例如，`"Jean-Luc"`是一个合成名字，如果改属性设置为`"true"`（默认），渲染结果为`"J.-L."`，如果设置为`"false"`，渲染结果为`"J.L."`。
+​	该属性用来制定合成名字中间是不是使用连字符。例如，`"Jean-Luc"`是一个合成名字，如果该属性设置为`"true"`（默认），渲染结果为`"J.-L."`，如果设置为`"false"`，渲染结果为`"J.L."`。
 
 **页码范围**
 
@@ -1236,7 +1251,7 @@ Doe, Williams et al. 2005.
 
 **Name Particles**
 
-​	西方人的名字中经常包括一个或者多个小部分，例如,`"de"`在荷兰人的名字中`"W. de Koning"`。在仅显示姓氏时，这些小部分可以分为必须保留保留和可删除两种类型：这两种类型分别称为`non-dropping`部分和`dropping`部分。一个单个的名字可以同时包括这两种类型（不能删除的类型始终位于可删除类型的后面）。例如，`"W. de Koning"`和法国名字`"Jean de la Fontaine"`可以被解构为：
+​	西方人的名字中经常包括一个或者多个小部分，例如,`"de"`在荷兰人的名字中`"W. de Koning"`。在仅显示姓氏时，这些小部分可以分为必须保留和可删除（或译为不可省略和可省略）两种类型：这两种类型分别称为`non-dropping`部分和`dropping`部分。一个单个的名字可以同时包括这两种类型（不能删除的类型始终位于可删除类型的后面）。例如，`"W. de Koning"`和法国名字`"Jean de la Fontaine"`可以被解构为：
 
 ```json
 {
@@ -1258,27 +1273,31 @@ Doe, Williams et al. 2005.
 
 在仅显示姓氏的时候，只保留不能删除的部分，`"De koning"`和`"La Fontaine"`。
 
-在名字倒写的情况下，即姓氏在名字之前，在姓氏后面始终添加`dropping particle`，但是可以`non-dropping`部分可以前置（例如，`"de Koning, W."`）或者后置（`Koning, W. de`）。For inverted names where the non-dropping-particle is prepended, names can either be sorted by keeping the non-dropping-particle together with the family name as part of the primary sort key (sort order A), or by separating the non-dropping-particle from the family name and have it become (part of) a secondary sort key, joining the dropping-particle, if available (sort order B):
+在名字倒写的情况下，即姓氏在名字之前，在姓氏后面始终添加`dropping particle`，但是`non-dropping`部分可以前置（例如，`"de Koning, W."`）或者后置（`Koning, W. de`）。在名字倒写，不可省略粒子前置时，可以使用下面的方式对名字进行排序：排序A：将不可省略粒子和姓一起保留作为主排序键值的一部分；排序B：通过将不可省略粒子和姓分开，并使其成为二级排序键值，并加入可省略粒子（如果有):
 
-**Sort order A: non-dropping-particle not demoted**
+**Sort order A: 不可省略粒子不降级**
 
-- primary sort key: "La Fontaine"
-- secondary sort key: "de"
-- tertiary sort key: "Jean"
+- 主排序键值 "La Fontaine"
+- 次排序键值 "de"
+- 第三排序键值: "Jean"
 
-**Sort order B: non-dropping-particle demoted**
+**Sort order B: 不可省略粒子降级**
 
-- primary sort key: "Fontaine"
-- secondary sort key: "de La"
-- tertiary sort key: "Jean"
+- 主排序键值  "Fontaine"
+- 次排序键值  "de La"
+- 第三排序键值 "Jean"
 
-The handling of the non-dropping-particle can be customized with the `demote-non-dropping-particle` option:
+对不可省略粒子的设置可以使用`demote-non-dropping-particle`选项：
 
-- `demote-non-dropping-particle`
+`demote-non-dropping-particle`
 
-  Sets the display and sorting behavior of the non-dropping-particle in inverted names (e.g. "Koning, W. de"). Allowed values:"never": the non-dropping-particle is treated as part of the family name, whereas the dropping-particle is appended (e.g. "de Koning, W.", "La Fontaine, Jean de"). The non-dropping-particle is part of the primary sort key (sort order A, e.g. "de Koning, W." appears under "D")."sort-only": same display behavior as "never", but the non-dropping-particle is demoted to a secondary sort key (sort order B, e.g. "de Koning, W." appears under "K")."display-and-sort" (default): the dropping and non-dropping-particle are appended (e.g. "Koning, W. de" and "Fontaine, Jean de La"). For name sorting, all particles are part of the secondary sort key (sort order B, e.g. "Koning, W. de" appears under "K").
+​	用来设置在倒写的名字中不可省略粒子的显示和排序方式（例如 Koning W. de）。可设置的值为：
 
-Some names include a particle that should never be demoted. For these cases the particle should just be included in the family name field, for example for the French general Charles de Gaulle:
+- "never": 不可省略粒子被作为姓中的一部分对待，并附加可省略粒子（"de Koning, W."  "La Fontaine, Jean de"）。不可省略粒子作为主排序键值的一部分(排序A，例如. "de Koning, W." 将出现在首字母 "D"的区域).
+- "sort-only": 显示的方式和 "never" 相同，但是不可省略粒子降级作为二级排序键值。（排序B, "de Koning, W."出现在首字母"K"的区域).
+- "display-and-sort" （默认），可省略粒子和不可省略粒子在最后（ "Koning, W. de" 和 "Fontaine, Jean de La"）。对名字排序，所有的粒子都是二级排序键值的一部分。（排序B，"Koning, W. de" 出现在首字母"K"的区域).
+
+某些名字中包含的粒子禁止被降级。在这些情况中，粒子将和姓合并到一起，比如，对于法国名字 Charles de Gaulle 
 
 ```json
 {
@@ -1293,7 +1312,7 @@ Some names include a particle that should never be demoted. For these cases the 
 
 
 
-#### 可继承的名称选项
+#### 可继承的名称选项 *****
 
 #### 局部选项
 

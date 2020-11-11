@@ -155,7 +155,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id21">引文选项</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id25">参考文献目录选项</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id28">全局选项</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id29">可继承的名称选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">可继承的名称选项 *****</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id30">局部选项</a></li>
 </ul>
 </li>
@@ -1169,6 +1169,17 @@ Feldmann, … S. G. Oliver
 </div>
 <div class="section" id="id27">
 <h5>参考文献分组<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h5>
+<p><code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute</span></code></p>
+<p>​	如果该属性被设置，则此属性将用上一条条目中的名称替换参考文献条目中的名字。具体的代替方案取决于<code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute-rule</span></code>属性的值。替换仅限于<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>元素中渲染的第一个名字。</p>
+<p><code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute-rule</span></code></p>
+<p>​	用来指定<code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute</span></code>的结果怎么替换。允许的值为：</p>
+<ul class="simple">
+<li><p>“complete-all” - 默认值，当名字变量中的所有渲染的名字和上一个参考文献条目相同时，<code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute</span></code> 属性的值将代替整个名字列表（包括标点和术语，比如 et-al 和 and 等术语），但<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>元素中设置的后缀将不会被代替。</p></li>
+<li><p>“complete-each” - 和”complete-all”一样，需要完整的匹配，但是<code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute</span></code> 属性的值将会代替所有被渲染的名字。</p></li>
+<li><p>“partial-each” - 当有一个或者多个名字变量中的渲染名字和上一个条目中相同时，使用<code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute</span></code> 属性代替对应的值。匹配从第一个名字开始，直到不匹配的名字为止。</p></li>
+<li><p>“partial-first” -  和”partial-each”相同，但是替换仅限于第一个名字。</p></li>
+</ul>
+<p>对下面的例子：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>Doe. 1999.
 Doe. 2000.
 Doe, Johnson &amp; Williams. 2001.
@@ -1179,6 +1190,7 @@ Doe, Williams et al. 2005.
 Doe, Williams et al. 2006.
 </pre></div>
 </div>
+<p>当<code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute</span></code>设置为<code class="docutils literal notranslate"><span class="pre">&quot;-&quot;</span></code>，并且<code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute-rule</span></code>设置为<code class="docutils literal notranslate"><span class="pre">&quot;complete-all&quot;</span></code>，渲染结果将变为：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>Doe. 1999.
 ---. 2000.
 Doe, Johnson &amp; Williams. 2001.
@@ -1189,6 +1201,7 @@ Doe, Williams et al. 2005.
 ---. 2005.
 </pre></div>
 </div>
+<p>当<code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute-rule</span></code>设置为<code class="docutils literal notranslate"><span class="pre">&quot;complete-each&quot;</span></code>时，渲染的结果为：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>Doe. 1999.
 ---. 2000.
 Doe, Johnson &amp; Williams. 2001.
@@ -1199,6 +1212,7 @@ Doe, Williams et al. 2005.
 ---, --- et al. 2006.
 </pre></div>
 </div>
+<p>当<code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute-rule</span></code>设置为<code class="docutils literal notranslate"><span class="pre">&quot;partial-each&quot;</span></code>时，渲染的结果为：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>Doe. 1999.
 ---. 2000.
 Doe, Johnson &amp; Williams. 2001.
@@ -1209,6 +1223,7 @@ Doe, Williams et al. 2005.
 ---, --- et al. 2005.
 </pre></div>
 </div>
+<p>当<code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute-rule</span></code>设置为<code class="docutils literal notranslate"><span class="pre">&quot;partial-first&quot;</span></code>时，渲染的结果为：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>Doe. 1999.
 ---. 2000.
 Doe, Johnson &amp; Williams. 2001.
@@ -1225,12 +1240,12 @@ Doe, Williams et al. 2005.
 <h4>全局选项<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
 <p><strong>人名中的连字符</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">initialize-with-hyphen</span></code></p>
-<p>​	该属性用来制定合成名字中间是不是使用连字符。例如，<code class="docutils literal notranslate"><span class="pre">&quot;Jean-Luc&quot;</span></code>是一个合成名字，如果改属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>（默认），渲染结果为<code class="docutils literal notranslate"><span class="pre">&quot;J.-L.&quot;</span></code>，如果设置为<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>，渲染结果为<code class="docutils literal notranslate"><span class="pre">&quot;J.L.&quot;</span></code>。</p>
+<p>​	该属性用来制定合成名字中间是不是使用连字符。例如，<code class="docutils literal notranslate"><span class="pre">&quot;Jean-Luc&quot;</span></code>是一个合成名字，如果该属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>（默认），渲染结果为<code class="docutils literal notranslate"><span class="pre">&quot;J.-L.&quot;</span></code>，如果设置为<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>，渲染结果为<code class="docutils literal notranslate"><span class="pre">&quot;J.L.&quot;</span></code>。</p>
 <p><strong>页码范围</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">page-range-format</span></code></p>
 <p>​	用来设置页码范围的格式，是不是使用简写来压缩。其可选的值有：<code class="docutils literal notranslate"><span class="pre">&quot;chicago&quot;</span></code> (“321–28”)， <code class="docutils literal notranslate"><span class="pre">&quot;expanded&quot;</span></code> ( “321–328”)， <code class="docutils literal notranslate"><span class="pre">&quot;minimal&quot;</span></code> (“321–8”)， 或者<code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">minimal-two&quot;</span></code> (“321–28”)。每一组值前面表示可选的属性值，后面是渲染结果的例子。也可见[附录V 页码范围格式](#附录V 页码范围格式)。使用<code class="docutils literal notranslate"><span class="pre">page-range-delimiter</span></code>属性可以用来设置页面范围分割的符号，该属性在 CSL 1.0.1 中引入，默认是一个破折号。如果改属性没有设置，就默认使用破折号。</p>
 <p><strong>Name Particles</strong></p>
-<p>​	西方人的名字中经常包括一个或者多个小部分，例如,<code class="docutils literal notranslate"><span class="pre">&quot;de&quot;</span></code>在荷兰人的名字中<code class="docutils literal notranslate"><span class="pre">&quot;W.</span> <span class="pre">de</span> <span class="pre">Koning&quot;</span></code>。在仅显示姓氏时，这些小部分可以分为必须保留保留和可删除两种类型：这两种类型分别称为<code class="docutils literal notranslate"><span class="pre">non-dropping</span></code>部分和<code class="docutils literal notranslate"><span class="pre">dropping</span></code>部分。一个单个的名字可以同时包括这两种类型（不能删除的类型始终位于可删除类型的后面）。例如，<code class="docutils literal notranslate"><span class="pre">&quot;W.</span> <span class="pre">de</span> <span class="pre">Koning&quot;</span></code>和法国名字<code class="docutils literal notranslate"><span class="pre">&quot;Jean</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">Fontaine&quot;</span></code>可以被解构为：</p>
+<p>​	西方人的名字中经常包括一个或者多个小部分，例如,<code class="docutils literal notranslate"><span class="pre">&quot;de&quot;</span></code>在荷兰人的名字中<code class="docutils literal notranslate"><span class="pre">&quot;W.</span> <span class="pre">de</span> <span class="pre">Koning&quot;</span></code>。在仅显示姓氏时，这些小部分可以分为必须保留和可删除（或译为不可省略和可省略）两种类型：这两种类型分别称为<code class="docutils literal notranslate"><span class="pre">non-dropping</span></code>部分和<code class="docutils literal notranslate"><span class="pre">dropping</span></code>部分。一个单个的名字可以同时包括这两种类型（不能删除的类型始终位于可删除类型的后面）。例如，<code class="docutils literal notranslate"><span class="pre">&quot;W.</span> <span class="pre">de</span> <span class="pre">Koning&quot;</span></code>和法国名字<code class="docutils literal notranslate"><span class="pre">&quot;Jean</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">Fontaine&quot;</span></code>可以被解构为：</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -1249,26 +1264,28 @@ Doe, Williams et al. 2005.
 </pre></div>
 </div>
 <p>在仅显示姓氏的时候，只保留不能删除的部分，<code class="docutils literal notranslate"><span class="pre">&quot;De</span> <span class="pre">koning&quot;</span></code>和<code class="docutils literal notranslate"><span class="pre">&quot;La</span> <span class="pre">Fontaine&quot;</span></code>。</p>
-<p>在名字倒写的情况下，即姓氏在名字之前，在姓氏后面始终添加<code class="docutils literal notranslate"><span class="pre">dropping</span> <span class="pre">particle</span></code>，但是可以<code class="docutils literal notranslate"><span class="pre">non-dropping</span></code>部分可以前置（例如，<code class="docutils literal notranslate"><span class="pre">&quot;de</span> <span class="pre">Koning,</span> <span class="pre">W.&quot;</span></code>）或者后置（<code class="docutils literal notranslate"><span class="pre">Koning,</span> <span class="pre">W.</span> <span class="pre">de</span></code>）。For inverted names where the non-dropping-particle is prepended, names can either be sorted by keeping the non-dropping-particle together with the family name as part of the primary sort key (sort order A), or by separating the non-dropping-particle from the family name and have it become (part of) a secondary sort key, joining the dropping-particle, if available (sort order B):</p>
-<p><strong>Sort order A: non-dropping-particle not demoted</strong></p>
+<p>在名字倒写的情况下，即姓氏在名字之前，在姓氏后面始终添加<code class="docutils literal notranslate"><span class="pre">dropping</span> <span class="pre">particle</span></code>，但是<code class="docutils literal notranslate"><span class="pre">non-dropping</span></code>部分可以前置（例如，<code class="docutils literal notranslate"><span class="pre">&quot;de</span> <span class="pre">Koning,</span> <span class="pre">W.&quot;</span></code>）或者后置（<code class="docutils literal notranslate"><span class="pre">Koning,</span> <span class="pre">W.</span> <span class="pre">de</span></code>）。在名字倒写，不可省略粒子前置时，可以使用下面的方式对名字进行排序：排序A：将不可省略粒子和姓一起保留作为主排序键值的一部分；排序B：通过将不可省略粒子和姓分开，并使其成为二级排序键值，并加入可省略粒子（如果有):</p>
+<p><strong>Sort order A: 不可省略粒子不降级</strong></p>
 <ul class="simple">
-<li><p>primary sort key: “La Fontaine”</p></li>
-<li><p>secondary sort key: “de”</p></li>
-<li><p>tertiary sort key: “Jean”</p></li>
+<li><p>主排序键值 “La Fontaine”</p></li>
+<li><p>次排序键值 “de”</p></li>
+<li><p>第三排序键值: “Jean”</p></li>
 </ul>
-<p><strong>Sort order B: non-dropping-particle demoted</strong></p>
+<p><strong>Sort order B: 不可省略粒子降级</strong></p>
 <ul class="simple">
-<li><p>primary sort key: “Fontaine”</p></li>
-<li><p>secondary sort key: “de La”</p></li>
-<li><p>tertiary sort key: “Jean”</p></li>
+<li><p>主排序键值  “Fontaine”</p></li>
+<li><p>次排序键值  “de La”</p></li>
+<li><p>第三排序键值 “Jean”</p></li>
 </ul>
-<p>The handling of the non-dropping-particle can be customized with the <code class="docutils literal notranslate"><span class="pre">demote-non-dropping-particle</span></code> option:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">demote-non-dropping-particle</span></code></p>
-<p>Sets the display and sorting behavior of the non-dropping-particle in inverted names (e.g. “Koning, W. de”). Allowed values:”never”: the non-dropping-particle is treated as part of the family name, whereas the dropping-particle is appended (e.g. “de Koning, W.”, “La Fontaine, Jean de”). The non-dropping-particle is part of the primary sort key (sort order A, e.g. “de Koning, W.” appears under “D”).”sort-only”: same display behavior as “never”, but the non-dropping-particle is demoted to a secondary sort key (sort order B, e.g. “de Koning, W.” appears under “K”).”display-and-sort” (default): the dropping and non-dropping-particle are appended (e.g. “Koning, W. de” and “Fontaine, Jean de La”). For name sorting, all particles are part of the secondary sort key (sort order B, e.g. “Koning, W. de” appears under “K”).</p>
-</li>
+<p>对不可省略粒子的设置可以使用<code class="docutils literal notranslate"><span class="pre">demote-non-dropping-particle</span></code>选项：</p>
+<p><code class="docutils literal notranslate"><span class="pre">demote-non-dropping-particle</span></code></p>
+<p>​	用来设置在倒写的名字中不可省略粒子的显示和排序方式（例如 Koning W. de）。可设置的值为：</p>
+<ul class="simple">
+<li><p>“never”: 不可省略粒子被作为姓中的一部分对待，并附加可省略粒子（”de Koning, W.”  “La Fontaine, Jean de”）。不可省略粒子作为主排序键值的一部分(排序A，例如. “de Koning, W.” 将出现在首字母 “D”的区域).</p></li>
+<li><p>“sort-only”: 显示的方式和 “never” 相同，但是不可省略粒子降级作为二级排序键值。（排序B, “de Koning, W.”出现在首字母”K”的区域).</p></li>
+<li><p>“display-and-sort” （默认），可省略粒子和不可省略粒子在最后（ “Koning, W. de” 和 “Fontaine, Jean de La”）。对名字排序，所有的粒子都是二级排序键值的一部分。（排序B，”Koning, W. de” 出现在首字母”K”的区域).</p></li>
 </ul>
-<p>Some names include a particle that should never be demoted. For these cases the particle should just be included in the family name field, for example for the French general Charles de Gaulle:</p>
+<p>某些名字中包含的粒子禁止被降级。在这些情况中，粒子将和姓合并到一起，比如，对于法国名字 Charles de Gaulle</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -1281,7 +1298,7 @@ Doe, Williams et al. 2005.
 </div>
 </div>
 <div class="section" id="id29">
-<h4>可继承的名称选项<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
+<h4>可继承的名称选项 *****<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
 </div>
 <div class="section" id="id30">
 <h4>局部选项<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
