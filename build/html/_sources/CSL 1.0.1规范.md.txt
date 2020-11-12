@@ -1312,11 +1312,25 @@ Doe, Williams et al. 2005.
 
 
 
-#### 可继承的名称选项 *****
+#### 可继承的名称选项
+
+​	`cs:names`和`cs:name`元素的属性也可以在`cs:style`、`cs:citation`和`cs:bibliography`元素中设置。这样就不需要每次在`cs:names`和`cs:name`出现的时候赋值。
+
+​	可以在`cs:name`元素中继承的属性有 `and`, `delimiter-precedes-et-al`, `delimiter-precedes-last`, `et-al-min`, `et-al-use-first`, `et-al-use-last`, `et-al-subsequent-min`, `et-al-subsequent-use-first`, `initialize`, `initialize-with`, `name-as-sort-order` 和 `sort-separator`。`name-form`属性和`name-delimiter`属性对英语`cs:name`元素中的`form`和`delimiter`属性。同样地，`names-delimiter`属性对应`cs:names`元素中的`delimiter`属性。
+
+​	当一个可继承的名称属性在`cs:style`，`cs:citation`和`cs:bibliography`中设置时，其值将作用于改元素包含的所有的`cs:names`元素。如果一个属性在多个可继承的层次设置，最底层的值发挥作用。
 
 #### 局部选项
 
-### 排序
+`limit-day-ordinals-to-day-1`
+
+​	日期格式在`cs:date`和`cs:date-part`元素中定义。默认地，当`cs:date-part`元素中的`name`设置为`"day"`，`form`属性设置为`"ordinal"`时，所有的天（1到31）将会以序数形式渲染，例如："January 1st"，"January 2nd"等等。通过将`limit-day-ordinals-to-day-1`属性设置为`"true"`（默认值为`"false"`），序数格式将仅限于每个月的第一天，其他的天将不使用序数格式。这在某些语言中出现，比如法语，"1er janvier"，"2 janvier"，"3 janvier"。
+
+`punctuation-in-quote`
+
+​	当`cs:text`元素渲染时，如果`quotes`属性设置为`"true"`（见[格式化](#格式化)），并且在输出后有逗号或者句号，`punctuation-in-quote`属性可以控制标点放在括号的内还是外，`"false"`为外（默认），`"true"`为内。
+
+### 排序 *** 
 
 `cs:citation`和`cs:bibliography`元素可以在`cs:layout`元素之前携带一个`cs:sort`子元素，来实现对引文或者参考文献条目的排序。在缺失`cs:sort`元素时，引文和文献条目将会使用他们在文章中出现的顺序来排序。
 
