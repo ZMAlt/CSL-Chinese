@@ -166,7 +166,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id34">范围分隔符</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id35">格式化</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id36">词缀</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">词缀   ***</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#delimiter">分隔符\delimiter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#display">显示\display</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#quotes">引用\quotes</a></li>
@@ -1313,10 +1313,10 @@ Doe, Williams et al. 2005.
 </div>
 <div class="section" id="id31">
 <h3>排序 ***<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>元素可以在<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>元素之前携带一个<code class="docutils literal notranslate"><span class="pre">cs:sort</span></code>子元素，来实现对引文或者参考文献条目的排序。在缺失<code class="docutils literal notranslate"><span class="pre">cs:sort</span></code>元素时，引文和文献条目将会使用他们在文章中出现的顺序来排序。</p>
-<p><code class="docutils literal notranslate"><span class="pre">cs:sort</span></code>元素必须包含一个或者多个<code class="docutils literal notranslate"><span class="pre">cs:key</span></code>子元素，可以在该元素中设置变量或者宏名来实现排序。对于每个<code class="docutils literal notranslate"><span class="pre">cs:key</span></code>元素，排序的顺序可以通过设置<code class="docutils literal notranslate"><span class="pre">sort</span></code>属性来设置为升序（<code class="docutils literal notranslate"><span class="pre">&quot;ascending&quot;</span></code>，默认）或者降序（<code class="docutils literal notranslate"><span class="pre">&quot;descending&quot;</span></code>）。属性<code class="docutils literal notranslate"><span class="pre">names-min,names-use-first,names-use-last</span></code>可以用来覆盖<code class="docutils literal notranslate"><span class="pre">et-al-min</span></code>/<code class="docutils literal notranslate"><span class="pre">et-al-subsequent-min</span></code>, <code class="docutils literal notranslate"><span class="pre">et-al-use-first</span></code>/<code class="docutils literal notranslate"><span class="pre">et-al-subsequent-use-first</span></code> 和 <code class="docutils literal notranslate"><span class="pre">et-al-use-last</span></code> 属性的值，并且可以通过<code class="docutils literal notranslate"><span class="pre">cs:key</span></code>影响所有的名字.</p>
-<p>排序的键值是按顺序求值的，也就是说：首先，使用第一个排序键值对所有的项目进行排序。然后使用第二个键值对第一个键值排序后的结果进行排序，直到所有的键值都完成排序为止。如果键值为空，就放到最后。</p>
-<p>这里给出一个例子：其中首先引用<code class="docutils literal notranslate"><span class="pre">&quot;author&quot;</span></code>宏进行排序，并且使用<code class="docutils literal notranslate"><span class="pre">et</span> <span class="pre">al.</span></code>来对较长的作者序列进行代替。然后，使用<code class="docutils literal notranslate"><span class="pre">&quot;issued&quot;</span></code>变量来进行第二次排序，使用降序：</p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">cs:citation</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:bibliography</span></code>元素可以在<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>元素之前携带一个<code class="docutils literal notranslate"><span class="pre">cs:sort</span></code>子元素，来实现对引文或者参考文献条目的排序。在缺失<code class="docutils literal notranslate"><span class="pre">cs:sort</span></code>元素时，引文和文献条目将会使用他们在文章中出现的顺序来排序。</p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">cs:sort</span></code>元素必须包含一个或者多个<code class="docutils literal notranslate"><span class="pre">cs:key</span></code>子元素，可以在该元素中设置变量（[附录 IV 变量](#附录 IV 变量)）或者宏名来实现排序。对于每个<code class="docutils literal notranslate"><span class="pre">cs:key</span></code>元素，排序的顺序可以通过设置<code class="docutils literal notranslate"><span class="pre">sort</span></code>属性来设置为升序（<code class="docutils literal notranslate"><span class="pre">&quot;ascending&quot;</span></code>，默认）或者降序（<code class="docutils literal notranslate"><span class="pre">&quot;descending&quot;</span></code>）。属性<code class="docutils literal notranslate"><span class="pre">names-min</span></code>,<code class="docutils literal notranslate"><span class="pre">names-use-first</span></code>,<code class="docutils literal notranslate"><span class="pre">names-use-last</span></code>可以用来覆盖<code class="docutils literal notranslate"><span class="pre">et-al-min</span></code>/<code class="docutils literal notranslate"><span class="pre">et-al-subsequent-min</span></code>, <code class="docutils literal notranslate"><span class="pre">et-al-use-first</span></code>/<code class="docutils literal notranslate"><span class="pre">et-al-subsequent-use-first</span></code> 和 <code class="docutils literal notranslate"><span class="pre">et-al-use-last</span></code> 属性的值，并且可以通过<code class="docutils literal notranslate"><span class="pre">cs:key</span></code>影响所有的名字.</p>
+<p>​	排序的键值是按顺序求值的，也就是说：首先，使用第一个排序键值对所有的项目进行排序。然后使用第二个键值对第一个键值排序后的结果进行排序，直到所有的键值都完成排序为止。如果键值为空，就放到最后。</p>
+<p>​	这里给出一个例子：其中首先引用<code class="docutils literal notranslate"><span class="pre">&quot;author&quot;</span></code>宏进行排序，并且使用<code class="docutils literal notranslate"><span class="pre">et</span> <span class="pre">al.</span></code>来对较长的作者序列进行代替。然后，使用<code class="docutils literal notranslate"><span class="pre">&quot;issued&quot;</span></code>变量来进行第二次排序，使用降序：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;citation&gt;</span>
   <span class="nt">&lt;sort&gt;</span>
     <span class="nt">&lt;key</span> <span class="na">macro=</span><span class="s">&quot;author&quot;</span> <span class="na">names-min=</span><span class="s">&quot;3&quot;</span> <span class="na">names-use-first=</span><span class="s">&quot;3&quot;</span><span class="nt">/&gt;</span>
@@ -1328,66 +1328,65 @@ Doe, Williams et al. 2005.
 <span class="nt">&lt;/citation&gt;</span>
 </pre></div>
 </div>
-<p>变量或者宏的排序键值可以与<code class="docutils literal notranslate"><span class="pre">&quot;normal&quot;</span></code>渲染的输出不同，具体要依赖下面的细节：</p>
+<p>​	变量或者宏的排序键值可以与<code class="docutils literal notranslate"><span class="pre">&quot;normal&quot;</span></code>渲染的输出不同，具体要依赖下面的细节：</p>
 <div class="section" id="id32">
 <h4>排序变量<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">cs:key</span></code>元素通过变量属性调用变量的排序键值。名称变量、日期变量和数字变量除外：</p>
-<p><strong>名称</strong>: 名字变量通过变量属性被调用，例如 <code class="docutils literal notranslate"><span class="pre">&lt;key</span> <span class="pre">variable=&quot;author&quot;/&gt;</span></code>，返回的</p>
-<p><strong>日期</strong></p>
-<p><strong>数字</strong></p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">cs:key</span></code>元素通过<code class="docutils literal notranslate"><span class="pre">variable</span></code>变量属性调用变量的排序键值。名称变量、日期变量和数字变量除外：</p>
+<p><strong>名称</strong>: <a class="reference external" href="#%E5%90%8D%E5%AD%97%E5%8F%98%E9%87%8F">名字变量</a>通过变量属性被调用，例如 <code class="docutils literal notranslate"><span class="pre">&lt;key</span> <span class="pre">variable=&quot;author&quot;/&gt;</span></code>，当<code class="docutils literal notranslate"><span class="pre">form</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;long&quot;</span></code>，<code class="docutils literal notranslate"><span class="pre">name-as-sort-order</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code>，返回名字列表字符串。</p>
+<p><strong>日期</strong>：<a class="reference external" href="#%E6%97%A5%E6%9C%9F%E5%8F%98%E9%87%8F">日期变量</a>通过<code class="docutils literal notranslate"><span class="pre">variable</span></code>属性被调用，返回 <code class="docutils literal notranslate"><span class="pre">YYYYMMDD</span></code>格式。使用0代替缺失的日期部分，例如：<code class="docutils literal notranslate"><span class="pre">December</span> <span class="pre">2000</span></code>渲染为<code class="docutils literal notranslate"><span class="pre">20001200</span></code>。因此，简略的日期在升序排列的时候更加靠前，例如：2000, May 2000, May 1st 2000。负数的年份（即公元前）将被反向排序，比如：100BC, 50BC, 50AD, 100AD。排序过程中，季节将被忽略，因为南北半球的季节顺序不同。在日期范围中，开始的日期用于主要排序，结束日期用于次要排序，例如：2000–2001, 2000–2005, 2002–2003, 2002–2009。在具有相同的开始日期时，日期范围将放在单独的日期后，例如：2000, 2000–2002。</p>
+<p><strong>数字</strong>：<a class="reference external" href="#%E6%95%B0%E5%AD%97%E5%8F%98%E9%87%8F">数字变量</a>通过<code class="docutils literal notranslate"><span class="pre">variable</span></code>属性来调用，返回整数（<code class="docutils literal notranslate"><span class="pre">form</span></code>设置为<code class="docutils literal notranslate"><span class="pre">&quot;numeric&quot;</span></code>）如果原始的变量值仅由非数字文本组成，则将该值作为文本字符串返回。</p>
 </div>
 <div class="section" id="id33">
 <h4>排序宏<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
-<p>变量排序的键值是由字符串值组成，没有富文本标记。通过变量的属性中的兼职来调用。但名称，日期和数字变量除外：</p>
-<p><strong>names</strong>：</p>
-<p><strong>dates</strong>:</p>
-<p><strong>numbers</strong>:</p>
+<p>​	变量排序的键值是由字符串值组成，没有富文本标记。通过宏属性中的键值<code class="docutils literal notranslate"><span class="pre">cs:key</span></code>来调用。下面为一些特殊情况。</p>
+<p>​	对于名字排序，使用相同的宏而不是直接使用名字变量来渲染和排序有4个好处。第一，可以使用替换，例如：可以使用<code class="docutils literal notranslate"><span class="pre">&quot;editor&quot;</span></code>变量代替空的<code class="docutils literal notranslate"><span class="pre">&quot;author&quot;</span></code>变量。第二，可以使用 et-al 缩写，在宏里使用 <code class="docutils literal notranslate"><span class="pre">et-al-min</span></code>/<code class="docutils literal notranslate"><span class="pre">et-al-subsequent-min</span></code>, <code class="docutils literal notranslate"><span class="pre">et-al-use-first</span></code>/<code class="docutils literal notranslate"><span class="pre">et-al-subsequent-use-first</span></code>和 <code class="docutils literal notranslate"><span class="pre">et-al-use-last</span></code> 可选属性，或者覆盖 <code class="docutils literal notranslate"><span class="pre">cs:key</span></code>元素中的<code class="docutils literal notranslate"><span class="pre">names-min</span></code>, <code class="docutils literal notranslate"><span class="pre">names-use-first</span></code> 和 <code class="docutils literal notranslate"><span class="pre">names-use-last</span></code> 。当 et-al 缩写出现的时候，<code class="docutils literal notranslate"><span class="pre">&quot;et-al&quot;</span></code>和<code class="docutils literal notranslate"><span class="pre">&quot;and</span> <span class="pre">others&quot;</span></code>术语不会包括在排序键值中。第三，名字可以只使用姓来排序，即使用宏，其中的<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>扽<code class="docutils literal notranslate"><span class="pre">form</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;short&quot;</span></code>。最后，通过调用宏，将<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>中的<code class="docutils literal notranslate"><span class="pre">form</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;count&quot;</span></code>，可以按姓名列表中姓名的数目进行排序。至于使用<code class="docutils literal notranslate"><span class="pre">variable</span></code>属性对姓名进行排序，将<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>中的<code class="docutils literal notranslate"><span class="pre">name-as-sort-order</span></code>属性设置为<code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code>，返回值为排序后的名称列表。</p>
+<p>​	在宏中带有<code class="docutils literal notranslate"><span class="pre">cs:number</span></code>的<a class="reference external" href="#%E6%95%B0%E5%AD%97%E5%8F%98%E9%87%8F">数字变量</a>的和日期变量的渲染方法和通过变量的调用相同。唯一的区别是：如果通过<code class="docutils literal notranslate"><span class="pre">variable</span></code>属性调用日期变量，将返回完整的日期。相反地，宏调用则只返回原本要渲染的日期部分。例如：</p>
 </div>
 </div>
 <div class="section" id="id34">
 <h3>范围分隔符<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
-<p>“引文数量”和”年后缀”变量的折叠范围以短划线分隔（例如”（1-3，5）”和”（Doe 2000a-c，e）”）。</p>
-<p>The “locator” variable is always rendered with an en-dash replacing any hyphens. For the “page” variable, this replacement is only performed if the page-range-format attribute is set on cs:style (see Page Ranges).</p>
+<p>​	“citation-number”和”year-suffix”变量的折叠范围以短划线分隔，例如”（1-3，5）”和”（Doe 2000a-c，e）”。</p>
+<p>​	“locator” 变量总是使用一个短划线代替任意的连字符。 对 “page” 变量来说，只有<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>中的<code class="docutils literal notranslate"><span class="pre">page-ran</span> <span class="pre">ge-format</span></code>属性被设置时，替换才会执行（见<a class="reference external" href="#%E9%A1%B5%E7%A0%81%E8%8C%83%E5%9B%B4">页码范围</a>）。</p>
 </div>
 <div class="section" id="id35">
 <h3>格式化<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
-<p>下面的属性可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:group</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:label</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:name</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:names</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:number</span></code> 和 <code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置：</p>
+<p>​	下面的属性可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:et-al</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:group</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:label</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:name</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:names</span></code>, <code class="docutils literal notranslate"><span class="pre">cs:number</span></code> 和 <code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置：</p>
 <p><code class="docutils literal notranslate"><span class="pre">font-style</span></code></p>
 <p>用来设置字体，可能的值为：</p>
 <ul class="simple">
 <li><p>“normal”  默认</p></li>
 <li><p>“italic”  设置文字的斜体</p></li>
-<li><p>“oblique”  设置没有斜体的问题倾斜</p></li>
+<li><p>“oblique”  设置没有斜体的文字倾斜</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">font-variant</span></code></p>
-<p>Allows for the use of small capitals, with values:</p>
+<p>Allows for the use of small capitals, 值可以设置为:</p>
 <ul class="simple">
-<li><p>“normal” (default)</p></li>
+<li><p>“normal” 默认</p></li>
 <li><p>“small-caps”</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">font-weight</span></code></p>
 <p>设置字宽，值可以为：</p>
 <ul class="simple">
-<li><p>“normal” (default)</p></li>
+<li><p>“normal” 默认</p></li>
 <li><p>“bold”</p></li>
 <li><p>“light”</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">text-decoration</span></code></p>
-<p>设置时候有下划线，值可以为：</p>
+<p>设置下划线，值可以为：</p>
 <ul class="simple">
-<li><p>“none” (default)</p></li>
+<li><p>“none” 默认</p></li>
 <li><p>“underline”</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">vertical-align</span></code></p>
 <p>设置垂直对齐，值可以为：</p>
 <ul class="simple">
-<li><p>“baseline” (default)</p></li>
+<li><p>“baseline” 默认</p></li>
 <li><p>“sup” 上标</p></li>
 <li><p>“sub” 下标</p></li>
 </ul>
 </div>
 <div class="section" id="id36">
-<h3>词缀<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<h3>词缀   ***<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <p>前缀属性<code class="docutils literal notranslate"><span class="pre">prefix</span></code>和后缀属性<code class="docutils literal notranslate"><span class="pre">suffix</span></code>可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:group</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:number</span></code>以及<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置。属性值用来在输出的前面或者后面添加东西。With the exception of affixes set on <code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>, affixes are outside the scope of <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#quotes">quotes</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#strip-periods">strip-periods</a> and <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#text-case">text-case</a> attributes set on the same element (as a workaround, these attributes take effect on affixes when set on a parent <code class="docutils literal notranslate"><span class="pre">cs:group</span></code> element).</p>
 </div>
 <div class="section" id="delimiter">

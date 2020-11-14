@@ -1332,13 +1332,13 @@ Doe, Williams et al. 2005.
 
 ### 排序 *** 
 
-`cs:citation`和`cs:bibliography`元素可以在`cs:layout`元素之前携带一个`cs:sort`子元素，来实现对引文或者参考文献条目的排序。在缺失`cs:sort`元素时，引文和文献条目将会使用他们在文章中出现的顺序来排序。
+​	`cs:citation`和`cs:bibliography`元素可以在`cs:layout`元素之前携带一个`cs:sort`子元素，来实现对引文或者参考文献条目的排序。在缺失`cs:sort`元素时，引文和文献条目将会使用他们在文章中出现的顺序来排序。
 
-`cs:sort`元素必须包含一个或者多个`cs:key`子元素，可以在该元素中设置变量或者宏名来实现排序。对于每个`cs:key`元素，排序的顺序可以通过设置`sort`属性来设置为升序（`"ascending"`，默认）或者降序（`"descending"`）。属性`names-min,names-use-first,names-use-last`可以用来覆盖`et-al-min`/`et-al-subsequent-min`, `et-al-use-first`/`et-al-subsequent-use-first` 和 `et-al-use-last` 属性的值，并且可以通过`cs:key`影响所有的名字.
+​	`cs:sort`元素必须包含一个或者多个`cs:key`子元素，可以在该元素中设置变量（[附录 IV 变量](#附录 IV 变量)）或者宏名来实现排序。对于每个`cs:key`元素，排序的顺序可以通过设置`sort`属性来设置为升序（`"ascending"`，默认）或者降序（`"descending"`）。属性`names-min`,`names-use-first`,`names-use-last`可以用来覆盖`et-al-min`/`et-al-subsequent-min`, `et-al-use-first`/`et-al-subsequent-use-first` 和 `et-al-use-last` 属性的值，并且可以通过`cs:key`影响所有的名字.
 
-排序的键值是按顺序求值的，也就是说：首先，使用第一个排序键值对所有的项目进行排序。然后使用第二个键值对第一个键值排序后的结果进行排序，直到所有的键值都完成排序为止。如果键值为空，就放到最后。
+​	排序的键值是按顺序求值的，也就是说：首先，使用第一个排序键值对所有的项目进行排序。然后使用第二个键值对第一个键值排序后的结果进行排序，直到所有的键值都完成排序为止。如果键值为空，就放到最后。
 
-这里给出一个例子：其中首先引用`"author"`宏进行排序，并且使用`et al.`来对较长的作者序列进行代替。然后，使用`"issued"`变量来进行第二次排序，使用降序：
+​	这里给出一个例子：其中首先引用`"author"`宏进行排序，并且使用`et al.`来对较长的作者序列进行代替。然后，使用`"issued"`变量来进行第二次排序，使用降序：
 
 ```xml
 <citation>
@@ -1352,37 +1352,35 @@ Doe, Williams et al. 2005.
 </citation>
 ```
 
-变量或者宏的排序键值可以与`"normal"`渲染的输出不同，具体要依赖下面的细节：
+​	变量或者宏的排序键值可以与`"normal"`渲染的输出不同，具体要依赖下面的细节：
 
 #### 排序变量
 
-`cs:key`元素通过变量属性调用变量的排序键值。名称变量、日期变量和数字变量除外：
+​	`cs:key`元素通过`variable`变量属性调用变量的排序键值。名称变量、日期变量和数字变量除外：
 
-**名称**: 名字变量通过变量属性被调用，例如 `<key variable="author"/>`，返回的
+**名称**: [名字变量](#名字变量)通过变量属性被调用，例如 `<key variable="author"/>`，当`form`属性设置为`"long"`，`name-as-sort-order`属性设置为`"all"`，返回名字列表字符串。
 
-**日期**
+**日期**：[日期变量](#日期变量)通过`variable`属性被调用，返回 `YYYYMMDD`格式。使用0代替缺失的日期部分，例如：`December 2000`渲染为`20001200`。因此，简略的日期在升序排列的时候更加靠前，例如：2000, May 2000, May 1st 2000。负数的年份（即公元前）将被反向排序，比如：100BC, 50BC, 50AD, 100AD。排序过程中，季节将被忽略，因为南北半球的季节顺序不同。在日期范围中，开始的日期用于主要排序，结束日期用于次要排序，例如：2000–2001, 2000–2005, 2002–2003, 2002–2009。在具有相同的开始日期时，日期范围将放在单独的日期后，例如：2000, 2000–2002。
 
-**数字**
+**数字**：[数字变量](#数字变量)通过`variable`属性来调用，返回整数（`form`设置为`"numeric"`）如果原始的变量值仅由非数字文本组成，则将该值作为文本字符串返回。
 
 #### 排序宏
 
-变量排序的键值是由字符串值组成，没有富文本标记。通过变量的属性中的兼职来调用。但名称，日期和数字变量除外：
+​	变量排序的键值是由字符串值组成，没有富文本标记。通过宏属性中的键值`cs:key`来调用。下面为一些特殊情况。
 
-**names**：
+​	对于名字排序，使用相同的宏而不是直接使用名字变量来渲染和排序有4个好处。第一，可以使用替换，例如：可以使用`"editor"`变量代替空的`"author"`变量。第二，可以使用 et-al 缩写，在宏里使用 `et-al-min`/`et-al-subsequent-min`, `et-al-use-first`/`et-al-subsequent-use-first`和 `et-al-use-last` 可选属性，或者覆盖 `cs:key`元素中的`names-min`, `names-use-first` 和 `names-use-last` 。当 et-al 缩写出现的时候，`"et-al"`和`"and others"`术语不会包括在排序键值中。第三，名字可以只使用姓来排序，即使用宏，其中的`cs:name`扽`form`属性设置为`"short"`。最后，通过调用宏，将`cs:name`中的`form`属性设置为`"count"`，可以按姓名列表中姓名的数目进行排序。至于使用`variable`属性对姓名进行排序，将`cs:name`中的`name-as-sort-order`属性设置为`"all"`，返回值为排序后的名称列表。
 
-**dates**:
-
-**numbers**:
+​	在宏中带有`cs:number`的[数字变量](#数字变量)的和日期变量的渲染方法和通过变量的调用相同。唯一的区别是：如果通过`variable`属性调用日期变量，将返回完整的日期。相反地，宏调用则只返回原本要渲染的日期部分。例如：
 
 ### 范围分隔符
 
-"引文数量"和"年后缀"变量的折叠范围以短划线分隔（例如"（1-3，5）"和"（Doe 2000a-c，e）"）。
+​	"citation-number"和"year-suffix"变量的折叠范围以短划线分隔，例如"（1-3，5）"和"（Doe 2000a-c，e）"。
 
-The "locator" variable is always rendered with an en-dash replacing any hyphens. For the "page" variable, this replacement is only performed if the page-range-format attribute is set on cs:style (see Page Ranges).
+​	"locator" 变量总是使用一个短划线代替任意的连字符。 对 "page" 变量来说，只有`cs:style`中的`page-ran ge-format`属性被设置时，替换才会执行（见[页码范围](#页码范围)）。 
 
 ### 格式化
 
-下面的属性可以在`cs:date`, `cs:date-part`, `cs:et-al`, `cs:group`, `cs:label`, `cs:layout`, `cs:name`, `cs:name-part`, `cs:names`, `cs:number` 和 `cs:text`中设置：
+​	下面的属性可以在`cs:date`, `cs:date-part`, `cs:et-al`, `cs:group`, `cs:label`, `cs:layout`, `cs:name`, `cs:name-part`, `cs:names`, `cs:number` 和 `cs:text`中设置：
 
 `font-style`
 
@@ -1390,39 +1388,39 @@ The "locator" variable is always rendered with an en-dash replacing any hyphens.
 
 - "normal"  默认
 - "italic"  设置文字的斜体
-- "oblique"  设置没有斜体的问题倾斜
+- "oblique"  设置没有斜体的文字倾斜
 
 `font-variant`
 
-Allows for the use of small capitals, with values:
+Allows for the use of small capitals, 值可以设置为:
 
-- "normal" (default)
+- "normal" 默认
 - "small-caps"
 
 `font-weight`
 
 设置字宽，值可以为：
 
-- "normal" (default)
+- "normal" 默认
 - "bold"
 - "light"
 
 `text-decoration`
 
-设置时候有下划线，值可以为：
+设置下划线，值可以为：
 
-- "none" (default)
+- "none" 默认
 - "underline"
 
 `vertical-align`
 
 设置垂直对齐，值可以为：
 
-- "baseline" (default)
+- "baseline" 默认
 - "sup" 上标
 - "sub" 下标
 
-### 词缀
+### 词缀   ***
 
 前缀属性`prefix`和后缀属性`suffix`可以在`cs:date`,`cs:date-part`,`cs:group`,`cs:label`,`cs:layout`,`cs:name`,`cs:names`,`cs:number`以及`cs:text`中设置。属性值用来在输出的前面或者后面添加东西。With the exception of affixes set on `cs:layout`, affixes are outside the scope of [formatting](https://docs.citationstyles.org/en/stable/specification.html#formatting), [quotes](https://docs.citationstyles.org/en/stable/specification.html#quotes), [strip-periods](https://docs.citationstyles.org/en/stable/specification.html#strip-periods) and [text-case](https://docs.citationstyles.org/en/stable/specification.html#text-case) attributes set on the same element (as a workaround, these attributes take effect on affixes when set on a parent `cs:group` element).
 
