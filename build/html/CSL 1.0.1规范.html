@@ -166,7 +166,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id34">范围分隔符</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id35">格式化</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id36">词缀   ***</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">词缀</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#delimiter">分隔符\delimiter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#display">显示\display</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#quotes">引用\quotes</a></li>
@@ -1386,12 +1386,12 @@ Doe, Williams et al. 2005.
 </ul>
 </div>
 <div class="section" id="id36">
-<h3>词缀   ***<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
-<p>前缀属性<code class="docutils literal notranslate"><span class="pre">prefix</span></code>和后缀属性<code class="docutils literal notranslate"><span class="pre">suffix</span></code>可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:group</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:number</span></code>以及<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置。属性值用来在输出的前面或者后面添加东西。With the exception of affixes set on <code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>, affixes are outside the scope of <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#formatting">formatting</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#quotes">quotes</a>, <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#strip-periods">strip-periods</a> and <a class="reference external" href="https://docs.citationstyles.org/en/stable/specification.html#text-case">text-case</a> attributes set on the same element (as a workaround, these attributes take effect on affixes when set on a parent <code class="docutils literal notranslate"><span class="pre">cs:group</span></code> element).</p>
+<h3>词缀<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<p>​	前缀属性<code class="docutils literal notranslate"><span class="pre">prefix</span></code>和后缀属性<code class="docutils literal notranslate"><span class="pre">suffix</span></code>可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>（使用<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>定义本地化格式除外），<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>（<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>调用本地化格式除外）、<code class="docutils literal notranslate"><span class="pre">cs:group</span></code>、<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>、<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>、<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>、<code class="docutils literal notranslate"><span class="pre">cs:names</span></code>、<code class="docutils literal notranslate"><span class="pre">cs:number</span></code>以及<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置。属性值用来在输出的前面或者后面添加东西，但是只有输出的时候才会渲染。除在<code class="docutils literal notranslate"><span class="pre">cs:layout</span></code>中设置外，词缀将出现在同一个元素的<a class="reference external" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96">格式化</a>、<a class="reference external" href="#%E5%BC%95%E7%94%A8">引用</a>、<a class="reference external" href="#strip-periods">strip-periods</a>和<a class="reference external" href="#text-case">text-case</a>的影响范围的外面，也就是这些属性的设置对前缀和后缀没有影响。作为一种解决方法，在父元素<code class="docutils literal notranslate"><span class="pre">cs:group</span></code>中设置上述属性，会产生影响。</p>
 </div>
 <div class="section" id="delimiter">
 <h3>分隔符\delimiter<a class="headerlink" href="#delimiter" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">delimiter</span></code>属性可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:group</span></code>以及<code class="docutils literal notranslate"><span class="pre">cs;layout</span></code>中设置分隔符。</p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">delimiter</span></code>属性可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>（用来分隔日期的各部分，如年和月；在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>调用本地化格日期格式时，分隔符将被禁用）、<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>（分隔名字变量中不同的名字列表）、<code class="docutils literal notranslate"><span class="pre">cs:name</span></code>（分隔名字列表中的名字）、<code class="docutils literal notranslate"><span class="pre">cs:group</span></code>以及<code class="docutils literal notranslate"><span class="pre">cs;layout</span></code>（分隔子元素的输出）中设置分隔符。</p>
 </div>
 <div class="section" id="display">
 <h3>显示\display<a class="headerlink" href="#display" title="Permalink to this headline">¶</a></h3>
@@ -1402,8 +1402,8 @@ Doe, Williams et al. 2005.
 <li><p>“right-inline” - 右对齐</p></li>
 <li><p>“indent” - 缩进。</p></li>
 </ul>
-<p><strong>例</strong>      ****</p>
-<p>A.</p>
+<p><strong>例</strong></p>
+<p>A. 除使用<code class="docutils literal notranslate"><span class="pre">second-field-align</span></code>外，使用<code class="docutils literal notranslate"><span class="pre">&quot;left-margin&quot;</span></code>和<code class="docutils literal notranslate"><span class="pre">&quot;roght-inline&quot;</span></code>可以实现相同的渲染效果。这种操作方式潜在的好处是，可以在最终的输出中进一步控制块的格式，例如，在HTML 的 CSS 或者 word 的样式中。</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;bibliography&gt;</span>
   <span class="nt">&lt;layout&gt;</span>
     <span class="nt">&lt;text</span> <span class="na">display=</span><span class="s">&quot;left-margin&quot;</span> <span class="na">variable=</span><span class="s">&quot;citation-number&quot;</span>
@@ -1415,7 +1415,7 @@ Doe, Williams et al. 2005.
 <span class="nt">&lt;/bibliography&gt;</span>
 </pre></div>
 </div>
-<p>B.</p>
+<p>B. 每个作者的出版物列表。当<code class="docutils literal notranslate"><span class="pre">subsequent-author-substitute</span></code>设置为空字符串时，具有相同作者的条目的作者名字只渲染一次。</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;bibliography</span> <span class="na">subsequent-author-substitute=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;sort&gt;</span>
     <span class="nt">&lt;key</span> <span class="na">variable=</span><span class="s">&quot;author&quot;</span><span class="nt">/&gt;</span>
@@ -1437,7 +1437,15 @@ Doe, Williams et al. 2005.
 <span class="nt">&lt;/bibliography&gt;</span>
 </pre></div>
 </div>
-<p>C.</p>
+<p>渲染结果将类似下面：</p>
+<p>| Author1           |                    |
+| —————– | —————— |
+| year-publication1 | title-publication1 |
+| year-publication2 | title-publication2 |
+| Author2           |                    |
+| year-publication3 | title-publication3 |
+| year-publication4 | title-publication4 |</p>
+<p>C. 带有注释的条目，注释显示在参下方的缩进块中。</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;bibliography&gt;</span>
   <span class="nt">&lt;layout&gt;</span>
     <span class="nt">&lt;group</span> <span class="na">display=</span><span class="s">&quot;block&quot;</span><span class="nt">&gt;</span>
@@ -1451,15 +1459,15 @@ Doe, Williams et al. 2005.
 </div>
 <div class="section" id="quotes">
 <h3>引用\quotes<a class="headerlink" href="#quotes" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">quotes</span></code>属性可以在<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置。当设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>时（默认为<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>），渲染文本将会被包含在引用中。本地化的<code class="docutils literal notranslate"><span class="pre">punctuation-in-quote</span></code>选项控制用来连接的逗号或者句号是出现在引号的内部还是外部（默认外部）。</p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">quotes</span></code>属性可以在<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置。当设置为<code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code>时（默认为<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>），渲染文本将会被包含在引用中。本地化的<code class="docutils literal notranslate"><span class="pre">punctuation-in-quote</span></code>选项控制用来连接的逗号或者句号是出现在引号的内部还是外部（默认外部），见[Locale options](#Locale options)。</p>
 </div>
 <div class="section" id="strip-periods">
 <h3>Strip-periods<a class="headerlink" href="#strip-periods" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">strip-periods</span></code>属性可以在<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>或者<code class="docutils literal notranslate"><span class="pre">cd:text</span></code>中设置，此外，当<code class="docutils literal notranslate"><span class="pre">name</span></code>被设置为<code class="docutils literal notranslate"><span class="pre">&quot;month&quot;</span></code>时，也可以在<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>中设置。当该属性被设置为<code class="docutils literal notranslate"><span class="pre">true</span></code>的时候（默认的是<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>），所有文本中的句号（英文中为点）将会被删除。</p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">strip-periods</span></code>属性可以在<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>或者<code class="docutils literal notranslate"><span class="pre">cd:text</span></code>中设置，此外，当<code class="docutils literal notranslate"><span class="pre">name</span></code>被设置为<code class="docutils literal notranslate"><span class="pre">&quot;month&quot;</span></code>时，也可以在<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>中设置。当该属性被设置为<code class="docutils literal notranslate"><span class="pre">true</span></code>的时候（默认的是<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>），所有文本中的句号（英文中为点）将会被删除。</p>
 </div>
 <div class="section" id="id37">
 <h3>文字大小写<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Text-case</span></code> 属性可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:number</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置，可设置的值为：</p>
+<p>​	<code class="docutils literal notranslate"><span class="pre">text-case</span></code> 属性可以在<code class="docutils literal notranslate"><span class="pre">cs:date</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:date-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:label</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:name-part</span></code>,<code class="docutils literal notranslate"><span class="pre">cs:number</span></code>和<code class="docutils literal notranslate"><span class="pre">cs:text</span></code>中设置，可设置的值为：</p>
 <ul class="simple">
 <li><p>“lowercase”: 使用小写字母渲染文本</p></li>
 <li><p>“uppercase”: 使用大写字母渲染文本</p></li>
@@ -1486,9 +1494,9 @@ Doe, Williams et al. 2005.
 </ol>
 <p>两种情况下，<code class="docutils literal notranslate"><span class="pre">stop</span> <span class="pre">words</span></code>必须是小写的，除非他们是第一个或者对后一个单词，或者跟在冒号后面。<code class="docutils literal notranslate"><span class="pre">stop</span> <span class="pre">words</span></code>包括：<code class="docutils literal notranslate"> <span class="pre">&quot;a&quot;,</span> <span class="pre">&quot;an&quot;,</span> <span class="pre">&quot;and&quot;,</span> <span class="pre">&quot;as&quot;,</span> <span class="pre">&quot;at&quot;,</span> <span class="pre">&quot;but&quot;,</span> <span class="pre">&quot;by&quot;,</span> <span class="pre">&quot;down&quot;,</span> <span class="pre">&quot;for&quot;,</span> <span class="pre">&quot;from&quot;,</span> <span class="pre">&quot;in&quot;,</span> <span class="pre">&quot;into&quot;,</span> <span class="pre">&quot;nor&quot;,</span> <span class="pre">&quot;of&quot;,</span> <span class="pre">&quot;on&quot;,</span> <span class="pre">&quot;onto&quot;,</span> <span class="pre">&quot;or&quot;,</span> <span class="pre">&quot;over&quot;,</span> <span class="pre">&quot;so&quot;,</span> <span class="pre">&quot;the&quot;,</span> <span class="pre">&quot;till&quot;,</span> <span class="pre">&quot;to&quot;,</span> <span class="pre">&quot;up&quot;,</span> <span class="pre">&quot;via&quot;,</span> <span class="pre">&quot;with&quot;,</span>&#160; <span class="pre">&quot;yet&quot;</span></code>.</p>
 <p><strong>非英语项目</strong></p>
-<p>由于许多语言不使用标题大小写，标题大小写转换(在”Text-case”中设置为”title”)仅影响英语项目。</p>
-<p>如果<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>中的<code class="docutils literal notranslate"><span class="pre">default-locale</span></code>属性没有设置，或者设置为<code class="docutils literal notranslate"><span class="pre">en</span></code>开头的单词，则假定为英语环境。如果某项的元数据包含一个语言字段，而且该字段不是以<code class="docutils literal notranslate"><span class="pre">&quot;en&quot;</span></code>开头的，才被视为是非英语环境。</p>
-<p>同样的，<code class="docutils literal notranslate"><span class="pre">default-locale</span></code>被这是为除<code class="docutils literal notranslate"><span class="pre">en</span></code>开头的字段，就假定为非英语。如果项目是以<code class="docutils literal notranslate"><span class="pre">en</span></code>开头的字段，就被视为是英语。</p>
+<p>​	由于许多语言不使用标题大小写，标题大小写转换(在”Text-case”中设置为”title”)仅影响英语项目。</p>
+<p>​	如果<code class="docutils literal notranslate"><span class="pre">cs:style</span></code>中的<code class="docutils literal notranslate"><span class="pre">default-locale</span></code>属性没有设置，或者设置为<code class="docutils literal notranslate"><span class="pre">en</span></code>开头的单词，则假定为英语环境。如果某项的元数据包含一个语言字段，而且该字段不是以<code class="docutils literal notranslate"><span class="pre">&quot;en&quot;</span></code>开头的，才被视为是非英语环境。</p>
+<p>​	同样的，<code class="docutils literal notranslate"><span class="pre">default-locale</span></code>被这是为除<code class="docutils literal notranslate"><span class="pre">en</span></code>开头的字段，就假定为非英语。如果项目是以<code class="docutils literal notranslate"><span class="pre">en</span></code>开头的字段，就被视为是英语。</p>
 </div>
 </div>
 </div>
