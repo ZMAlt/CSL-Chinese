@@ -1,4 +1,9 @@
 # CSL Chinese Document
+
+**本项目已移至 Zotero Chinese 组织，请见 https://github.com/zotero-cn/csl-doc-chinese**
+
+---
+
 CSL(Citation Style Language) 是一种基于XML语言，用来描述或格式化引用和参考文献目录的开源语言。使用CSL的参考文献管理软件包括Zotero,Mendeley,Papers。
 
 Zotero文件管理软件开源且简单。CSL的发展与Zotero有一定的关系，Zotero也是第一个使用 CSL的文献管理软件。LaTeX一直是国际上期刊投稿的主流，但现在的越来越多的国际期刊除提供LaTex模板外，同时还支持 Word格式投稿。国内投稿或者各种报告大多要求都是Word格式。Zotero可以在Word中生成和LaTeX同样漂亮的引用和参考文献目录。
